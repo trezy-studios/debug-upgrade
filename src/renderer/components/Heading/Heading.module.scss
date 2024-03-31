@@ -1,0 +1,32 @@
+@import '../../styles/fonts/thaleah/thaleah';
+
+.heading {
+	&.level-1 {
+		@extend %thaleah-3x;
+		// font-family: var(--heading-font-family);
+		// font-size: var(--heading-font-size);
+		// font-style: var(--heading-font-size);
+		// font-weight: var(--heading-font-weight);
+		// letter-spacing: var(--heading-font-letter-spacing);
+		// line-height: var(--heading-font-line-height);
+	}
+
+	&.level-2 {
+		@extend %thaleah-2x;
+	}
+
+	&.level-3 {
+		@extend %thaleah-1x;
+	}
+
+	// @for $level from 2 through 6 {
+	// 	&.level-#{$level} {
+	// 		font-family: var(--subheading-font-family);
+	// 		font-style: var(--subheading-font-style);
+	// 		font-size: var(--subheading-font-size);
+	// 		font-weight: var(--subheading-font-weight);
+	// 		letter-spacing: var(--subheading-font-letter-spacing);
+	// 		line-height: var(--subheading-font-line-height);
+	// 	}
+	// }
+}

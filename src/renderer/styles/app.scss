@@ -1,6 +1,65 @@
+/******************************************************************************\
+  Mixins
+\******************************************************************************/
+
+@import './mixins/generateColourCustomProperties';
+@import './mixins/generateColourCustomPropertiesFromColour';
+
+
+
+
+
+/******************************************************************************\
+  Functions
+\******************************************************************************/
+
+@import './functions/generateCornerCutPath';
+
+
+
+
+
+/******************************************************************************\
+  Variables
+\******************************************************************************/
+
+@import './variables/colors';
+@import './variables/fonts';
+@import './variables/gutters';
+@import './variables/panels';
+@import './variables/ui-scale';
+
+
+
+
+
+/******************************************************************************\
+  Fonts
+\******************************************************************************/
+
+@import './fonts/awkward/awkward';
+@import './fonts/dabble/dabble';
+@import './fonts/heartbit/heartbit';
+@import './fonts/thaleah/thaleah';
+@import './fonts/tinypixel/tinypixel';
+
+
+
+
+
+/******************************************************************************\
+  Root styles
+\******************************************************************************/
+
 * {
+	--scrollbar-background: rgba(var(--palette-pure-white-rgb), 0.1);
+	--scrollbar-foreground: rgba(var(--palette-pure-white-rgb), 0.3);
+	--scrollbar-foreground-hovered: rgba(var(--palette-pure-white-rgb), 0.5);
+
 	box-sizing: border-box;
   -webkit-font-smoothing: antialiased;
+	image-rendering: pixelated;
+	scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
 	text-overflow: ellipsis;
 	text-rendering: optimizeLegibility;
 
@@ -14,6 +73,22 @@
 			transition-delay: 0.0001s !important;
 		}
 	}
+
+	&::-webkit-scrollbar {
+		width: var(--scrollbar-width);
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: var(--scrollbar-background);
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: var(--scrollbar-foreground);
+
+		&:hover {
+			background-color: var(--scrollbar-foreground-hovered);
+		}
+	}
 }
 
 body, html {
@@ -22,11 +97,24 @@ body, html {
 }
 
 html {
-	font-size: 10px;
+	@extend %awkward-1x;
+	background-color: var(--background-color);
+	color: var(--text-color);
+	// font-size: 10px;
 }
 
 body {
 	background-color: var(--main-background-color);
 	color: var(--text-color);
+	// 	font-family: var(--base-font-family);
+	// 	font-size: var(--base-font-size);
+	// 	font-weight: var(--base-font-weight);
+	// 	letter-spacing: var(--base-letter-spacing);
+	// 	line-height: var(--base-line-height);
 	overflow: hidden;
+}
+
+#root {
+	height: 100vh;
+	width: 100vw;
 }

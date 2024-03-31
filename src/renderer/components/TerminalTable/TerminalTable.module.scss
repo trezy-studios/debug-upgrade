@@ -1,0 +1,14 @@
+.table {
+	border-collapse: collapse;
+	margin-bottom: 2ex;
+
+	th {
+		text-align: left;
+	}
+
+	thead th:not(:first-of-type),
+	tbody td:not(:first-of-type) {
+		padding-left: 1em;
+		width: 20%
+	}
+}

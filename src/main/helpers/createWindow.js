@@ -21,14 +21,19 @@ import packageData from '../../../package.json'
  * Creates a new window.
  */
 export async function createWindow() {
-	// Get the resolution of the current screen.
-	const display = screen.getPrimaryDisplay()
+	let display
+	const displayMode = await configStore.get('settings::graphics::displayMode')
+	// const preferredDisplay = await configStore.get('settings.graphics.preferredDisplay')
 
-	const backgroundColor = await configStore.get('settings::color::mainBackground')
+	// Get the resolution of the current screen.
+	// if (preferredDisplay === 'primary') {
+		display = screen.getPrimaryDisplay()
+	// }
 
 	const mainWindow = new BrowserWindow({
 		autoHideMenuBar: true,
-		backgroundColor: backgroundColor ?? '#000000',
+		backgroundColor: '#140c1c',
+		fullscreen: displayMode === 'fullscreen',
 		height: display.workArea.height,
 		show: false,
 		title: packageData.productName,
@@ -51,4 +56,7 @@ export async function createWindow() {
 	}
 
 	mainWindow.once('ready-to-show', () => mainWindow.show())
+
+	mainWindow.on('leave-full-screen', () => configStore.set('settings::graphics::displayMode', 'windowed'))
+	mainWindow.on('enter-full-screen', () => configStore.set('settings::graphics::displayMode', 'fullscreen'))
 }

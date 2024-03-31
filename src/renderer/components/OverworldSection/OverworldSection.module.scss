@@ -1,0 +1,7 @@
+.overworld-section {
+	height: calc(var(--height) * var(--ui-scale));
+	left: calc(var(--left) * var(--ui-scale));
+	position: absolute;
+	top: calc(var(--top) * var(--ui-scale));
+	width: calc(var(--width) * var(--ui-scale));
+}

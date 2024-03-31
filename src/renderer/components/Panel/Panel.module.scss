@@ -1,0 +1,87 @@
+@import '../../styles/variables/panels';
+@import '../../styles/functions/generateCornerCutPath';
+
+.panel {
+	--clip-point: calc((var(--panel-corner-clip-size) - (var(--panel-border-size) / 2)) * var(--ui-scale) * 1px);
+
+	display: flex;
+	flex-direction: column;
+	flex-shrink: 0;
+	max-height: 100%;
+	overflow: hidden;
+	padding: calc((var(--panel-border-size) + var(--panel-padding)) * var(--ui-scale) * 1px);
+	position: relative;
+
+	&:after,
+	&:before {
+		content: '';
+		display: flex;
+		inset: 0;
+		position: absolute;
+		transition-duration: 0.2s;
+		transition-property: background-color;
+	}
+
+	&:before {
+		background-color: var(--palette-black);
+		clip-path: generateCornerCutPath((
+			'borderSize': $panelBorderSize,
+			'clipSize': $panelCornerClipSize,
+			'isBorder': false,
+			'uiScale': var(--ui-scale),
+		));
+		z-index: 0;
+	}
+
+	&:after {
+		background-color: var(--panel-border-color);
+		clip-path: generateCornerCutPath((
+			'borderSize': $panelBorderSize,
+			'clipSize': $panelCornerClipSize,
+			'isBorder': true,
+			'uiScale': var(--ui-scale),
+		));
+		z-index: 3;
+	}
+
+	&[data-open]:not([data-open="false"]) {
+		flex-shrink: 1;
+
+		> header:after {
+			transform: rotate(180deg);
+		}
+	}
+
+	&.is-centered {
+		align-items: center;
+		justify-content: center;
+	}
+
+	&.is-primary {
+		--panel-border-color: var(--palette-white);
+	}
+
+	@for $index from 1 through 4 {
+		&.span-#{$index} {
+			grid-column: span #{$index};
+		}
+	}
+
+	> * {
+		position: relative;
+		z-index: 2;
+	}
+
+	> header {
+		cursor: pointer;
+		display: flex;
+	}
+
+	> menu {
+		flex-direction: column;
+
+		&:not(:first-child):not(.panel-bottom) {
+			margin-top: calc(4px * var(--ui-scale));
+		}
+	}
+}

@@ -1,0 +1,7 @@
+.panels-layout {
+	display: grid;
+	flex-grow: 1;
+	gap: calc(var(--panel-gutter) * var(--ui-scale));
+	grid-template-columns: repeat(4, 1fr);
+	padding: calc(var(--app-padding) * var(--ui-scale));
+}

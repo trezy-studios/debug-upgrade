@@ -1,0 +1,12 @@
+.overworld {
+	background-image: url('sprites/overworld.background.png');
+	background-repeat: no-repeat;
+	background-size: cover;
+	height: calc(384px * var(--ui-scale));
+	left: 50%;
+	position: absolute;
+	top: 50%;
+	translate: -50% -50%;
+	width: calc(544px * var(--ui-scale));
+	z-index: 1;
+}

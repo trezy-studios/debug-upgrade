@@ -15,5 +15,5 @@ import { App } from './components/App/App.jsx'
 
 
 // Render your React component instead
-const root = createRoot(document.body)
+const root = createRoot(document.querySelector('#root'))
 root.render(<App />)

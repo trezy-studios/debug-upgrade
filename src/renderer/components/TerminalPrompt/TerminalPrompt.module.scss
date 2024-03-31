@@ -1,0 +1,8 @@
+.prompt {
+	color: var(--palette-green);
+	margin-right: 1rem;
+
+	&:after {
+		content: ':';
+	}
+}

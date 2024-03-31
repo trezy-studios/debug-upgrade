@@ -1,0 +1,83 @@
+@import '../../styles/functions/generateCornerCutPath';
+
+.button-reset {
+	background: none;
+	background-color: transparent;
+	border: none;
+	color: inherit;
+	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	padding: 0;
+}
+
+.button {
+	background: none;
+	background-color: var(--palette-dark-grey);
+	border: none;
+	clip-path: generateCornerCutPath((
+		'clipSize': 3,
+		'uiScale': var(--ui-scale),
+	));
+	color: var(--palette-white);
+	padding: calc(3px * var(--ui-scale)) calc(10px * var(--ui-scale));
+	cursor: pointer;
+	font-family: inherit;
+	font-size: inherit;
+	letter-spacing: inherit;
+	line-height: inherit;
+	transition-property: background-color;
+	transition-duration: 0.1s;
+
+	&[disabled]:not([disabled="false"]) {
+		cursor: not-allowed;
+		opacity: 0.5;
+	}
+
+	&:not([disabled]):hover,
+	&[disabled="true"]:hover {
+		background-color: var(--palette-grey);
+	}
+
+	&.is-affirmative {
+		background-color: var(--palette-green);
+		color: var(--palette-white);
+
+		&:not([disabled]):hover,
+		&[disabled="true"]:hover {
+			background-color: var(--palette-light-green);
+		}
+	}
+
+	&.is-full-width {
+		width: 100%;
+	}
+
+	&.is-gamepad-focused {
+		background-color: var(--palette-yellow);
+	}
+
+	&.is-negative {
+		background-color: hsl(var(--palette-red-hsl));
+		color: var(--palette-white);
+
+		&:not([disabled]):hover,
+		&[disabled="true"]:hover {
+			background-color: hsl(var(--palette-red-h), calc(var(--palette-red-s) + 30%), var(--palette-red-l));
+		}
+	}
+
+	&.is-small {
+		padding: calc(1px * var(--ui-scale)) calc(10px * var(--ui-scale));
+
+		&.is-uniformly-padded {
+			padding: calc(1px * var(--ui-scale));
+		}
+	}
+
+	&.is-uniformly-padded {
+		padding: calc(3px * var(--ui-scale));
+	}
+}
