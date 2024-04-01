@@ -7,6 +7,7 @@
  *
  * @param {Promise | PromiseFunction} promise The promise to be executed.
  * @param {number} minimumDuration The minimum duration of the promise.
+ * @returns {Promise<*>} The result of the executed promise.
  */
 export function executePromiseWithMinimumDuration(promise, minimumDuration) {
 	const startedAt = performance.now()
@@ -22,11 +23,9 @@ export function executePromiseWithMinimumDuration(promise, minimumDuration) {
 
 			// eslint-disable-next-line promise/always-return
 			if (remainingDuration) {
-				setTimeout(() => {
-					resolve(result)
-				}, remainingDuration)
+				setTimeout(() => resolve(result), remainingDuration)
 			} else {
-				resolve()
+				resolve(result)
 			}
 		})
 	})

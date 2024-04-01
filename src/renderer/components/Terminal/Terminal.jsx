@@ -17,6 +17,20 @@ import { useMemo } from 'react'
 
 
 
+// Constants
+const VARIANTS = {
+	hidden: {
+		opacity: 0,
+	},
+	visible: {
+		opacity: 1,
+	},
+}
+
+
+
+
+
 /**
  *
  * @component
@@ -44,7 +58,12 @@ export function Terminal({
 	}, [lines])
 
 	return (
-		<motion.div className={styles['terminal']}>
+		<motion.div
+			animate={'visible'}
+			className={styles['terminal']}
+			exit={'hidden'}
+			initial={'hidden'}
+			variants={VARIANTS}>
 			{renderedLines}
 		</motion.div>
 	)

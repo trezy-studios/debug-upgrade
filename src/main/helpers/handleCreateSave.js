@@ -21,7 +21,6 @@ import packageData from '../../../package.json'
  * @returns {Promise<import('../../types/SaveData.js').SaveData>} The new save's data.
  */
 export async function handleCreateSave() {
-	console.log('main::createSave')
 	const appDirectory = getAppDataPath()
 	const createdAt = Date.now()
 
@@ -70,8 +69,6 @@ export async function handleCreateSave() {
 	}
 
 	const saveDataPath = path.resolve(appDirectory, 'saves', saveData.id)
-
-	console.log(saveDataPath, saveData)
 
 	// eslint-disable-next-line security/detect-non-literal-fs-filename
 	await fs.writeFile(saveDataPath, JSON.stringify(saveData), 'utf8')

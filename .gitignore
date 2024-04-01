@@ -86,7 +86,10 @@ typings/
 .webpack/
 
 # Vite
+dist/
 .vite/
 
 # Electron-Forge
 out/
+
+data/

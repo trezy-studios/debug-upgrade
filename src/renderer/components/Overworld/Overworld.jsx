@@ -33,6 +33,14 @@ const OVERWORLD_BLOCK_DATA = {
 	},
 	type: 'router',
 }
+const VARIANTS = {
+	hidden: {
+		opacity: 0,
+	},
+	visible: {
+		opacity: 1,
+	},
+}
 
 
 
@@ -90,9 +98,13 @@ export function Overworld() {
 	return (
 		<motion.div
 			ref={overworldRef}
+			animate={'visible'}
 			className={styles['overworld']}
 			drag
-			dragConstraints={dragConstraints}>
+			dragConstraints={dragConstraints}
+			exit={'hidden'}
+			initial={'hidden'}
+			variants={VARIANTS}>
 			{mappedLayout}
 			<OverworldBlock block={OVERWORLD_BLOCK_DATA} />
 		</motion.div>

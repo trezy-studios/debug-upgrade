@@ -14,10 +14,14 @@ contextBridge.exposeInMainWorld('IPCBridge', {
 	 *
 	 * @returns {Promise<import('../types/SaveData.js').SaveData>} The save data that was created.
 	 */
-	createSave: () => {
-		console.log('preload::createSave')
-		return ipcRenderer.invoke('createSave')
-	},
+	createSave: () => ipcRenderer.invoke('createSave'),
+
+	/**
+	 * Retrieves all save data.
+	 *
+	 * @returns {Promise<import('../types/SaveData.js').SaveData[]>} An array of data from all saves.
+	 */
+	getAllSaves: () => ipcRenderer.invoke('getAllSaves'),
 
 	/**
 	 * Gets a config value from disk.

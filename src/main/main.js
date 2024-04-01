@@ -13,6 +13,7 @@ import ElectronSquirrelStartup from 'electron-squirrel-startup'
 import { handleActivate } from './helpers/handleActivate.js'
 import { handleAllWindowsClosed } from './helpers/handleAllWindowsClosed.js'
 import { handleCreateSave } from './helpers/handleCreateSave.js'
+import { handleGetAllSaves } from './helpers/handleGetAllSaves.js'
 import { handleGetConfig } from './helpers/handleGetConfig.js'
 import { handleInitialiseDirectories } from './helpers/handleInitialiseDirectories.js'
 import { handleSetConfig } from './helpers/handleSetConfig.js'
@@ -46,6 +47,7 @@ app.on('activate', handleActivate)
 app.on('window-all-closed', handleAllWindowsClosed)
 
 ipcMain.handle('createSave', handleCreateSave)
+ipcMain.handle('getAllSaves', handleGetAllSaves)
 ipcMain.handle('getConfig', handleGetConfig)
 ipcMain.handle('setConfig', handleSetConfig)
 ipcMain.handle('initialiseDirectories', handleInitialiseDirectories)

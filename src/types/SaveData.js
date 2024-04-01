@@ -45,6 +45,7 @@
  * @property {string} id A unique identifier for the save.
  * @property {number} createdAt A timestamp representing the time the save was created.
  * @property {CampaignData} campaign A mapping of campaign progress.
+ * @property {number} [size] Size of the file in bytes.
  * @property {number} updatedAt A timestamp representing the last time the save was updated.
  * @property {UpgradeData} upgrades A mapping of upgrades that have been unlocked.
  */
