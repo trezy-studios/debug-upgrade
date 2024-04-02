@@ -13,19 +13,19 @@
 	},
 	{
 		"alias": "Overworld - Block - Boss - Bottom Connection",
-		"src": "sprites/overworld-block.boss.background.bottom-connection.png",
+		"src": "sprites/overworld-block.boss.bottom-connection.png",
 		"type": "image",
 		"loadingCategory": "sprites"
 	},
 	{
 		"alias": "Overworld - Block - Boss - Left Connection",
-		"src": "sprites/overworld-block.boss.background.left-connection.png",
+		"src": "sprites/overworld-block.boss.left-connection.png",
 		"type": "image",
 		"loadingCategory": "sprites"
 	},
 	{
 		"alias": "Overworld - Block - Boss - Right Connection",
-		"src": "sprites/overworld-block.boss.background.right-connection.png",
+		"src": "sprites/overworld-block.boss.right-connection.png",
 		"type": "image",
 		"loadingCategory": "sprites"
 	},

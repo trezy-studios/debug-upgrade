@@ -137,7 +137,7 @@ export function LoadingGameScene() {
 							exit={'exit'}
 							initial={'initial'}
 							variants={MESSAGE_VARIANTS}>
-							{`Loading assets (${Math.floor(assetLoadingProgress) * 100}%)`}
+							{`Loading assets (${Math.floor(assetLoadingProgress * 100)}%)`}
 						</motion.p>
 					)}
 				</AnimatePresence>

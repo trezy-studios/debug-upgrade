@@ -26,133 +26,155 @@
 	},
 
 	{
-		"alias": "Colorblindness Adjustment",
+		"alias": "colorblindnessAdjustment",
+		"displayName": "Colorblindness Adjustment",
 		"loadingCategory": "settings",
 		"path": "settings::accessibility::colorblindType",
 		"type": "setting"
 	},
 	{
-		"alias": "Heading Font Face",
+		"alias": "headingFontFace",
+		"displayName": "Heading Font Face",
 		"loadingCategory": "settings",
 		"path": "settings::accessibility::headingFontFace",
 		"type": "setting"
 	},
 	{
-		"alias": "Text Font Face",
+		"alias": "textFontFace",
+		"displayName": "Text Font Face",
 		"loadingCategory": "settings",
 		"path": "settings::accessibility::textFontFace",
 		"type": "setting"
 	},
 	{
 		"alias": "usePixelFonts",
+		"displayName": "Use Pixel Fonts",
 		"loadingCategory": "settings",
 		"path": "settings::accessibility::usePixelFonts",
 		"type": "setting"
 	},
 	{
-		"alias": "Display Mode",
+		"alias": "displayMode",
+		"displayName": "Display Mode",
 		"loadingCategory": "settings",
 		"path": "settings::graphics::displayMode",
 		"type": "setting"
 	},
 	{
-		"alias": "Display Resolution",
+		"alias": "displayResolution",
+		"displayName": "Display Resolution",
 		"loadingCategory": "settings",
 		"path": "settings::graphics::displayResolution::height",
 		"type": "setting"
 	},
 	{
-		"alias": "Display Resolution",
+		"alias": "displayResolution",
+		"displayName": "Display Resolution",
 		"loadingCategory": "settings",
 		"path": "settings::graphics::displayResolution::width",
 		"type": "setting"
 	},
 	{
-		"alias": "Preferred Display",
+		"alias": "preferredDisplay",
+		"displayName": "Preferred Display",
 		"loadingCategory": "settings",
 		"path": "settings::graphics::preferredDisplay",
 		"type": "setting"
 	},
 	{
-		"alias": "Sound Effects Volume",
+		"alias": "soundEffectsVolume",
+		"displayName": "Sound Effects Volume",
 		"loadingCategory": "settings",
 		"path": "settings::sound::effectsVolume",
 		"type": "setting"
 	},
 	{
-		"alias": "Music Volume",
+		"alias": "musicVolume",
+		"displayName": "Music Volume",
 		"loadingCategory": "settings",
 		"path": "settings::sound::musicVolume",
 		"type": "setting"
 	},
 	{
-		"alias": "Main Volume",
+		"alias": "mainVolume",
+		"displayName": "Main Volume",
 		"loadingCategory": "settings",
 		"path": "settings::sound::volume",
 		"type": "setting"
 	},
 	{
-		"alias": "Show Battery",
+		"alias": "showBattery",
+		"displayName": "Show Battery",
 		"loadingCategory": "settings",
 		"path": "settings::system::showBattery",
 		"type": "setting"
 	},
 	{
-		"alias": "Show Clock",
+		"alias": "showClock",
+		"displayName": "Show Clock",
 		"loadingCategory": "settings",
 		"path": "settings::system::showClock",
 		"type": "setting"
 	},
 	{
-		"alias": "Show CPU Temperature",
+		"alias": "showCPUTemperature",
+		"displayName": "Show CPU Temperature",
 		"loadingCategory": "settings",
 		"path": "settings::system::showCPUTemperature",
 		"type": "setting"
 	},
 	{
-		"alias": "Show CPU Usage",
+		"alias": "showCPUUsage",
+		"displayName": "Show CPU Usage",
 		"loadingCategory": "settings",
 		"path": "settings::system::showCPUUsage",
 		"type": "setting"
 	},
 	{
-		"alias": "Show Debugging Panel",
+		"alias": "showDebuggingPanel",
+		"displayName": "Show Debugging Panel",
 		"loadingCategory": "settings",
 		"path": "settings::system::showDebuggingPanel",
 		"type": "setting"
 	},
 	{
-		"alias": "Show Framerate",
+		"alias": "showFramerate",
+		"displayName": "Show Framerate",
 		"loadingCategory": "settings",
 		"path": "settings::system::showFramerate",
 		"type": "setting"
 	},
 	{
-		"alias": "Show GPU Temperature",
+		"alias": "showGPUTemperature",
+		"displayName": "Show GPU Temperature",
 		"loadingCategory": "settings",
 		"path": "settings::system::showGPUTemperature",
 		"type": "setting"
 	},
 	{
-		"alias": "Show GPU Usage",
+		"alias": "showGPUUsage",
+		"displayName": "Show GPU Usage",
 		"loadingCategory": "settings",
 		"path": "settings::system::showGPUUsage",
 		"type": "setting"
 	},
 	{
-		"alias": "Show VRAM Temperature",
+		"alias": "showVRAMTemperature",
+		"displayName": "Show VRAM Temperature",
 		"loadingCategory": "settings",
 		"path": "settings::system::showVRAMTemperature",
 		"type": "setting"
 	},
 	{
-		"alias": "Show VRAM Usage",
+		"alias": "showVRAMUsage",
+		"displayName": "Show VRAM Usage",
 		"loadingCategory": "settings",
 		"path": "settings::system::showVRAMUsage",
 		"type": "setting"
 	},
 	{
-		"alias": "Show RAM Usage",
+		"alias": "showRAMUsage",
+		"displayName": "Show RAM Usage",
 		"loadingCategory": "settings",
 		"path": "settings::system::showRAMUsage",
 		"type": "setting"

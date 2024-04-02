@@ -35,12 +35,14 @@ export async function loadAssets(manifestIDs, options = {}) {
 	const manifestResponses = await Promise.all(manifestIDs.map(manifestID => fetch(`manifests/${manifestID}.json`)))
 	const manifestData = await Promise.all(manifestResponses.map(manifestResponse => manifestResponse.json()))
 
+	const allAssets = manifestData.flat()
+
 	store.set(() => ({ assetLoadingProgress: 0 }))
 
-	let index = 0
+	let assetIndex = 0
 
-	while (index < manifestData.length) {
-		const asset = manifestData[index]
+	while (assetIndex < allAssets.length) {
+		const asset = allAssets[assetIndex]
 
 		setLoadingItem(asset)
 
@@ -73,9 +75,7 @@ export async function loadAssets(manifestIDs, options = {}) {
 
 			case 'setting': {
 				const value = await IPCBridge.getConfig(asset.path)
-				store.set(() => ({
-					[asset.alias]: value,
-				}))
+				store.set(() => ({ [asset.alias]: value }))
 				break
 			}
 
@@ -92,13 +92,13 @@ export async function loadAssets(manifestIDs, options = {}) {
 			default:
 		}
 
-		store.set(() => ({ assetLoadingProgress: index / manifestData.length }))
+		store.set(() => ({ assetLoadingProgress: assetIndex / allAssets.length }))
 
 		if (typeof onAssetLoadEnd === 'function') {
 			onAssetLoadEnd(asset)
 		}
 
-		index += 1
+		assetIndex += 1
 	}
 
 	store.set(() => ({ assetLoadingProgress: 1 }))
