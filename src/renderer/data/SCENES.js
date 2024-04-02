@@ -8,6 +8,7 @@ export const SCENES = {
 	MAP_EDITOR: 'map editor',
 	MAP_SELECT: 'map select',
 	NEW_GAME: 'new game',
+	OVERWORLD: 'overworld',
 	PLAY: 'play',
 	SAVE_SELECT: 'save select',
 	SETTINGS: 'settings',

@@ -8,6 +8,7 @@
 /**
  * @typedef {object} OverworldBlock
  * @property {string} name The name of the block.
+ * @property {string[]} [prerequisite] A list of block names which must be completed before this block is available.
  * @property {OverworldBlockConnections} [connections] A mapping of conduit-connected sides.
  * @property {string[]} links A list of block names to which this block will be linked.
  * @property {'boss' |'level' | 'lock' | 'router'} type The type of this block.
@@ -16,4 +17,4 @@
  * 	y: number,
  * }} position The coordinates of this block.
  */
-export const AudioPlayResult = {}
+export const OverworldBlock = {}

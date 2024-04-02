@@ -79,6 +79,7 @@ export function Overworld() {
 				(overworldElement.parentElement.offsetWidth / 2) - (overworldElement.offsetWidth / 2),
 				(overworldElement.offsetWidth / 2),
 			)
+
 			const verticalTravelDistance = Math.max(
 				(overworldElement.parentElement.offsetHeight / 2) - (overworldElement.offsetHeight / 2),
 				(overworldElement.offsetHeight / 2),
@@ -92,8 +93,6 @@ export function Overworld() {
 			})
 		}
 	}, [setDragConstraints])
-
-	console.log(dragConstraints)
 
 	return (
 		<motion.div

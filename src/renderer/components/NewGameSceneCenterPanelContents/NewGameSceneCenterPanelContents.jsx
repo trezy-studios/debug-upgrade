@@ -15,15 +15,41 @@ import { filesize } from 'filesize'
 
 
 // Local imports
-import styles from '../NewGameSceneCenterPanelContents/NewGameSceneCenterPanelContents.module.scss'
+import styles from './NewGameSceneCenterPanelContents.module.scss'
 
+import { Button } from '../Button/Button.jsx'
 import { createSave } from '../../store/reducers/createSave.js'
 import { executePromiseWithMinimumDuration } from '../../helpers/executePromiseWithMinimumDuration.js'
 import { getAllSaves } from '../../store/reducers/getAllSaves.js'
-import { Overworld } from '../Overworld/Overworld.jsx'
+import { replaceScene } from '../../store/reducers/replaceScene.js'
+import { SCENES } from '../../data/SCENES.js'
 import { Terminal } from '../Terminal/Terminal.jsx'
 import { TERMINAL_LINE_PART_TYPES } from '../../data/TERMINAL_LINE_PART_TYPES.js'
 import { wait } from '../../helpers/wait.js'
+
+
+
+
+
+// Constants
+const VARIANTS = {
+	hidden: {
+		opacity: 0,
+	},
+	visible: {
+		opacity: 1,
+	},
+}
+
+
+
+
+
+// Functions
+/** Fired when the continue button is activated. */
+function handleContinueActivate() {
+	replaceScene(SCENES.OVERWORLD)
+}
 
 
 
@@ -53,6 +79,10 @@ export function NewGameSceneCenterPanelContents() {
 	}, [])
 
 	useLayoutEffect(() => {
+		if (isDone) {
+			return
+		}
+
 		if (!isStarted) {
 			setIsStarted(true)
 			setIsInitializingSystem(true)
@@ -154,7 +184,6 @@ export function NewGameSceneCenterPanelContents() {
 				.then(() => wait(500))
 				.then(() => getAllSaves())
 				.then(allSaves => {
-					console.log(allSaves)
 					addLines([
 						{
 							body: [
@@ -217,7 +246,7 @@ export function NewGameSceneCenterPanelContents() {
 					])
 					return null
 				})
-				.then(() => wait(3000))
+				.then(() => wait(2000))
 				.then(() => {
 					setIsLoadingWorldMap(false)
 					setIsDone(true)
@@ -227,6 +256,7 @@ export function NewGameSceneCenterPanelContents() {
 	}, [
 		addLines,
 		isCreatingSave,
+		isDone,
 		isInitializingSystem,
 		isLoadingWorldMap,
 		isMountingSaveDirectory,
@@ -234,18 +264,32 @@ export function NewGameSceneCenterPanelContents() {
 	])
 
 	return (
-		<AnimatePresence mode={'wait'}>
-			{!isDone && (
-				<Terminal lines={lines} />
-			)}
+		<motion.div
+			className={styles['terminal-wrapper']}
+			layout>
+			<Terminal
+				key={'terminal'}
+				lines={lines} />
 
-			{isDone && (
-				<motion.div
-					className={styles['overworld-wrapper']}
-					layout>
-					<Overworld />
-				</motion.div>
-			)}
-		</AnimatePresence>
+			<AnimatePresence mode={'wait'}>
+				{isDone && (
+					<motion.div
+						key={'continue'}
+						animate={'visible'}
+						className={styles['continue-wrapper']}
+						exit={'hidden'}
+						initial={'hidden'}
+						variants={VARIANTS}>
+						<Button
+							navGroupID={'foo'}
+							nodeID={'continue'}
+							onActivate={handleContinueActivate}
+							onClick={handleContinueActivate}>
+							{'Continue'}
+						</Button>
+					</motion.div>
+				)}
+			</AnimatePresence>
+		</motion.div>
 	)
 }

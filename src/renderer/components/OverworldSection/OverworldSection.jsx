@@ -24,12 +24,14 @@ import { OverworldBlock } from '../OverworldBlock/OverworldBlock.jsx'
  * @param {string} sectionName The name of the parent section.
  */
 function mapSectionBlocks(blocks, sectionName) {
-	return blocks.map(block => (
-		<OverworldBlock
-			key={block.name}
-			block={block}
-			sectionName={sectionName} />
-	))
+	return blocks.map(block => {
+		return (
+			<OverworldBlock
+				key={block.name}
+				block={block}
+				sectionName={sectionName} />
+		)
+	})
 }
 
 /**

@@ -5,6 +5,7 @@ import {
 } from 'react'
 import classnames from 'classnames'
 import PropTypes from 'prop-types'
+import { useStore } from 'statery'
 
 
 
@@ -14,6 +15,7 @@ import PropTypes from 'prop-types'
 import styles from './OverworldBlock.module.scss'
 
 import { Button } from '../Button/Button.jsx'
+import { store } from '../../store/store.js'
 
 
 
@@ -43,6 +45,8 @@ export function OverworldBlock({
 	block,
 	sectionName = null,
 }) {
+	const { saveData } = useStore(store)
+
 	const handleSelect = useCallback(() => {
 		console.log(`Selected ${block.name}`, block)
 	}, [block])
@@ -85,6 +89,21 @@ export function OverworldBlock({
 			})
 			.filter(Boolean)
 	}, [block.connections])
+
+	const isAvailable = useMemo(() => {
+		if (block.prerequisite?.length) {
+			return block.prerequisite.every(prerequisiteName => saveData.campaign[prerequisiteName])
+		}
+
+		return true
+	}, [
+		block.prerequisite,
+		saveData,
+	])
+
+	if (!isAvailable) {
+		return null
+	}
 
 	return (
 		<Button

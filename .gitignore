@@ -93,3 +93,4 @@ dist/
 out/
 
 data/
+!src/**/data/

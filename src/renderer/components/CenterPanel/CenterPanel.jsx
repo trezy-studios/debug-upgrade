@@ -28,6 +28,7 @@ import { store } from '../../store/store.js'
 // import { CenterPanelContents as SaveSelectSceneCenterPanelContents } from './scenes/SaveSelect/CenterPanelContents.jsx'
 // import { CenterPanelContents as SettingsSceneCenterPanelContents } from './scenes/Settings/CenterPanelContents.jsx'
 import { NewGameSceneCenterPanelContents } from '../NewGameSceneCenterPanelContents/NewGameSceneCenterPanelContents.jsx'
+import { OverworldSceneCenterPanelContents } from '../OverworldSceneCenterPanelContents/OverworldSceneCenterPanelContents.jsx'
 import { TitleSceneCenterPanelContents } from '../TitleSceneCenterPanelContents/TitleSceneCenterPanelContents.jsx'
 
 
@@ -143,6 +144,16 @@ export function CenterPanel() {
 					isCentered
 					variants={PANEL_VARIANTS}>
 					<NewGameSceneCenterPanelContents />
+				</Panel>
+			)}
+
+			{(currentScene === SCENES.OVERWORLD) && (
+				<Panel
+					key={`${SCENES.OVERWORLD}SceneCenterPanelContents`}
+					columnSpan={3}
+					isCentered
+					variants={PANEL_VARIANTS}>
+					<OverworldSceneCenterPanelContents />
 				</Panel>
 			)}
 		</AnimatePresence>

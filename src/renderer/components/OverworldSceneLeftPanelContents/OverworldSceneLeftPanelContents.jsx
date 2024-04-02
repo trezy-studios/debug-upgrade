@@ -18,7 +18,7 @@ const navGroupLinks = ['center panel']
 
 
 /** Fired when the back button is clicked. */
-function handleBackClick() {
+function handleMainMenuClick() {
 	popScene()
 }
 
@@ -32,7 +32,7 @@ function handleSettingsClick() {
  *
  * @component
  */
-export function NewGameSceneLeftPanelContents() {
+export function OverworldSceneLeftPanelContents() {
 	return (
 		<PanelMenu>
 			<ButtonStack>
@@ -48,10 +48,10 @@ export function NewGameSceneLeftPanelContents() {
 				<Button
 					navGroupID={'left panel'}
 					navGroupLinks={navGroupLinks}
-					nodeID={'back'}
-					onActivate={handleBackClick}
-					onClick={handleBackClick}>
-					{'Back'}
+					nodeID={'main menu'}
+					onActivate={handleMainMenuClick}
+					onClick={handleMainMenuClick}>
+					{'Main Menu'}
 				</Button>
 			</ButtonStack>
 		</PanelMenu>

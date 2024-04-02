@@ -1,4 +1,5 @@
 declare const classNames: {
-  readonly "overworld-wrapper": "overworld-wrapper";
+  readonly "continue-wrapper": "continue-wrapper";
+  readonly "terminal-wrapper": "terminal-wrapper";
 };
 export = classNames;

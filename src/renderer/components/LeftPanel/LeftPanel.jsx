@@ -28,7 +28,7 @@ import { store } from '../../store/store.js'
 // import { LeftPanelContents as PlaySceneLeftPanelContents } from './scenes/Play/LeftPanelContents.jsx'
 // import { LeftPanelContents as SaveSelectSceneLeftPanelContents } from './scenes/SaveSelect/LeftPanelContents.jsx'
 // import { LeftPanelContents as SettingsSceneLeftPanelContents } from './scenes/Settings/LeftPanelContents.jsx'
-import { NewGameSceneLeftPanelContents } from '../NewGameSceneLeftPanelContents/NewGameSceneLeftPanelContents.jsx'
+import { OverworldSceneLeftPanelContents } from '../OverworldSceneLeftPanelContents/OverworldSceneLeftPanelContents.jsx'
 import { TitleSceneLeftPanelContents } from '../TitleSceneLeftPanelContents/TitleSceneLeftPanelContents.jsx'
 
 
@@ -95,8 +95,8 @@ export function LeftPanel() {
 					<SettingsSceneLeftPanelContents key={'SettingsSceneLeftPanelContents'} />
 				)} */}
 
-				{(currentScene === SCENES.NEW_GAME) && (
-					<NewGameSceneLeftPanelContents key={'NewGameSceneLeftPanelContents'} />
+				{(currentScene === SCENES.OVERWORLD) && (
+					<OverworldSceneLeftPanelContents key={'OverworldSceneLeftPanelContents'} />
 				)}
 
 				{(currentScene === SCENES.MAIN_MENU) && (

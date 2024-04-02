@@ -21,9 +21,14 @@ import { useMemo } from 'react'
 const VARIANTS = {
 	hidden: {
 		opacity: 0,
+		y: 20,
 	},
 	visible: {
 		opacity: 1,
+		y: 0,
+		transition: {
+			type: 'tween',
+		},
 	},
 }
 
@@ -45,7 +50,8 @@ export function Terminal({
 			<motion.div
 				key={index}
 				className={styles['line']}
-				layout>
+				layout
+				variants={VARIANTS}>
 				{Boolean(line.prompt) && (
 					<TerminalPrompt>
 						{line.prompt}
@@ -62,8 +68,7 @@ export function Terminal({
 			animate={'visible'}
 			className={styles['terminal']}
 			exit={'hidden'}
-			initial={'hidden'}
-			variants={VARIANTS}>
+			initial={'hidden'}>
 			{renderedLines}
 		</motion.div>
 	)
