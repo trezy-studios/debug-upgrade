@@ -27,6 +27,7 @@ import { store } from '../../store/store.js'
 // import { CenterPanelContents as PlaySceneCenterPanelContents } from './scenes/Play/CenterPanelContents.jsx'
 // import { CenterPanelContents as SaveSelectSceneCenterPanelContents } from './scenes/SaveSelect/CenterPanelContents.jsx'
 // import { CenterPanelContents as SettingsSceneCenterPanelContents } from './scenes/Settings/CenterPanelContents.jsx'
+import { ContinueGameSceneCenterPanelContents } from '../ContinueGameSceneCenterPanelContents/ContinueGameSceneCenterPanelContents.jsx'
 import { NewGameSceneCenterPanelContents } from '../NewGameSceneCenterPanelContents/NewGameSceneCenterPanelContents.jsx'
 import { OverworldSceneCenterPanelContents } from '../OverworldSceneCenterPanelContents/OverworldSceneCenterPanelContents.jsx'
 import { TitleSceneCenterPanelContents } from '../TitleSceneCenterPanelContents/TitleSceneCenterPanelContents.jsx'
@@ -126,6 +127,16 @@ export function CenterPanel() {
 					<SettingsSceneCenterPanelContents />
 				</Panel>
 			)} */}
+
+			{(currentScene === SCENES.CONTINUE_GAME) && (
+				<Panel
+					key={`${SCENES.CONTINUE_GAME}SceneCenterPanelContents`}
+					columnSpan={3}
+					isCentered
+					variants={PANEL_VARIANTS}>
+					<ContinueGameSceneCenterPanelContents />
+				</Panel>
+			)}
 
 			{(currentScene === SCENES.MAIN_MENU) && (
 				<Panel

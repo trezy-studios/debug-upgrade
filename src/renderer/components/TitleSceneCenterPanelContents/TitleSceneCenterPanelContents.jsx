@@ -1,11 +1,7 @@
 // Module imports
 import { motion } from 'framer-motion'
-import {
-	// useCallback,
-	useEffect,
-	// useMemo,
-} from 'react'
-// import { useStore } from 'statery'
+import { useLayoutEffect } from 'react'
+import { useStore } from 'statery'
 
 
 
@@ -19,7 +15,7 @@ import { ButtonStack } from '../ButtonStack/ButtonStack.jsx'
 import { GameTitle } from '../GameTitle/GameTitle.jsx'
 import { pushScene } from '../../store/reducers/pushScene.js'
 import { SCENES } from '../../data/SCENES.js'
-// import { store } from '../../store/store.js'
+import { store } from '../../store/store.js'
 import { useNavGraphContext } from '../NavGraph/NavGraphContext.jsx'
 
 
@@ -33,10 +29,10 @@ const navGroupLinks = ['left panel']
 
 
 
-// /** Fired when the load game button is clicked. */
-// function handleLoadGameClick() {
-// 	pushScene(SCENES.SAVE_SELECT)
-// }
+/** Fired when the continue button is clicked. */
+function handleContinueClick() {
+	pushScene(SCENES.CONTINUE_GAME)
+}
 
 /** Fired when the new game button is clicked. */
 function handleNewGameClick() {
@@ -49,25 +45,20 @@ function handleNewGameClick() {
  * @component
  */
 export function TitleSceneCenterPanelContents() {
-  // const [
-	// 	mostRecentSaveID,
-	// 	// saveManager,
-	// ] = useStore(store)
+  const { mostRecentSaveID } = useStore(store)
 
 	const { focusNode } = useNavGraphContext()
 
-	// const hasSaves = useMemo(() => {
-	// 	// return Boolean(saveManager.getAllSaves().length)
-	// }, [saveManager])
-
-	// const handleContinueClick = useCallback(() => {
-	// 	pushScene(SCENES.MAP_SELECT)
-	// 	// goToMapSelect(mostRecentSaveID)
-	// }, [mostRecentSaveID])
-
-	useEffect(() => {
-		focusNode('continue')
-	}, [focusNode])
+	useLayoutEffect(() => {
+		if (mostRecentSaveID) {
+			focusNode('continue')
+		} else {
+			focusNode('new game')
+		}
+	}, [
+		focusNode,
+		mostRecentSaveID,
+	])
 
 	return (
 		<motion.div
@@ -76,7 +67,7 @@ export function TitleSceneCenterPanelContents() {
 			<GameTitle />
 
 			<ButtonStack key={'campaign menu'}>
-				{/* {Boolean(mostRecentSaveID) && (
+				{Boolean(mostRecentSaveID) && (
 					<Button
 						isAffirmative
 						isNavGroupDefault
@@ -87,7 +78,7 @@ export function TitleSceneCenterPanelContents() {
 						onClick={handleContinueClick}>
 						{'Continue'}
 					</Button>
-				)} */}
+				)}
 
 				<Button
 					navGroupID={'center panel'}
@@ -97,17 +88,6 @@ export function TitleSceneCenterPanelContents() {
 					onClick={handleNewGameClick}>
 					{'New Game'}
 				</Button>
-
-				{/* {hasSaves && (
-					<Button
-						navGroupID={'center panel'}
-						navGroupLinks={navGroupLinks}
-						nodeID={'load game'}
-						onActivate={handleLoadGameClick}
-						onClick={handleLoadGameClick}>
-						{'Load Game'}
-					</Button>
-				)} */}
 			</ButtonStack>
 		</motion.div>
 	)

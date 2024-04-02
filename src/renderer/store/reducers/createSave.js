@@ -1,6 +1,6 @@
 // Local imports
 import { IPCBridge } from '../../helpers/IPCBridge.js'
-import { store } from '../store.js'
+import { setSaveData } from './setSaveData.js'
 
 
 
@@ -13,6 +13,8 @@ import { store } from '../store.js'
  */
 export async function createSave() {
 	const saveData = await IPCBridge.createSave()
-	store.set(() => ({ saveData }))
+
+	setSaveData(saveData)
+
 	return saveData
 }

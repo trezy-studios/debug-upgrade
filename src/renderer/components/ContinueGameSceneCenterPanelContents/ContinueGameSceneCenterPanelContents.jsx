@@ -8,21 +8,22 @@ import {
 	useLayoutEffect,
 	useState,
 } from 'react'
-import { filesize } from 'filesize'
+import { useStore } from 'statery'
 
 
 
 
 
 // Local imports
-import styles from './NewGameSceneCenterPanelContents.module.scss'
+import styles from './ContinueGameSceneCenterPanelContents.module.scss'
 
 import { Button } from '../Button/Button.jsx'
-import { createSave } from '../../store/reducers/createSave.js'
 import { executePromiseWithMinimumDuration } from '../../helpers/executePromiseWithMinimumDuration.js'
 import { getSaves } from '../../store/reducers/getSaves.js'
 import { replaceScene } from '../../store/reducers/replaceScene.js'
 import { SCENES } from '../../data/SCENES.js'
+import { setSaveData } from '../../store/reducers/setSaveData.js'
+import { store } from '../../store/store.js'
 import { Terminal } from '../Terminal/Terminal.jsx'
 import { TERMINAL_LINE_PART_TYPES } from '../../data/TERMINAL_LINE_PART_TYPES.js'
 import { wait } from '../../helpers/wait.js'
@@ -60,7 +61,8 @@ function handleContinueActivate() {
  *
  * @component
  */
-export function NewGameSceneCenterPanelContents() {
+export function ContinueGameSceneCenterPanelContents() {
+	const { mostRecentSaveID } = useStore(store)
 	const [isCreatingSave, setIsCreatingSave] = useState(false)
 	const [isDone, setIsDone] = useState(false)
 	const [isInitializingSystem, setIsInitializingSystem] = useState(false)
@@ -156,7 +158,7 @@ export function NewGameSceneCenterPanelContents() {
 						{
 							prompt: 'system/user',
 							body: [
-								'Creating new save...',
+								`Loading save data for save ID ${mostRecentSaveID}...`,
 							],
 						},
 					])
@@ -169,48 +171,14 @@ export function NewGameSceneCenterPanelContents() {
 
 		if (isCreatingSave) {
 			// eslint-disable-next-line promise/catch-or-return
-			executePromiseWithMinimumDuration(createSave(), 1500)
-				.then(newSaveData => {
+			executePromiseWithMinimumDuration(getSaves(), 1500)
+				.then(([saveData]) => {
+					setSaveData(saveData)
 					addLines([
 						{
 							prompt: 'system/user',
 							body: [
-								`Created save: /dev/saves/${newSaveData.id}`,
-							],
-						},
-					])
-					return null
-				})
-				.then(() => wait(500))
-				.then(() => getSaves())
-				.then(allSaves => {
-					addLines([
-						{
-							body: [
-								'Current saves:',
-								{
-									type: TERMINAL_LINE_PART_TYPES.TABLE,
-									headings: ['id', 'progress', 'size'],
-									rows: allSaves.map(saveData => {
-										const {
-											levelCount,
-											levelsComplete,
-										} = Object.values(saveData.campaign).reduce((accumulator, isComplete) => {
-											accumulator.levelCount += 1
-
-											if (isComplete) {
-												accumulator.levelsComplete += 1
-											}
-
-											return accumulator
-										}, {
-											levelCount: 0,
-											levelsComplete: 0,
-										})
-
-										return [saveData.id, `${(levelsComplete / levelCount) * 100}%`, filesize(saveData.size)]
-									}),
-								},
+								`Loaded save data: /dev/saves/${saveData.id}`,
 							],
 						},
 					])
@@ -261,6 +229,7 @@ export function NewGameSceneCenterPanelContents() {
 		isLoadingWorldMap,
 		isMountingSaveDirectory,
 		isStarted,
+		mostRecentSaveID,
 	])
 
 	return (

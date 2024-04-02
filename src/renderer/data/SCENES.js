@@ -1,6 +1,7 @@
 /** @enum {string} */
 export const SCENES = {
 	ARCHITECT: 'architect',
+	CONTINUE_GAME: 'continue game',
 	CUSTOM_GAME: 'custom game',
 	LOADING_GAME: 'loading game',
 	LOADING_MAP: 'loading map',

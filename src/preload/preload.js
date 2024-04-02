@@ -19,9 +19,10 @@ contextBridge.exposeInMainWorld('IPCBridge', {
 	/**
 	 * Retrieves all save data.
 	 *
+	 * @param {string[]} [saveIDs] An array of IDs to load save data for.
 	 * @returns {Promise<import('../types/SaveData.js').SaveData[]>} An array of data from all saves.
 	 */
-	getAllSaves: () => ipcRenderer.invoke('getAllSaves'),
+	getSaves: saveIDs => ipcRenderer.invoke('getSaves', saveIDs),
 
 	/**
 	 * Gets a config value from disk.

@@ -8,6 +8,7 @@ import { makeStore } from 'statery'
 
 // Local imports
 // import { ControlsManager } from '../game/ControlsManager.js'
+import { IPCBridge } from '../helpers/IPCBridge.js'
 import { SCENES } from '../data/SCENES.js'
 
 
@@ -45,6 +46,9 @@ export const store = makeStore({
 	/** @type {number} */
 	mainVolume: 0,
 
+	/** @type {null | string} */
+	mostRecentSaveID: null,
+
 	/** @type {number} */
 	musicVolume: 0,
 
@@ -70,10 +74,8 @@ if (typeof window !== 'undefined') {
 	window.store = store
 }
 
-// store.subscribe(updates => {
-// 	if ('soundEffectsVolume' in updates) {
-// 		for (const [soundID, track] of this.#soundEffects.entries()) {
-// 			track.volume(updates.soundEffectsVolume, soundID)
-// 		}
-// 	}
-// })
+store.subscribe(updates => {
+	if ('mostRecentSaveID' in updates) {
+		IPCBridge.setConfig('settings::state::mostRecentSaveID', updates.mostRecentSaveID)
+	}
+})

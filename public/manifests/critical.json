@@ -178,5 +178,12 @@
 		"loadingCategory": "settings",
 		"path": "settings::system::showRAMUsage",
 		"type": "setting"
+	},
+	{
+		"alias": "mostRecentSaveID",
+		"displayName": "Most Recent Save ID",
+		"loadingCategory": "settings",
+		"path": "settings::state::mostRecentSaveID",
+		"type": "setting"
 	}
 ]

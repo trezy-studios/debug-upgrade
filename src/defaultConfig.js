@@ -22,6 +22,8 @@ export default {
 	'settings::system::showVRAMUsage': true,
 	'settings::system::showRAMUsage': true,
 
+	'settings::state::mostRecentSaveID': null,
+
 	// "settings": {
 	// 	"controls": [
 	// 		{

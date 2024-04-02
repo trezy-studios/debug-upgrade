@@ -16,17 +16,25 @@ import { getAppDataPath } from './getAppDataPath.js'
 /**
  * Creates all necessary directories on the local machine.
  *
+ * @param {*} _
+ * @param {string[]} saveIDs An array of IDs for save files to be retrieved.
  * @returns {Promise<import('../../types/SaveData.js').SaveData[]>} The new save's data.
  */
-export async function handleGetAllSaves() {
+export async function handleGetSaves(_, saveIDs) {
 	const appDirectory = getAppDataPath()
 	const saveDataPath = path.resolve(appDirectory, 'saves')
-
-	// eslint-disable-next-line security/detect-non-literal-fs-filename
-	const allSaveFiles = await fs.readdir(saveDataPath)
 	const saves = []
 
-	for (const saveFile of allSaveFiles) {
+	let saveFiles
+
+	if (!saveIDs) {
+		// eslint-disable-next-line security/detect-non-literal-fs-filename
+		saveFiles = await fs.readdir(saveDataPath)
+	} else {
+		saveFiles = saveIDs.map(saveID => `${saveID}.json`)
+	}
+
+	for (const saveFile of saveFiles) {
 		const saveFilePath = path.resolve(saveDataPath, saveFile)
 
 		const [
