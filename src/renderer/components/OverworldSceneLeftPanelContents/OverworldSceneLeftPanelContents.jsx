@@ -1,8 +1,8 @@
 // Local imports
+import { backToScene } from '../../store/reducers/backToScene.js'
 import { Button } from '../Button/Button.jsx'
 import { ButtonStack } from '../ButtonStack/ButtonStack.jsx'
 import { PanelMenu } from '../Panel/PanelMenu.jsx'
-import { popScene } from '../../store/reducers/popScene.js'
 import { pushScene } from '../../store/reducers/pushScene.js'
 import { SCENES } from '../../data/SCENES.js'
 
@@ -19,7 +19,7 @@ const navGroupLinks = ['center panel']
 
 /** Fired when the back button is clicked. */
 function handleMainMenuClick() {
-	popScene()
+	backToScene(SCENES.MAIN_MENU)
 }
 
 /** Fired when the settings button is clicked. */
