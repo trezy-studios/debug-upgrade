@@ -1,122 +1,142 @@
 [
 	{
-		"alias": "Overworld - Background",
+		"alias": "overworld::background",
+		"displayName": "Overworld - Background",
 		"src": "sprites/overworld.background.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Boss - Background",
+		"alias": "overworld::block::boss::background",
+		"displayName": "Overworld - Block - Boss - Background",
 		"src": "sprites/overworld-block.boss.background.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Boss - Bottom Connection",
+		"alias": "overworld::block::boss::bottomConnection",
+		"displayName": "Overworld - Block - Boss - Bottom Connection",
 		"src": "sprites/overworld-block.boss.bottom-connection.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Boss - Left Connection",
+		"alias": "overworld::block::boss::leftConnection",
+		"displayName": "Overworld - Block - Boss - Left Connection",
 		"src": "sprites/overworld-block.boss.left-connection.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Boss - Right Connection",
+		"alias": "overworld::block::boss::rightConnection",
+		"displayName": "Overworld - Block - Boss - Right Connection",
 		"src": "sprites/overworld-block.boss.right-connection.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Boss - Top Connection",
+		"alias": "overworld::block::boss::topConnection",
+		"displayName": "Overworld - Block - Boss - Top Connection",
 		"src": "sprites/overworld-block.boss.top-connection.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Junction - Background",
+		"alias": "overworld::block::junction::background",
+		"displayName": "Overworld - Block - Junction - Background",
 		"src": "sprites/overworld-block.junction.background.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Level - Background",
+		"alias": "overworld::block::level::background",
+		"displayName": "Overworld - Block - Level - Background",
 		"src": "sprites/overworld-block.level.background.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Level - Bottom Connection",
+		"alias": "overworld::block::level::bottomConnection",
+		"displayName": "Overworld - Block - Level - Bottom Connection",
 		"src": "sprites/overworld-block.level.bottom-connection.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Level - Left Connection",
+		"alias": "overworld::block::level::leftConnection",
+		"displayName": "Overworld - Block - Level - Left Connection",
 		"src": "sprites/overworld-block.level.left-connection.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Level - Right Connection",
+		"alias": "overworld::block::level::rightConnection",
+		"displayName": "Overworld - Block - Level - Right Connection",
 		"src": "sprites/overworld-block.level.right-connection.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Level - Top Connection",
+		"alias": "overworld::block::level::topConnection",
+		"displayName": "Overworld - Block - Level - Top Connection",
 		"src": "sprites/overworld-block.level.top-connection.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Lock - Section01 - Background",
+		"alias": "overworld::block::lock::section01::background",
+		"displayName": "Overworld - Block - Lock - Section01 - Background",
 		"src": "sprites/overworld-block.lock.section01.background.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Lock - Section01 - LVL01 Complete",
+		"alias": "overworld::block::lock::section01::lvl01Complete",
+		"displayName": "Overworld - Block - Lock - Section01 - LVL01 Complete",
 		"src": "sprites/overworld-block.lock.section01.lvl01-complete.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Lock - Section01 - LVL02 Complete",
+		"alias": "overworld::block::lock::section01::lvl02Complete",
+		"displayName": "Overworld - Block - Lock - Section01 - LVL02 Complete",
 		"src": "sprites/overworld-block.lock.section01.lvl02-complete.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Lock - Section01 - LVL03 Complete",
+		"alias": "overworld::block::lock::section01::lvl03Complete",
+		"displayName": "Overworld - Block - Lock - Section01 - LVL03 Complete",
 		"src": "sprites/overworld-block.lock.section01.lvl03-complete.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Lock - Section02 - Background",
+		"alias": "overworld::block::lock::section02::background",
+		"displayName": "Overworld - Block - Lock - Section02 - Background",
 		"src": "sprites/overworld-block.lock.section02.background.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Lock - Section03 - Background",
+		"alias": "overworld::block::lock::section03::background",
+		"displayName": "Overworld - Block - Lock - Section03 - Background",
 		"src": "sprites/overworld-block.lock.section03.background.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Lock - Section04 - Background",
+		"alias": "overworld::block::lock::section04::background",
+		"displayName": "Overworld - Block - Lock - Section04 - Background",
 		"src": "sprites/overworld-block.lock.section04.background.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	},
 	{
-		"alias": "Overworld - Block - Router - Background",
+		"alias": "overworld::block::router::background",
+		"displayName": "Overworld - Block - Router - Background",
 		"src": "sprites/overworld-block.router.background.png",
-		"type": "image",
+		"type": "sprite",
 		"loadingCategory": "sprites"
 	}
 ]

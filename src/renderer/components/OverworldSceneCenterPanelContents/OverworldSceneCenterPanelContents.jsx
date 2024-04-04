@@ -1,5 +1,6 @@
 // Module imports
 import { motion } from 'framer-motion'
+import { useRef } from 'react'
 
 
 
@@ -8,7 +9,8 @@ import { motion } from 'framer-motion'
 // Local imports
 import styles from './OverworldSceneCenterPanelContents.module.scss'
 
-import { Overworld } from '../Overworld/Overworld.jsx'
+import { PixiOverworld } from '../PixiOverworld/PixiOverworld.jsx'
+import { PixiStage } from '../PixiStage/PixiStage.jsx'
 
 
 
@@ -20,12 +22,16 @@ import { Overworld } from '../Overworld/Overworld.jsx'
  * @component
  */
 export function OverworldSceneCenterPanelContents() {
+	const overworldWrapperRef = useRef(null)
 
 	return (
 		<motion.div
+			ref={overworldWrapperRef}
 			className={styles['overworld-wrapper']}
 			layout>
-			<Overworld />
+			<PixiStage>
+				<PixiOverworld resizeToRef={overworldWrapperRef} />
+			</PixiStage>
 		</motion.div>
 	)
 }

@@ -63,7 +63,7 @@ function handleContinueActivate() {
  */
 export function ContinueGameSceneCenterPanelContents() {
 	const { mostRecentSaveID } = useStore(store)
-	const [isCreatingSave, setIsCreatingSave] = useState(false)
+	const [isLoadingSave, setIsLoadingSave] = useState(false)
 	const [isDone, setIsDone] = useState(false)
 	const [isInitializingSystem, setIsInitializingSystem] = useState(false)
 	const [isLoadingWorldMap, setIsLoadingWorldMap] = useState(false)
@@ -99,7 +99,7 @@ export function ContinueGameSceneCenterPanelContents() {
 
 		if (isInitializingSystem) {
 			// eslint-disable-next-line promise/catch-or-return
-			wait(2000)
+			wait(1000)
 				.then(() => {
 					addLines([
 						{
@@ -111,7 +111,7 @@ export function ContinueGameSceneCenterPanelContents() {
 					])
 					return null
 				})
-				.then(() => wait(500))
+				.then(() => wait(100))
 				.then(() => {
 					addLines([
 						{
@@ -135,7 +135,7 @@ export function ContinueGameSceneCenterPanelContents() {
 
 		if (isMountingSaveDirectory) {
 			// eslint-disable-next-line promise/catch-or-return
-			wait(2000)
+			wait(1000)
 				.then(() => {
 					addLines([
 						{
@@ -152,7 +152,7 @@ export function ContinueGameSceneCenterPanelContents() {
 					])
 					return null
 				})
-				.then(() => wait(500))
+				.then(() => wait(100))
 				.then(() => {
 					addLines([
 						{
@@ -163,15 +163,15 @@ export function ContinueGameSceneCenterPanelContents() {
 						},
 					])
 					setIsMountingSaveDirectory(false)
-					setIsCreatingSave(true)
+					setIsLoadingSave(true)
 					return null
 				})
 			return
 		}
 
-		if (isCreatingSave) {
+		if (isLoadingSave) {
 			// eslint-disable-next-line promise/catch-or-return
-			executePromiseWithMinimumDuration(getSaves(), 1500)
+			executePromiseWithMinimumDuration(getSaves(), 1000)
 				.then(([saveData]) => {
 					setSaveData(saveData)
 					addLines([
@@ -184,7 +184,7 @@ export function ContinueGameSceneCenterPanelContents() {
 					])
 					return null
 				})
-				.then(() => wait(500))
+				.then(() => wait(100))
 				.then(() => {
 					addLines([
 						{
@@ -194,7 +194,7 @@ export function ContinueGameSceneCenterPanelContents() {
 							],
 						},
 					])
-					setIsCreatingSave(false)
+					setIsLoadingSave(false)
 					setIsLoadingWorldMap(true)
 					return null
 				})
@@ -202,7 +202,7 @@ export function ContinueGameSceneCenterPanelContents() {
 
 		if (isLoadingWorldMap) {
 			// eslint-disable-next-line promise/catch-or-return
-			wait(2000)
+			wait(1000)
 				.then(() => {
 					addLines([
 						{
@@ -214,7 +214,7 @@ export function ContinueGameSceneCenterPanelContents() {
 					])
 					return null
 				})
-				.then(() => wait(2000))
+				.then(() => wait(1000))
 				.then(() => {
 					setIsLoadingWorldMap(false)
 					setIsDone(true)
@@ -223,7 +223,7 @@ export function ContinueGameSceneCenterPanelContents() {
 		}
 	}, [
 		addLines,
-		isCreatingSave,
+		isLoadingSave,
 		isDone,
 		isInitializingSystem,
 		isLoadingWorldMap,

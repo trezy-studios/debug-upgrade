@@ -64,6 +64,9 @@ export const store = makeStore({
 	/** @type {number} */
 	soundEffectsVolume: 0,
 
+	/** @type {number} */
+	uiScale: Number(getComputedStyle(document.querySelector(':root')).getPropertyValue('--ui-scale')),
+
 	/** @type {null | import('pixi-viewport').Viewport} */
 	viewport: null,
 })
