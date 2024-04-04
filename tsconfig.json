@@ -35,6 +35,7 @@
     ".github",
     ".yarn",
     "node_modules",
+    "**/*.glsl",
     "**/*.scss"
   ]
 }

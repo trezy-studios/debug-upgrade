@@ -3,6 +3,7 @@ import { defineConfig } from 'vite'
 import path from 'node:path'
 import react from '@vitejs/plugin-react'
 import sassDts from 'vite-plugin-sass-dts'
+import viteString from 'vite-plugin-string'
 
 
 
@@ -35,6 +36,7 @@ export default defineConfig(env => {
 		publicDir: path.resolve(process.cwd(), 'public'),
 		plugins: [
 			pluginExposeRenderer(name),
+			viteString(),
 			sassDts(),
 			react({ include: /\.jsx$/u }),
 		],
