@@ -1,0 +1,837 @@
+{
+	"animations": {
+		"Conveyor Belt (South)": [
+			"22",
+			"23",
+			"24",
+			"25"
+		],
+		"Conveyor Belt (East)": [
+			"26",
+			"27",
+			"28",
+			"29"
+		],
+		"Conveyor Belt (West)": [
+			"30",
+			"31",
+			"32",
+			"33"
+		],
+		"Conveyor Belt (North)": [
+			"34",
+			"35",
+			"36",
+			"37"
+		]
+	},
+	"frames": {
+		"0": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 16,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Grey Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"1": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 32,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Dark Grey Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"2": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 48,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Blue Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"3": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 64,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Orange Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"4": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 80,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Yellow Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"5": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 96,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Green Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"6": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 112,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Red Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"7": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 128,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Green Floor (w/ Circle)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"8": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 144,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Red Floor (w/ X)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"9": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 160,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Warning Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"10": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Wall",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"11": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Wall (Bottom)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"12": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 16,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Grey Silhouette Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"13": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 32,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Dark Grey Silhouette Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"14": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 48,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Blue Silhouette Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"15": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 64,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Orange Silhouette Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"16": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 80,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Yellow Silhouette Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"17": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 96,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Green Silhouette Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"18": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 112,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Red Silhouette Floor",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"19": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 128,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Green Silhouette Floor (w/ Circle)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"20": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 144,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Red Silhouette Floor (w/ X)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"21": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 160,
+				"y": 16
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Shadow",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"22": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 96,
+				"y": 48
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 1 (South)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"23": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 112,
+				"y": 48
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 2 (South)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"24": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 128,
+				"y": 48
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 3 (South)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"25": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 144,
+				"y": 48
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 4 (South)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"26": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 96,
+				"y": 64
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 1 (East)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"27": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 112,
+				"y": 64
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 2 (East)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"28": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 128,
+				"y": 64
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 3 (East)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"29": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 144,
+				"y": 64
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 4 (East)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"30": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 96,
+				"y": 80
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 1 (West)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"31": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 112,
+				"y": 80
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 2 (West)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"32": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 128,
+				"y": 80
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 3 (West)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"33": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 144,
+				"y": 80
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 4 (West)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"34": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 96,
+				"y": 96
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 1 (North)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"35": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 112,
+				"y": 96
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 2 (North)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"36": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 128,
+				"y": 96
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 3 (North)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		},
+		"37": {
+			"frame": {
+				"h": 16,
+				"w": 16,
+				"x": 144,
+				"y": 96
+			},
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 4 (North)",
+			"sourceSize": {
+				"h": 16,
+				"w": 16
+			},
+			"spriteSourceSize": {
+				"h": 16,
+				"w": 16,
+				"x": 0,
+				"y": 0
+			}
+		}
+	},
+	"meta": {
+		"image": "tiles.png",
+		"format": "RGBA8888",
+		"size": {
+			"h": 128,
+			"w": 176
+		},
+		"scale": 1
+	}
+}

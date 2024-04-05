@@ -8,7 +8,7 @@ import { store } from '../store.js'
 /**
  * Replaces the current scene.
  *
- * @param {string} scene The key of the scene to replace with.
+ * @param {import('../../data/SCENES.js').SCENES} scene The key of the scene to replace with.
  */
 export function replaceScene(scene) {
 	if (!scene) {

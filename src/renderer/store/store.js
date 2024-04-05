@@ -26,10 +26,19 @@ export const store = makeStore({
 	// controlsManager: new ControlsManager,
 
 	/** @type {null | string} */
+	currentMapID: null,
+
+	/** @type {null | import('../game/TileMap.js').TileMap} */
+	currentMap: null,
+
+	/** @type {null | string} */
 	currentLoadingCategory: null,
 
 	/** @type {null | string} */
 	currentLoadingItem: null,
+
+	/** @type {number} */
+	currentQueueIndex: 0,
 
 	/** @type {boolean} */
 	isFilesystemInitialised: false,
@@ -55,6 +64,9 @@ export const store = makeStore({
 	/** @type {null | import('pixi.js').Application} */
 	pixiApp: null,
 
+	/** @type {Map<string, object>} */
+	resourcepacks: new Map,
+
 	/** @type {null | import('../../types/SaveData.js').SaveData} */
 	saveData: null,
 
@@ -63,6 +75,9 @@ export const store = makeStore({
 
 	/** @type {number} */
 	soundEffectsVolume: 0,
+
+	/** @type {Map<string, import('../../types/TileMapData.js').TileMapData>} */
+	tilemaps: new Map,
 
 	/** @type {number} */
 	uiScale: Number(getComputedStyle(document.querySelector(':root')).getPropertyValue('--ui-scale')),

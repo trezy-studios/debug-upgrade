@@ -1,0 +1,9 @@
+{
+	"dependencies": {
+		"default": "0.0.0-development"
+	},
+	"id": "lvl01",
+	"name": "Classic Level 01 - Precondition Required",
+	"type": "maps",
+	"version": "0.0.0-development"
+}

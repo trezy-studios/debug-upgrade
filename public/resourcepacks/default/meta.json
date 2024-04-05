@@ -1,0 +1,10 @@
+{
+	"id": "default",
+	"name": "Default Resourcepack",
+	"robotsData": "robots.json",
+	"robotsImage": "robots.png",
+	"tilesData": "tiles.json",
+	"tilesImage": "tiles.png",
+	"type": "resourcepacks",
+	"version": "0.0.0-development"
+}

@@ -33,6 +33,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "statery": "^0.7.1",
+    "tinycolor2": "^1.6.0",
     "uuid": "^9.0.1"
   },
   "devDependencies": {
@@ -50,6 +51,7 @@
     "@types/howler": "^2.2.11",
     "@types/node": "^20.12.2",
     "@types/react": "^18.2.73",
+    "@types/tinycolor2": "^1",
     "@types/uuid": "^9.0.8",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",

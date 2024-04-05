@@ -16,6 +16,9 @@ import { useStore } from 'statery'
 
 
 // Local imports
+import { replaceScene } from '../../store/reducers/replaceScene.js'
+import { SCENES } from '../../data/SCENES.js'
+import { setCurrentMapID } from '../../store/reducers/setCurrentMapID.js'
 import { store } from '../../store/store.js'
 
 
@@ -45,7 +48,8 @@ export function PixiOverworldBlock({ block }) {
 	const { saveData } = useStore(store)
 
 	const handleSelect = useCallback(() => {
-		console.log(`Selected ${block.name}`, block)
+		setCurrentMapID(block.name)
+		replaceScene(SCENES.LOADING_MAP)
 	}, [block])
 
 	const backgroundTexture = useMemo(() => {

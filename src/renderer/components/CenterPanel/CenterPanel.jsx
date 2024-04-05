@@ -22,14 +22,15 @@ import { SCENES } from '../../data/SCENES.js'
 import { store } from '../../store/store.js'
 
 // import { CenterPanelContents as CustomGameSceneCenterPanelContents } from './scenes/CustomGame/CenterPanelContents.jsx'
-// import { CenterPanelContents as LoadingMapSceneCenterPanelContents } from './scenes/LoadingMap/CenterPanelContents.jsx'
 // import { CenterPanelContents as MapSelectSceneCenterPanelContents } from './scenes/MapSelect/CenterPanelContents.jsx'
 // import { CenterPanelContents as PlaySceneCenterPanelContents } from './scenes/Play/CenterPanelContents.jsx'
 // import { CenterPanelContents as SaveSelectSceneCenterPanelContents } from './scenes/SaveSelect/CenterPanelContents.jsx'
 // import { CenterPanelContents as SettingsSceneCenterPanelContents } from './scenes/Settings/CenterPanelContents.jsx'
 import { ContinueGameSceneCenterPanelContents } from '../ContinueGameSceneCenterPanelContents/ContinueGameSceneCenterPanelContents.jsx'
+import { LoadingMapSceneCenterPanelContents } from '../LoadingMapSceneCenterPanelContents/LoadingMapSceneCenterPanelContents.jsx'
 import { NewGameSceneCenterPanelContents } from '../NewGameSceneCenterPanelContents/NewGameSceneCenterPanelContents.jsx'
 import { OverworldSceneCenterPanelContents } from '../OverworldSceneCenterPanelContents/OverworldSceneCenterPanelContents.jsx'
+import { PlaySceneCenterPanelContents } from '../PlaySceneCenterPanelContents/PlaySceneCenterPanelContents.jsx'
 import { TitleSceneCenterPanelContents } from '../TitleSceneCenterPanelContents/TitleSceneCenterPanelContents.jsx'
 
 
@@ -138,6 +139,16 @@ export function CenterPanel() {
 				</Panel>
 			)}
 
+			{(currentScene === SCENES.LOADING_MAP) && (
+				<Panel
+					key={`${SCENES.LOADING_MAP}SceneCenterPanelContents`}
+					columnSpan={3}
+					isCentered
+					variants={PANEL_VARIANTS}>
+					<LoadingMapSceneCenterPanelContents />
+				</Panel>
+			)}
+
 			{(currentScene === SCENES.MAIN_MENU) && (
 				<Panel
 					key={`${SCENES.MAIN_MENU}SceneCenterPanelContents`}
@@ -165,6 +176,16 @@ export function CenterPanel() {
 					isCentered
 					variants={PANEL_VARIANTS}>
 					<OverworldSceneCenterPanelContents />
+				</Panel>
+			)}
+
+			{(currentScene === SCENES.PLAY) && (
+				<Panel
+					key={`${SCENES.PLAY}SceneCenterPanelContents`}
+					columnSpan={3}
+					isCentered
+					variants={PANEL_VARIANTS}>
+					<PlaySceneCenterPanelContents />
 				</Panel>
 			)}
 		</AnimatePresence>

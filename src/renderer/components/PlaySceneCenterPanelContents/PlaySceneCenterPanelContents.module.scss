@@ -1,0 +1,17 @@
+.wrapper {
+	inset: 0;
+	position: absolute;
+
+	&:after {
+		box-shadow:
+			0 0 0 calc(1px * var(--ui-scale)) inset hsla(var(--palette-black-hsl), 0.2),
+			0 0 0 calc(2px * var(--ui-scale)) inset hsla(var(--palette-black-hsl), 0.2),
+			0 0 0 calc(3px * var(--ui-scale)) inset hsla(var(--palette-black-hsl), 0.2);
+		content: '';
+		display: block;
+		inset: calc(var(--panel-border-size) * var(--ui-scale) * 1px);
+		pointer-events: none;
+		position: absolute;
+		z-index: 2;
+	}
+}

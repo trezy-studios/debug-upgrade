@@ -6,6 +6,13 @@ import { Stage } from '@pixi/react'
 
 
 
+// Local imports
+import { PixiStageSizeManager } from './PixiStageSizeManager.jsx'
+
+
+
+
+
 // Constants
 const STAGE_OPTIONS = {
 	backgroundAlpha: 0,
@@ -35,11 +42,13 @@ function handleMount(pixiApp) {
  */
 export function PixiStage({
 	children = null,
+	resizeToRef,
 }) {
 	return (
 		<Stage
 			onMount={handleMount}
 			options={STAGE_OPTIONS}>
+			<PixiStageSizeManager resizeToRef={resizeToRef} />
 			{children}
 		</Stage>
 	)
@@ -47,4 +56,5 @@ export function PixiStage({
 
 PixiStage.propTypes = {
 	children: PropTypes.node,
+	resizeToRef: PropTypes.object.isRequired,
 }

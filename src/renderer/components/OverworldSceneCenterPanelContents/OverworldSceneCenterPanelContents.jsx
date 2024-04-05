@@ -29,8 +29,8 @@ export function OverworldSceneCenterPanelContents() {
 			ref={overworldWrapperRef}
 			className={styles['overworld-wrapper']}
 			layout>
-			<PixiStage>
-				<PixiOverworld resizeToRef={overworldWrapperRef} />
+			<PixiStage resizeToRef={overworldWrapperRef}>
+				<PixiOverworld />
 			</PixiStage>
 		</motion.div>
 	)

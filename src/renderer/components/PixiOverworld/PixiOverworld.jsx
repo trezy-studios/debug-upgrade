@@ -2,24 +2,17 @@
 import {
 	Container,
 	Sprite,
-	useApp,
 } from '@pixi/react'
-import {
-	useLayoutEffect,
-	useMemo,
-} from 'react'
 import { Assets } from 'pixi.js'
-import PropTypes from 'prop-types'
-import { useStore } from 'statery'
+import { useMemo } from 'react'
 
 
 
 
 
 // Local imports
-import { store } from '../../store/store.js'
-
 import { LEVEL_LAYOUT } from '../../data/LEVEL_LAYOUT.js'
+// import { PixiOverworldMask } from '../PixiOverworldMask/PixiOverworldMask.jsx'
 import { PixiOverworldRouter } from '../PixiOverworldRouter/PixiOverworldRouter.jsx'
 import { PixiOverworldSection } from '../PixiOverworldSection/PixiOverworldSection.jsx'
 
@@ -32,13 +25,7 @@ import { PixiOverworldSection } from '../PixiOverworldSection/PixiOverworldSecti
  *
  * @component
  */
-export function PixiOverworld({
-	resizeToRef,
-}) {
-	const { uiScale } = useStore(store)
-
-	const pixiApp = useApp()
-
+export function PixiOverworld() {
 	const texture = useMemo(() => Assets.get('overworld::background'), [])
 
 	const mappedLayout = useMemo(() => {
@@ -51,30 +38,6 @@ export function PixiOverworld({
 			))
 	}, [])
 
-	useLayoutEffect(() => {
-		pixiApp.resizeTo = resizeToRef.current
-	}, [
-		pixiApp,
-		resizeToRef,
-	])
-
-	useLayoutEffect(() => {
-		pixiApp.stage.setTransform(
-			0,
-			0,
-			uiScale,
-			uiScale,
-			0,
-			0,
-			0,
-			0,
-			0,
-		)
-	}, [
-		pixiApp,
-		uiScale,
-	])
-
 	return (
 		<Container>
 			<Sprite
@@ -84,10 +47,10 @@ export function PixiOverworld({
 			{mappedLayout}
 
 			<PixiOverworldRouter />
+
+			{/* <PixiOverworldMask
+				height={texture.height}
+				width={texture.width} /> */}
 		</Container>
 	)
-}
-
-PixiOverworld.propTypes = {
-	resizeToRef: PropTypes.object.isRequired,
 }

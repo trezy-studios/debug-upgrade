@@ -1,0 +1,14 @@
+.continue-wrapper {
+	display: flex;
+	justify-content: center;
+	margin-top: 2rem;
+}
+
+.terminal-wrapper {
+	display: flex;
+	flex-direction: column;
+	inset: 0;
+	justify-content: center;
+	padding: calc((5px + (var(--panel-border-size) * 1px)) * var(--ui-scale));
+	position: absolute;
+}
