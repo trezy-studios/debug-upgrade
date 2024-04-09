@@ -66,6 +66,7 @@ export function LoadingMapSceneCenterPanelContents() {
 	const [isDone, setIsDone] = useState(false)
 	const [isLoadingMap, setIsLoadingMap] = useState(false)
 	const [isLoadingMapDependencies, setIsLoadingMapDependencies] = useState(false)
+	const [isPreparingQueue, setIsPreparingQueue] = useState(false)
 	const [isStarted, setIsStarted] = useState(false)
 	const [lines, setLines] = useState([])
 
@@ -146,9 +147,41 @@ export function LoadingMapSceneCenterPanelContents() {
 					])
 					return null
 				})
+				.then(() => wait(100))
+				.then(() => {
+					addLines([
+						{
+							prompt: 'system/user',
+							body: [
+								'Preparing map queue...',
+							],
+						},
+					])
+					setIsLoadingMapDependencies(false)
+					setIsPreparingQueue(true)
+					return null
+				})
+			return
+		}
+
+		if (isPreparingQueue) {
+			// eslint-disable-next-line promise/catch-or-return
+			wait(1000)
+				.then(() => {
+					tileMap.prepareQueue()
+					addLines([
+						{
+							prompt: 'system/user',
+							body: [
+								'Queue is ready.',
+							],
+						},
+					])
+					return null
+				})
 				.then(() => wait(1000))
 				.then(() => {
-					setIsLoadingMapDependencies(false)
+					setIsPreparingQueue(false)
 					setIsDone(true)
 					return null
 				})
@@ -159,6 +192,7 @@ export function LoadingMapSceneCenterPanelContents() {
 		isDone,
 		isLoadingMap,
 		isLoadingMapDependencies,
+		isPreparingQueue,
 		isStarted,
 		tileMap,
 	])

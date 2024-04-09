@@ -36,6 +36,9 @@ export class TileMap {
 	/** @type {object} */
 	#meta
 
+	/** @type {import('../../types/TileMapData.js').BaseTileMapData[]} */
+	#queue
+
 
 
 
@@ -48,9 +51,14 @@ export class TileMap {
 	 * Creates a new map.
 	 *
 	 * @param {string} id The ID of the map.
+	 * @param {import('../../types/TileMapData.js').BaseTileMapData} [config] The ma config.
 	 */
-	constructor(id) {
+	constructor(id, config) {
 		this.#id = id
+
+		if (config) {
+			this.#data = config
+		}
 	}
 
 
@@ -119,6 +127,15 @@ export class TileMap {
 		this.#data = data
 	}
 
+	/**
+	 * Creates tilemaps from the queue.
+	 */
+	prepareQueue() {
+		this.#queue = this.#data.queue.map((tilemapConfig, index) => {
+			return new TileMap(`${this.#id}::${index}`, tilemapConfig)
+		})
+	}
+
 
 
 
@@ -150,6 +167,11 @@ export class TileMap {
 	/** @returns {string} The ID of this map. */
 	get meta() {
 		return this.#meta
+	}
+
+	/** @returns {import('../../types/TileMapData.js').BaseTileMapData[]} An array of layer maps. */
+	get queue() {
+		return this.#queue
 	}
 
 	/** @returns {import('../../types/TileMapData.js').LayerMap[]} An array of layer maps. */
