@@ -1,6 +1,9 @@
 // Module imports
+import {
+	useLayoutEffect,
+	useRef,
+} from 'react'
 import { motion } from 'framer-motion'
-import { useRef } from 'react'
 
 
 
@@ -9,6 +12,7 @@ import { useRef } from 'react'
 // Local imports
 import styles from './OverworldSceneCenterPanelContents.module.scss'
 
+import { focusLastOverworldLevel } from '../../store/reducers/focusLastOverworldLevel.js'
 import { PixiDragManager } from '../PixiDragManager/PixiDragManager.jsx'
 import { PixiOverworld } from '../PixiOverworld/PixiOverworld.jsx'
 import { PixiStage } from '../PixiStage/PixiStage.jsx'
@@ -24,6 +28,10 @@ import { PixiStage } from '../PixiStage/PixiStage.jsx'
  */
 export function OverworldSceneCenterPanelContents() {
 	const overworldWrapperRef = useRef(null)
+
+	useLayoutEffect(() => {
+		focusLastOverworldLevel()
+	}, [])
 
 	return (
 		<motion.div

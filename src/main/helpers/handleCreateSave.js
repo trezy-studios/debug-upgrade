@@ -27,6 +27,7 @@ export async function handleCreateSave() {
 	const saveData = {
 		id: randomUUID(),
 		createdAt,
+		lastLevelAccessed: 'lvl01',
 		updatedAt: createdAt,
 		version: packageData.version,
 
