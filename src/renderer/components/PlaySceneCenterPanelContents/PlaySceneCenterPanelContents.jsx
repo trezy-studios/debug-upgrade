@@ -10,6 +10,8 @@ import { useStore } from 'statery'
 // Local imports
 import styles from './PlaySceneCenterPanelContents.module.scss'
 
+import { PixiDragManager } from '../PixiDragManager/PixiDragManager.jsx'
+import { PixiGrid } from '../PixiGrid/PixiGrid.jsx'
 import { PixiStage } from '../PixiStage/PixiStage.jsx'
 import { PixiTileMap } from '../PixiTileMap/PixiTileMap.jsx'
 import { store } from '../../store/store.js'
@@ -37,7 +39,10 @@ export function PlaySceneCenterPanelContents() {
 			className={styles['wrapper']}
 			layout>
 			<PixiStage resizeToRef={stageWrapperRef}>
-				<PixiTileMap layers={currentMap.tiles} />
+				<PixiDragManager>
+					<PixiGrid />
+					<PixiTileMap layers={currentMap.tiles} />
+				</PixiDragManager>
 			</PixiStage>
 		</motion.div>
 	)

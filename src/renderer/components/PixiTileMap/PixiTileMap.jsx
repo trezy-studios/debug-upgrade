@@ -2,14 +2,15 @@
 import { Container } from '@pixi/react'
 import PropTypes from 'prop-types'
 import { useMemo } from 'react'
+import { useStore } from 'statery'
 
 
 
 
 
 // Local imports
-import { PixiGrid } from '../PixiGrid/PixiGrid.jsx'
 import { PixiTileMapLayer } from '../PixiTileMapLayer/PixiTileMapLayer.jsx'
+import { store } from '../../store/store.js'
 
 
 
@@ -21,6 +22,11 @@ import { PixiTileMapLayer } from '../PixiTileMapLayer/PixiTileMapLayer.jsx'
  * @component
  */
 export function PixiTileMap({ layers }) {
+	const {
+		cameraOffsetX,
+		cameraOffsetY,
+	} = useStore(store)
+
 	const renderedLayers = useMemo(() => {
 		return layers.map((layerMap, index) => {
 			return (
@@ -32,8 +38,9 @@ export function PixiTileMap({ layers }) {
 	}, [layers])
 
 	return (
-		<Container>
-			<PixiGrid />
+		<Container
+			x={cameraOffsetX}
+			y={cameraOffsetY}>
 			{renderedLayers}
 		</Container>
 	)

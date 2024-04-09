@@ -43,11 +43,11 @@ const DEFAULT_PITCH = {
 export function PixiGrid({
 	lineAlpha = 1,
 	lineThickness = 2,
-	offsetX = 0,
-	offsetY = 0,
 	pitch = DEFAULT_PITCH,
 }) {
 	const {
+		cameraOffsetX,
+		cameraOffsetY,
 		resolution,
 		stageHeight,
 		stageWidth,
@@ -81,7 +81,10 @@ export function PixiGrid({
 				parsedLineColorRGB.b / 255,
 				lineAlpha,
 			],
-			offset: [offsetX, offsetY],
+			offset: [
+				cameraOffsetX * resolution * uiScale,
+				cameraOffsetY * resolution * uiScale,
+			],
 			pitch: [
 				pitch.x * resolution,
 				pitch.y * resolution,
@@ -97,8 +100,8 @@ export function PixiGrid({
 		lineAlpha,
 		lineThickness,
 		parsedLineColor,
-		offsetX,
-		offsetY,
+		cameraOffsetX,
+		cameraOffsetY,
 		pitch.x,
 		pitch.y,
 		pixiApp,
@@ -132,8 +135,6 @@ export function PixiGrid({
 PixiGrid.propTypes = {
   lineAlpha: PropTypes.number,
   lineThickness: PropTypes.number,
-  offsetX: PropTypes.number,
-  offsetY: PropTypes.number,
   pitch: PropTypes.shape({
 		x: PropTypes.number,
 		y: PropTypes.number,

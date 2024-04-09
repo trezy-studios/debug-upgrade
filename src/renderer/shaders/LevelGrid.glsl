@@ -13,8 +13,8 @@ uniform vec2 pitch;
 uniform vec4 lineColor;
 
 void main() {
-	float offsetX = (gl_FragCoord.x + offset[0]) / uiScale;
-	float offsetY = ((viewportHeight / resolution) - (gl_FragCoord.y + offset[1])) / uiScale;
+	float offsetX = (gl_FragCoord.x - offset[0]) / uiScale;
+	float offsetY = (viewportHeight - (gl_FragCoord.y + offset[1])) / uiScale;
 
 	float radiusX = min(
 		abs(pitch[0] - mod(offsetX, pitch[0])),

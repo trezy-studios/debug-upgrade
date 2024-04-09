@@ -22,6 +22,12 @@ export const store = makeStore({
 	/** @type {number} */
 	assetLoadingProgress: 0,
 
+	/** @type {number} */
+	cameraOffsetX: 0,
+
+	/** @type {number} */
+	cameraOffsetY: 0,
+
 	// /** @type {ControlsManager} */
 	// controlsManager: new ControlsManager,
 
