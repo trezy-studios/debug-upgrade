@@ -5,6 +5,7 @@ import {
 } from '@pixi/react'
 import { Assets } from 'pixi.js'
 import { useMemo } from 'react'
+import { useStore } from 'statery'
 
 
 
@@ -15,6 +16,7 @@ import { LEVEL_LAYOUT } from '../../data/LEVEL_LAYOUT.js'
 // import { PixiOverworldMask } from '../PixiOverworldMask/PixiOverworldMask.jsx'
 import { PixiOverworldRouter } from '../PixiOverworldRouter/PixiOverworldRouter.jsx'
 import { PixiOverworldSection } from '../PixiOverworldSection/PixiOverworldSection.jsx'
+import { store } from '../../store/store.js'
 
 
 
@@ -26,6 +28,11 @@ import { PixiOverworldSection } from '../PixiOverworldSection/PixiOverworldSecti
  * @component
  */
 export function PixiOverworld() {
+	const {
+		cameraOffsetX,
+		cameraOffsetY,
+	} = useStore(store)
+
 	const texture = useMemo(() => Assets.get('overworld::background'), [])
 
 	const mappedLayout = useMemo(() => {
@@ -39,7 +46,9 @@ export function PixiOverworld() {
 	}, [])
 
 	return (
-		<Container>
+		<Container
+			x={cameraOffsetX}
+			y={cameraOffsetY}>
 			<Sprite
 				name={'background'}
 				texture={texture} />

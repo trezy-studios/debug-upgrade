@@ -9,6 +9,7 @@ import { useRef } from 'react'
 // Local imports
 import styles from './OverworldSceneCenterPanelContents.module.scss'
 
+import { PixiDragManager } from '../PixiDragManager/PixiDragManager.jsx'
 import { PixiOverworld } from '../PixiOverworld/PixiOverworld.jsx'
 import { PixiStage } from '../PixiStage/PixiStage.jsx'
 
@@ -30,7 +31,9 @@ export function OverworldSceneCenterPanelContents() {
 			className={styles['overworld-wrapper']}
 			layout>
 			<PixiStage resizeToRef={overworldWrapperRef}>
-				<PixiOverworld />
+				<PixiDragManager>
+					<PixiOverworld />
+				</PixiDragManager>
 			</PixiStage>
 		</motion.div>
 	)
