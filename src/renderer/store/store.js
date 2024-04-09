@@ -76,6 +76,12 @@ export const store = makeStore({
 	/** @type {number} */
 	soundEffectsVolume: 0,
 
+	/** @type {number} */
+	stageHeight: 0,
+
+	/** @type {number} */
+	stageWidth: 0,
+
 	/** @type {Map<string, import('../../types/TileMapData.js').TileMapData>} */
 	tilemaps: new Map,
 

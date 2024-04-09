@@ -15,20 +15,18 @@ import { store } from '../../store/store.js'
 
 
 
-// /**
-//  * Updates the viewport size in state.
-//  *
-//  * @param {number} screenWidth The new screen width.
-//  * @param {number} screenHeight The new screen height.
-//  */
-// function handleResize(screenWidth, screenHeight) {
-// 	store.set(() => ({
-// 		viewport: {
-// 			height: screenHeight,
-// 			width: screenWidth,
-// 		},
-// 	}))
-// }
+/**
+ * Updates the viewport size in state.
+ *
+ * @param {number} screenWidth The new screen width.
+ * @param {number} screenHeight The new screen height.
+ */
+function handleResize(screenWidth, screenHeight) {
+	store.set(() => ({
+		stageHeight: screenHeight,
+		stageWidth: screenWidth,
+	}))
+}
 
 
 
@@ -48,13 +46,13 @@ export function PixiStageSizeManager({
 
 	useLayoutEffect(() => {
 		pixiApp.resizeTo = resizeToRef.current
-		// pixiApp.renderer.on('resize', handleResize)
+		pixiApp.renderer.on('resize', handleResize)
 
-		// handleResize(pixiApp.screen.width, pixiApp.screen.height)
+		handleResize(pixiApp.screen.width, pixiApp.screen.height)
 
-		// return () => {
-		// 	pixiApp.renderer?.removeListener('resize', handleResize)
-		// }
+		return () => {
+			pixiApp.renderer?.removeListener('resize', handleResize)
+		}
 	}, [
 		pixiApp,
 		resizeToRef,
