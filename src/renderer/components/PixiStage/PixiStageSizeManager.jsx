@@ -20,12 +20,19 @@ import { store } from '../../store/store.js'
  *
  * @param {number} screenWidth The new screen width.
  * @param {number} screenHeight The new screen height.
+ * @param {number} [resolution] The new reolution.
  */
-function handleResize(screenWidth, screenHeight) {
-	store.set(() => ({
+function handleResize(screenWidth, screenHeight, resolution) {
+	const patch = {
 		stageHeight: screenHeight,
 		stageWidth: screenWidth,
-	}))
+	}
+
+	if (resolution) {
+		patch.resolution = resolution
+	}
+
+	store.set(() => patch)
 }
 
 
@@ -48,7 +55,7 @@ export function PixiStageSizeManager({
 		pixiApp.resizeTo = resizeToRef.current
 		pixiApp.renderer.on('resize', handleResize)
 
-		handleResize(pixiApp.screen.width, pixiApp.screen.height)
+		handleResize(pixiApp.screen.width, pixiApp.screen.height, pixiApp.renderer.resolution)
 
 		return () => {
 			pixiApp.renderer?.removeListener('resize', handleResize)

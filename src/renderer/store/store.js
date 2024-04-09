@@ -64,6 +64,9 @@ export const store = makeStore({
 	/** @type {null | import('pixi.js').Application} */
 	pixiApp: null,
 
+	/** @type {number} */
+	resolution: 1,
+
 	/** @type {Map<string, object>} */
 	resourcepacks: new Map,
 

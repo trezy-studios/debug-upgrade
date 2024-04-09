@@ -1,9 +1,9 @@
 precision mediump float;
 
-uniform float vpw;
-uniform float vph;
-uniform float resolution;
+uniform float viewportHeight;
+uniform float viewportWidth;
 uniform sampler2D uSampler;
+uniform float resolution;
 uniform float thickness;
 uniform float uiScale;
 varying vec2 vTextureCoord;
@@ -13,28 +13,28 @@ uniform vec2 pitch;
 uniform vec4 lineColor;
 
 void main() {
-	float offX = (offset[0] * uiScale) + gl_FragCoord.x / uiScale;
-	float offY = (offset[1] * uiScale) + (vph - gl_FragCoord.y) / uiScale;
+	float offsetX = (gl_FragCoord.x + offset[0]) / uiScale;
+	float offsetY = ((viewportHeight / resolution) - (gl_FragCoord.y + offset[1])) / uiScale;
 
-	float rX = min(
-		abs(pitch[0] - mod(offX, pitch[0])),
-		abs(mod(offX, pitch[0]))
+	float radiusX = min(
+		abs(pitch[0] - mod(offsetX, pitch[0])),
+		abs(mod(offsetX, pitch[0]))
 	);
 
-	float rY = min(
-		abs(pitch[1] - mod(offY, pitch[1])),
-		abs(mod(offY, pitch[1]))
+	float radiusY = min(
+		abs(pitch[1] - mod(offsetY, pitch[1])),
+		abs(mod(offsetY, pitch[1]))
 	);
 
-	vec4 texColor = texture2D(uSampler, vTextureCoord);
+	vec4 textureColor = texture2D(uSampler, vTextureCoord);
 
 	if (
-		int(rX) <= int(thickness / 2.0)
-		|| int(rY) <= int(thickness / 2.0)
+		int(radiusX) <= int(thickness / 2.0)
+		|| int(radiusY) <= int(thickness / 2.0)
 	) {
 		gl_FragColor = lineColor;
-		gl_FragColor.rgb = mix(gl_FragColor.rgb, texColor.rgb, 0.7);
+		gl_FragColor.rgb = mix(gl_FragColor.rgb, textureColor.rgb, 0.7);
 	} else {
-		gl_FragColor = texColor;
+		gl_FragColor = textureColor;
 	}
 }

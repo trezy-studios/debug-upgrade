@@ -47,7 +47,12 @@ export function PixiGrid({
 	offsetY = 0,
 	pitch = DEFAULT_PITCH,
 }) {
-	const { uiScale } = useStore(store)
+	const {
+		resolution,
+		stageHeight,
+		stageWidth,
+		uiScale,
+	} = useStore(store)
 
 	const pixiApp = useApp()
 
@@ -57,10 +62,12 @@ export function PixiGrid({
 		gridHeight,
 		gridWidth,
 	} = useMemo(() => ({
-		gridWidth: pixiApp.stage.width * pixiApp.renderer.resolution * uiScale,
-		gridHeight: pixiApp.stage.height * pixiApp.renderer.resolution * uiScale,
+		gridWidth: stageWidth * resolution,
+		gridHeight: stageHeight * resolution,
 	}), [
-		pixiApp,
+		resolution,
+		stageHeight,
+		stageWidth,
 		uiScale,
 	])
 
@@ -76,13 +83,13 @@ export function PixiGrid({
 			],
 			offset: [offsetX, offsetY],
 			pitch: [
-				pitch.x * pixiApp.renderer.resolution,
-				pitch.y * pixiApp.renderer.resolution,
+				pitch.x * resolution,
+				pitch.y * resolution,
 			],
 			thickness: lineThickness,
 			uiScale,
-			vpw: gridWidth,
-			vph: gridHeight,
+			viewportHeight: gridHeight,
+			viewportWidth: gridWidth,
 		}
 	}, [
 		gridHeight,
