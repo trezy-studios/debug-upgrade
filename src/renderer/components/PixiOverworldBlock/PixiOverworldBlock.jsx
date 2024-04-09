@@ -6,6 +6,7 @@ import {
 import {
 	useCallback,
 	useMemo,
+	useState,
 } from 'react'
 import { Assets } from 'pixi.js'
 import PropTypes from 'prop-types'
@@ -16,6 +17,7 @@ import { useStore } from 'statery'
 
 
 // Local imports
+import { focusOverworldLevel } from '../../store/reducers/focusOverworldLevel.js'
 import { replaceScene } from '../../store/reducers/replaceScene.js'
 import { SCENES } from '../../data/SCENES.js'
 import { setCurrentMapID } from '../../store/reducers/setCurrentMapID.js'
@@ -47,10 +49,17 @@ const CONNECTION_DIRECTIONS = [
 export function PixiOverworldBlock({ block }) {
 	const { saveData } = useStore(store)
 
+	const [isFocused, setIsFocused] = useState(false)
+
 	const handleSelect = useCallback(() => {
-		setCurrentMapID(block.name)
-		replaceScene(SCENES.LOADING_MAP)
-	}, [block])
+		if (isFocused) {
+			setCurrentMapID(block.name)
+			replaceScene(SCENES.LOADING_MAP)
+		} else {
+			focusOverworldLevel(block.name, true)
+			setIsFocused(true)
+		}
+	}, [isFocused])
 
 	const backgroundTexture = useMemo(() => {
 		if (block.type === 'lock') {
@@ -77,7 +86,7 @@ export function PixiOverworldBlock({ block }) {
 	}, [block])
 
 	const isAvailable = useMemo(() => {
-		if (block.prerequisite?.length) {
+		if (Array.isArray(block.prerequisite) && block.prerequisite.length) {
 			return block.prerequisite.every(prerequisiteName => saveData.campaign[prerequisiteName])
 		}
 
