@@ -20,6 +20,9 @@ import { store } from '../../store/store.js'
  * Renders a tilemap.
  *
  * @component
+ * @param {object} props All props
+ * @param {boolean} [props.isCursor] Whether this tilemap is being used as a cursor.
+ * @param {import('../../../types/TileMapData.js').LayerMap[]} props.layers The layers to be rendered.
  */
 export function PixiTileMap({
 	isCursor = false,

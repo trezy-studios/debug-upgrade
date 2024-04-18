@@ -36,23 +36,25 @@ export function PixiTileMapTile({
 }) {
 	const {
 		currentMap,
+		cursorX,
+		cursorY,
 		resourcepacks,
 	} = useStore(store)
 
 	const filters = useMemo(() => {
-		if (isCursor && currentMap.isBlockedAt(x, y)) {
+		if (isCursor && currentMap.isBlockedAt(x + cursorX, y + cursorY)) {
 			return [BlockedFilter]
 		}
 
 		return []
 	}, [
 		currentMap,
+		cursorX,
+		cursorY,
 		isCursor,
 	])
 
-	const texture = useMemo(() => {
-		return resourcepacks.get(tile.resourcepackID).tilesSpritesheet.textures[tile.tileID]
-	}, [
+	const texture = useMemo(() => resourcepacks.get(tile.resourcepackID).tilesSpritesheet.textures[tile.tileID], [
 		resourcepacks,
 		tile,
 	])
