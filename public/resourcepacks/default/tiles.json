@@ -33,9 +33,6 @@
 				"x": 16,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Grey Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -54,9 +51,6 @@
 				"x": 32,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Dark Grey Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -75,9 +69,6 @@
 				"x": 48,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Blue Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -96,9 +87,6 @@
 				"x": 64,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Orange Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -117,9 +105,6 @@
 				"x": 80,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Yellow Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -138,9 +123,6 @@
 				"x": 96,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Green Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -159,9 +141,6 @@
 				"x": 112,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Red Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -180,9 +159,6 @@
 				"x": 128,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Green Floor (w/ Circle)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -201,9 +177,6 @@
 				"x": 144,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Red Floor (w/ X)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -222,9 +195,6 @@
 				"x": 160,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Warning Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -243,9 +213,6 @@
 				"x": 0,
 				"y": 0
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Wall",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -264,9 +231,6 @@
 				"x": 0,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Wall (Bottom)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -285,9 +249,6 @@
 				"x": 16,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Grey Silhouette Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -306,9 +267,6 @@
 				"x": 32,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Dark Grey Silhouette Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -327,9 +285,6 @@
 				"x": 48,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Blue Silhouette Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -348,9 +303,6 @@
 				"x": 64,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Orange Silhouette Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -369,9 +321,6 @@
 				"x": 80,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Yellow Silhouette Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -390,9 +339,6 @@
 				"x": 96,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Green Silhouette Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -411,9 +357,6 @@
 				"x": 112,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Red Silhouette Floor",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -432,9 +375,6 @@
 				"x": 128,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Green Silhouette Floor (w/ Circle)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -453,9 +393,6 @@
 				"x": 144,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Red Silhouette Floor (w/ X)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -474,9 +411,6 @@
 				"x": 160,
 				"y": 16
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Shadow",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -495,9 +429,6 @@
 				"x": 96,
 				"y": 48
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 1 (South)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -516,9 +447,6 @@
 				"x": 112,
 				"y": 48
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 2 (South)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -537,9 +465,6 @@
 				"x": 128,
 				"y": 48
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 3 (South)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -558,9 +483,6 @@
 				"x": 144,
 				"y": 48
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 4 (South)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -579,9 +501,6 @@
 				"x": 96,
 				"y": 64
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 1 (East)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -600,9 +519,6 @@
 				"x": 112,
 				"y": 64
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 2 (East)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -621,9 +537,6 @@
 				"x": 128,
 				"y": 64
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 3 (East)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -642,9 +555,6 @@
 				"x": 144,
 				"y": 64
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 4 (East)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -663,9 +573,6 @@
 				"x": 96,
 				"y": 80
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 1 (West)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -684,9 +591,6 @@
 				"x": 112,
 				"y": 80
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 2 (West)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -705,9 +609,6 @@
 				"x": 128,
 				"y": 80
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 3 (West)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -726,9 +627,6 @@
 				"x": 144,
 				"y": 80
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 4 (West)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -747,9 +645,6 @@
 				"x": 96,
 				"y": 96
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 1 (North)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -768,9 +663,6 @@
 				"x": 112,
 				"y": 96
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 2 (North)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -789,9 +681,6 @@
 				"x": 128,
 				"y": 96
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 3 (North)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16
@@ -810,9 +699,6 @@
 				"x": 144,
 				"y": 96
 			},
-			"isBlocking": false,
-			"isTraversable": true,
-			"name": "Conveyor Belt 4 (North)",
 			"sourceSize": {
 				"h": 16,
 				"w": 16

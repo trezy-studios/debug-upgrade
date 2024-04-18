@@ -6,5 +6,235 @@
 	"tilesData": "tiles.json",
 	"tilesImage": "tiles.png",
 	"type": "resourcepacks",
-	"version": "0.0.0-development"
+	"version": "0.0.0-development",
+	"tiles": {
+		"0": {
+			"id": "0",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Grey Floor"
+		},
+		"1": {
+			"id": "1",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Dark Grey Floor"
+		},
+		"2": {
+			"id": "2",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Blue Floor"
+		},
+		"3": {
+			"id": "3",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Orange Floor"
+		},
+		"4": {
+			"id": "4",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Yellow Floor"
+		},
+		"5": {
+			"id": "5",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Green Floor"
+		},
+		"6": {
+			"id": "6",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Red Floor"
+		},
+		"7": {
+			"id": "7",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Green Floor (w/ Circle)"
+		},
+		"8": {
+			"id": "8",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Red Floor (w/ X)"
+		},
+		"9": {
+			"id": "9",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Warning Floor"
+		},
+		"10": {
+			"id": "10",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Wall"
+		},
+		"11": {
+			"id": "11",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Wall (Bottom)"
+		},
+		"12": {
+			"id": "12",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Grey Silhouette Floor"
+		},
+		"13": {
+			"id": "13",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Dark Grey Silhouette Floor"
+		},
+		"14": {
+			"id": "14",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Blue Silhouette Floor"
+		},
+		"15": {
+			"id": "15",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Orange Silhouette Floor"
+		},
+		"16": {
+			"id": "16",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Yellow Silhouette Floor"
+		},
+		"17": {
+			"id": "17",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Green Silhouette Floor"
+		},
+		"18": {
+			"id": "18",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Red Silhouette Floor"
+		},
+		"19": {
+			"id": "19",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Green Silhouette Floor (w/ Circle)"
+		},
+		"20": {
+			"id": "20",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Red Silhouette Floor (w/ X)"
+		},
+		"21": {
+			"id": "21",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Shadow"
+		},
+		"22": {
+			"id": "22",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 1 (South)"
+		},
+		"23": {
+			"id": "23",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 2 (South)"
+		},
+		"24": {
+			"id": "24",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 3 (South)"
+		},
+		"25": {
+			"id": "25",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 4 (South)"
+		},
+		"26": {
+			"id": "26",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 1 (East)"
+		},
+		"27": {
+			"id": "27",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 2 (East)"
+		},
+		"28": {
+			"id": "28",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 3 (East)"
+		},
+		"29": {
+			"id": "29",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 4 (East)"
+		},
+		"30": {
+			"id": "30",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 1 (West)"
+		},
+		"31": {
+			"id": "31",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 2 (West)"
+		},
+		"32": {
+			"id": "32",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 3 (West)"
+		},
+		"33": {
+			"id": "33",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 4 (West)"
+		},
+		"34": {
+			"id": "34",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 1 (North)"
+		},
+		"35": {
+			"id": "35",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 2 (North)"
+		},
+		"36": {
+			"id": "36",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 3 (North)"
+		},
+		"37": {
+			"id": "37",
+			"isBlocking": false,
+			"isTraversable": true,
+			"name": "Conveyor Belt 4 (North)"
+		}
+	}
 }
