@@ -17,8 +17,8 @@ export function focusOverworldLevel(levelID, isSmooth) {
 	const blockData = LEVEL_LAYOUT.blocks[levelID]
 	const sectionData = LEVEL_LAYOUT.sections[blockData.section]
 
-	const levelOffsetX = -(blockData.position.x + sectionData.position.x)
-	const levelOffsetY = -(blockData.position.y + sectionData.position.y)
+	const levelOffsetX = -(blockData.position.x + (sectionData?.position.x ?? 0))
+	const levelOffsetY = -(blockData.position.y + (sectionData?.position.y ?? 0))
 
 	const {
 		cameraOffsetX,
@@ -47,18 +47,4 @@ export function focusOverworldLevel(levelID, isSmooth) {
 
 	animate(cameraOffsetX, stageCenterX + levelOffsetX, cameraOffsetXAnimationOptions)
 	animate(cameraOffsetY, stageCenterY + levelOffsetY, cameraOffsetYAnimationOptions)
-
-	// store.set(previousState => {
-	// 	const {
-	// 		resolution,
-	// 		stageHeight,
-	// 		stageWidth,
-	// 		uiScale,
-	// 	} = previousState
-
-	// 	return {
-	// 		cameraOffsetX: stageCenterX + levelOffsetX,
-	// 		cameraOffsetY: stageCenterY + levelOffsetY,
-	// 	}
-	// })
 }

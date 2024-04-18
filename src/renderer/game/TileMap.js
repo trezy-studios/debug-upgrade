@@ -70,6 +70,53 @@ export class TileMap {
 	\****************************************************************************/
 
 	/**
+	 * Retrieves all tiles at the provided coordinates.
+	 *
+	 * @param {number} x The horizontal axis coordinate.
+	 * @param {number} y The vertical axis coordinate.
+	 * @returns {(import('../../types/TileData.js').TileData | null)[]}
+	 */
+	getTilesAt(x, y) {
+		if ((x < 0) || (y < 0)) {
+			return Array(this.layers.length).fill(null)
+		}
+
+		const coordinateString = `${x}|${y}`
+
+		return this.layers.map(layer => {
+			const tileData = layer[coordinateString]
+
+			if (!tileData) {
+				return null
+			}
+
+			const resourcepack = store.state.resourcepacks.get(tileData.resourcepackID)
+
+			return resourcepack.meta.tiles[tileData.tileID]
+		})
+	}
+
+
+	/**
+	 * Checks whether there is a blocking tile at the provided coordinates.
+	 *
+	 * @param {number} x The coordinate of the tile on the horizontal axis.
+	 * @param {number} y The coordinate of the tile on the vertical axis.
+	 * @returns {boolean} Whether the provided coordinates are blocked.
+	 */
+	isBlockedAt(x, y) {
+		const tileStack = this.getTilesAt(x, y)
+
+		return tileStack.some(tileData => {
+			if (tileData?.isBlocking || tileData?.isTraversable) {
+				return true
+			}
+
+			return false
+		})
+	}
+
+	/**
 	 * Loads the map's data.
 	 */
 	async loadDependencies() {
@@ -103,11 +150,10 @@ export class TileMap {
 
 			Object.entries(dependencies).forEach(([dependencyID, dependencyData]) => {
 				newResourcepacks.set(dependencyID, dependencyData)
+				this.#dependencies.set(dependencyID, dependencyData)
 			})
 
-			return {
-				resourcepacks: newResourcepacks,
-			}
+			return { resourcepacks: newResourcepacks }
 		})
 	}
 
@@ -154,6 +200,11 @@ export class TileMap {
 		return this.#dependencies
 	}
 
+	/** @returns {number} The height of the map (in tiles). */
+	get height() {
+		return this.#data.dimensions.height
+	}
+
 	/** @returns {string} The ID of this map. */
 	get id() {
 		return this.#id
@@ -177,5 +228,10 @@ export class TileMap {
 	/** @returns {import('../../types/TileMapData.js').LayerMap[]} An array of layer maps. */
 	get tiles() {
 		return this.#data.tiles
+	}
+
+	/** @returns {number} The width of the map (in tiles). */
+	get width() {
+		return this.#data.dimensions.width
 	}
 }

@@ -6,16 +6,7 @@ import { PixiOverworldBlock } from '../PixiOverworldBlock/PixiOverworldBlock.jsx
 
 
 // Constants
-/** @type {import('../../../types/OverworldBlock.js').OverworldBlock} */
-const ROUTER_BLOCK_DATA = {
-	name: 'Router',
-	links: [],
-	position: {
-		x: 240,
-		y: 112,
-	},
-	type: 'router',
-}
+import { LEVEL_LAYOUT } from '../../data/LEVEL_LAYOUT.js'
 
 
 
@@ -28,6 +19,6 @@ const ROUTER_BLOCK_DATA = {
  */
 export function PixiOverworldRouter() {
 	return (
-		<PixiOverworldBlock block={ROUTER_BLOCK_DATA} />
+		<PixiOverworldBlock block={LEVEL_LAYOUT.blocks.router} />
 	)
 }

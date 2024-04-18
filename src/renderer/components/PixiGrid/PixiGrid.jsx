@@ -17,6 +17,7 @@ import { useStore } from 'statery'
 
 
 // Local imports
+import { getCSSCustomPropertyValue } from '../../helpers/getCSSCustomPropertyValue.js'
 // @ts-expect-error This file exists, I've just gotta figure out how to get Typescript to not bitch about glsl files.
 import shader from '../../shaders/LevelGrid.glsl'
 import { store } from '../../store/store.js'
@@ -56,8 +57,6 @@ export function PixiGrid({
 
 	const pixiApp = useApp()
 
-	const parsedLineColor = useMemo(() => tinycolor('#30346d'), [])
-
 	const {
 		gridHeight,
 		gridWidth,
@@ -72,34 +71,34 @@ export function PixiGrid({
 	])
 
 	const uniforms = useMemo(() => {
-		const parsedLineColorRGB = parsedLineColor.toRgb()
+		const purple = /** @type {string} */ (getCSSCustomPropertyValue('palette-purple'))
+		const parsedLineColorRGB = tinycolor(purple).toRgb()
 
 		return {
-			lineColor: [
+			uLineColor: [
 				parsedLineColorRGB.r / 255,
 				parsedLineColorRGB.g / 255,
 				parsedLineColorRGB.b / 255,
 				lineAlpha,
 			],
-			offset: [
+			uLineThickness: lineThickness,
+			uOffset: [
 				cameraOffsetX * resolution * uiScale,
 				cameraOffsetY * resolution * uiScale,
 			],
-			pitch: [
+			uPitch: [
 				pitch.x * resolution,
 				pitch.y * resolution,
 			],
-			thickness: lineThickness,
-			uiScale,
-			viewportHeight: gridHeight,
-			viewportWidth: gridWidth,
+			uScale: uiScale,
+			uStageHeight: gridHeight,
+			uStageWidth: gridWidth,
 		}
 	}, [
 		gridHeight,
 		gridWidth,
 		lineAlpha,
 		lineThickness,
-		parsedLineColor,
 		cameraOffsetX,
 		cameraOffsetY,
 		pitch.x,

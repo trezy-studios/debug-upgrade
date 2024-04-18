@@ -15,6 +15,8 @@ import PropTypes from 'prop-types'
 // Local imports
 import styles from './WholePixelContainer.module.scss'
 
+import { getCSSCustomPropertyValue } from '../../helpers/getCSSCustomPropertyValue.js'
+
 
 
 
@@ -49,9 +51,7 @@ export function WholePixelContainer(props) {
 			return
 		}
 
-		const rootElement = document.querySelector(':root')
-		const rootElementStyles = getComputedStyle(rootElement)
-		const uiScale = Number(rootElementStyles.getPropertyValue('--ui-scale'))
+		const uiScale = /** @type {number} */ (getCSSCustomPropertyValue('ui-scale'))
 
 		const parentHeight = containerElement.parentElement.clientHeight
 		const parentWidth = containerElement.parentElement.clientWidth

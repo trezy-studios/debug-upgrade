@@ -114,6 +114,16 @@ export const LEVEL_LAYOUT = {
 	},
 
 	blocks: {
+		router: {
+			name: 'router',
+			links: [],
+			position: {
+				x: 240,
+				y: 112,
+			},
+			type: 'router',
+		},
+
 		// section01
 		lvl01: {
 			name: 'lvl01',

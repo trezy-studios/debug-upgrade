@@ -19,7 +19,10 @@ import { PixiTileMapTile } from '../PixiTileMapTile/PixiTileMapTile.jsx'
  *
  * @component
  */
-export function PixiTileMapLayer({ layerMap }) {
+export function PixiTileMapLayer({
+	isCursor = false,
+	layerMap,
+}) {
 	const renderedTiles = useMemo(() => {
 		return Object
 			.entries(layerMap)
@@ -32,12 +35,16 @@ export function PixiTileMapLayer({ layerMap }) {
 				return (
 					<PixiTileMapTile
 						key={tilePositionString}
+						isCursor={isCursor}
 						tile={tile}
 						x={Number(stringX)}
 						y={Number(stringY)} />
 				)
 			})
-	}, [layerMap])
+	}, [
+		isCursor,
+		layerMap,
+	])
 
 	return (
 		<Container>
@@ -47,5 +54,6 @@ export function PixiTileMapLayer({ layerMap }) {
 }
 
 PixiTileMapLayer.propTypes = {
+	isCursor: PropTypes.bool,
 	layerMap: PropTypes.object.isRequired,
 }

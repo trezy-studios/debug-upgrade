@@ -1,7 +1,7 @@
 // Module imports
 import PropTypes from 'prop-types'
 import { useApp } from '@pixi/react'
-import { useLayoutEffect } from 'react'
+import { useEffect } from 'react'
 import { useStore } from 'statery'
 
 
@@ -51,7 +51,7 @@ export function PixiStageSizeManager({
 
 	const pixiApp = useApp()
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		pixiApp.resizeTo = resizeToRef.current
 		pixiApp.renderer.on('resize', handleResize)
 
@@ -65,7 +65,7 @@ export function PixiStageSizeManager({
 		resizeToRef,
 	])
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		pixiApp.stage.setTransform(
 			0,
 			0,

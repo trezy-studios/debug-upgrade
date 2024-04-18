@@ -18,6 +18,7 @@ import { useStore } from 'statery'
 
 // Local imports
 import { focusOverworldLevel } from '../../store/reducers/focusOverworldLevel.js'
+import { isBlockVisible } from '../../store/reducers/isBlockVisible.js'
 import { replaceScene } from '../../store/reducers/replaceScene.js'
 import { SCENES } from '../../data/SCENES.js'
 import { setCurrentMapID } from '../../store/reducers/setCurrentMapID.js'
@@ -53,13 +54,20 @@ export function PixiOverworldBlock({ block }) {
 
 	const handleSelect = useCallback(() => {
 		if (isFocused) {
+			if (block.type !== 'level') {
+				return
+			}
+
 			setCurrentMapID(block.name)
 			replaceScene(SCENES.LOADING_MAP)
 		} else {
 			focusOverworldLevel(block.name, true)
 			setIsFocused(true)
 		}
-	}, [isFocused])
+	}, [
+		block,
+		isFocused,
+	])
 
 	const backgroundTexture = useMemo(() => {
 		if (block.type === 'lock') {
@@ -85,13 +93,7 @@ export function PixiOverworldBlock({ block }) {
 			.filter(Boolean)
 	}, [block])
 
-	const isAvailable = useMemo(() => {
-		if (Array.isArray(block.prerequisite) && block.prerequisite.length) {
-			return block.prerequisite.every(prerequisiteName => saveData.campaign[prerequisiteName])
-		}
-
-		return true
-	}, [
+	const isAvailable = useMemo(() => isBlockVisible(block.name), [
 		block,
 		saveData,
 	])

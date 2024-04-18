@@ -21,6 +21,7 @@ import styles from './LoadingMapSceneCenterPanelContents.module.scss'
 import { Button } from '../Button/Button.jsx'
 import { executePromiseWithMinimumDuration } from '../../helpers/executePromiseWithMinimumDuration.js'
 import { replaceScene } from '../../store/reducers/replaceScene.js'
+import { resetForGameplay } from '../../store/reducers/resetForGameplay.js'
 import { SCENES } from '../../data/SCENES.js'
 import { setCurrentMap } from '../../store/reducers/setCurrentMap.js'
 import { store } from '../../store/store.js'
@@ -181,6 +182,7 @@ export function LoadingMapSceneCenterPanelContents() {
 				})
 				.then(() => wait(1000))
 				.then(() => {
+					resetForGameplay()
 					setIsPreparingQueue(false)
 					setIsDone(true)
 					return null

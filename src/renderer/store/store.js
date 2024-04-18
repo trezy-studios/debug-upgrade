@@ -8,6 +8,7 @@ import { makeStore } from 'statery'
 
 // Local imports
 // import { ControlsManager } from '../game/ControlsManager.js'
+import { getCSSCustomPropertyValue } from "../helpers/getCSSCustomPropertyValue.js"
 import { IPCBridge } from '../helpers/IPCBridge.js'
 import { SCENES } from '../data/SCENES.js'
 
@@ -46,6 +47,15 @@ export const store = makeStore({
 	/** @type {number} */
 	currentQueueIndex: 0,
 
+	/** @type {number} */
+	cursorX: 0,
+
+	/** @type {number} */
+	cursorY: 0,
+
+	/** @type {null | string} */
+	focusedOverworldLevel: 'lvl01',
+
 	/** @type {boolean} */
 	isFilesystemInitialised: false,
 
@@ -73,7 +83,7 @@ export const store = makeStore({
 	/** @type {number} */
 	resolution: 1,
 
-	/** @type {Map<string, object>} */
+	/** @type {Map<string, import('../../types/Resourcepack.js').Resourcepack>} */
 	resourcepacks: new Map,
 
 	/** @type {null | import('../../types/SaveData.js').SaveData} */
@@ -95,7 +105,7 @@ export const store = makeStore({
 	tilemaps: new Map,
 
 	/** @type {number} */
-	uiScale: Number(getComputedStyle(document.querySelector(':root')).getPropertyValue('--ui-scale')),
+	uiScale: /** @type {number} */ (getCSSCustomPropertyValue('ui-scale')),
 
 	/** @type {null | import('pixi-viewport').Viewport} */
 	viewport: null,

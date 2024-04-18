@@ -1,6 +1,10 @@
 // Module imports
+import {
+	useEffect,
+	useMemo,
+	useRef,
+} from 'react'
 import { motion } from 'framer-motion'
-import { useRef } from 'react'
 import { useStore } from 'statery'
 
 
@@ -29,9 +33,29 @@ export function PlaySceneCenterPanelContents() {
 	const {
 		currentMap,
 		currentQueueIndex,
+		resolution,
+		stageHeight,
+		stageWidth,
+		uiScale,
 	} = useStore(store)
 
 	const stageWrapperRef = useRef(null)
+
+	const currentTileset = useMemo(() => currentMap.queue[currentQueueIndex], [currentQueueIndex])
+
+	useEffect(() => {
+		store.set(() => ({
+			cameraOffsetX: ((stageWidth / resolution) / uiScale) - (currentMap.width * (16 / resolution)),
+			cameraOffsetY: ((stageHeight / resolution) / uiScale) - (currentMap.height * (16 / resolution)),
+		}))
+	}, [
+		currentMap,
+		currentTileset,
+		resolution,
+		stageHeight,
+		stageWidth,
+		uiScale,
+	])
 
 	return (
 		<motion.div
@@ -42,6 +66,9 @@ export function PlaySceneCenterPanelContents() {
 				<PixiDragManager>
 					<PixiGrid />
 					<PixiTileMap layers={currentMap.tiles} />
+					<PixiTileMap
+						isCursor={true}
+						layers={currentTileset.tiles} />
 				</PixiDragManager>
 			</PixiStage>
 		</motion.div>
