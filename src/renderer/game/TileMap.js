@@ -16,6 +16,15 @@ import { store } from '../store/store.js'
 
 
 
+// Types
+/** @typedef {import('../../types/TileMapData.js').BaseTileMapData} BaseTileMapData */
+/** @typedef {import('../../types/TileMapData.js').LayerMap} LayerMap */
+/** @typedef {import('../../types/TileMapData.js').TileMapData} TileMapData */
+
+
+
+
+
 /**
  * Manages a map's data.
  */
@@ -24,11 +33,14 @@ export class TileMap {
 	 * Private instance properties
 	\****************************************************************************/
 
-	/** @type {import('../../types/TileMapData.js').TileMapData} */
+	/** @type {TileMapData} */
 	#data
 
 	/** @type {Map<*, *>} */
 	#dependencies = new Map
+
+	/** @type {null | number} */
+	#height
 
 	/** @type {string} */
 	#id
@@ -36,8 +48,77 @@ export class TileMap {
 	/** @type {object} */
 	#meta
 
-	/** @type {import('../../types/TileMapData.js').BaseTileMapData[]} */
+	/** @type {TileMap[]} */
 	#queue
+
+	/** @type {null | number} */
+	#width
+
+
+
+
+
+	/****************************************************************************\
+	 * Private instance methods
+	\****************************************************************************/
+
+	/**
+	 * Calculates the map's dimensions.
+	 */
+	#recalculateDimensions() {
+		const {
+			maxX,
+			maxY,
+			minX,
+			minY,
+		} = this.layers.reduce((accumulator, layer) => {
+			const occupiedCoordinates = Object.keys(layer)
+
+			occupiedCoordinates.forEach(coordinateString => {
+				const [x, y] = coordinateString
+					.split('|')
+					.map(Number)
+
+				if (accumulator.maxX === null) {
+					accumulator.maxX = x
+				} else {
+					accumulator.maxX = Math.max(accumulator.maxX, x)
+				}
+
+				if (accumulator.maxY === null) {
+					accumulator.maxY = y
+				} else {
+					accumulator.maxY = Math.max(accumulator.maxY, y)
+				}
+
+				if (accumulator.minX === null) {
+					accumulator.minX = x
+				} else {
+					accumulator.minX = Math.min(accumulator.minX, x)
+				}
+
+				if (accumulator.minY === null) {
+					accumulator.minY = y
+				} else {
+					accumulator.minY = Math.min(accumulator.minY, y)
+				}
+			})
+
+			return accumulator
+		}, {
+			/** @type {null | number} */
+			maxX: null,
+			/** @type {null | number} */
+			maxY: null,
+			/** @type {null | number} */
+			minX: null,
+			/** @type {null | number} */
+			minY: null,
+		})
+
+		this.#height = (maxY - minY) + 1
+		this.#width = (maxX - minX) + 1
+	}
 
 
 
@@ -51,13 +132,14 @@ export class TileMap {
 	 * Creates a new map.
 	 *
 	 * @param {string} id The ID of the map.
-	 * @param {import('../../types/TileMapData.js').BaseTileMapData} [config] The ma config.
+	 * @param {BaseTileMapData} [config] The map config.
 	 */
 	constructor(id, config) {
 		this.#id = id
 
 		if (config) {
 			this.#data = config
+			this.#recalculateDimensions()
 		}
 	}
 
@@ -95,7 +177,6 @@ export class TileMap {
 			return resourcepack.meta.tiles[tileData.tileID]
 		})
 	}
-
 
 	/**
 	 * Checks whether there is a blocking tile at the provided coordinates.
@@ -171,6 +252,8 @@ export class TileMap {
 
 		this.#meta = meta
 		this.#data = data
+
+		this.#recalculateDimensions()
 	}
 
 	/**
@@ -202,7 +285,7 @@ export class TileMap {
 
 	/** @returns {number} The height of the map (in tiles). */
 	get height() {
-		return this.#data.dimensions.height
+		return this.#height
 	}
 
 	/** @returns {string} The ID of this map. */
@@ -210,7 +293,7 @@ export class TileMap {
 		return this.#id
 	}
 
-	/** @returns {import('../../types/TileMapData.js').LayerMap[]} An array of layer maps. */
+	/** @returns {LayerMap[]} An array of layer maps. */
 	get layers() {
 		return this.#data.tiles
 	}
@@ -220,18 +303,18 @@ export class TileMap {
 		return this.#meta
 	}
 
-	/** @returns {import('../../types/TileMapData.js').BaseTileMapData[]} An array of layer maps. */
+	/** @returns {TileMap[]} An array of layer maps. */
 	get queue() {
 		return this.#queue
 	}
 
-	/** @returns {import('../../types/TileMapData.js').LayerMap[]} An array of layer maps. */
+	/** @returns {LayerMap[]} An array of layer maps. */
 	get tiles() {
 		return this.#data.tiles
 	}
 
 	/** @returns {number} The width of the map (in tiles). */
 	get width() {
-		return this.#data.dimensions.width
+		return this.#width
 	}
 }

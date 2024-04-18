@@ -10,7 +10,7 @@
 
 /**
  * @typedef {object} BaseTileMapData
- * @property {object} dimensions The size of the map (in tiles).
+ * @property {object} [dimensions] The size of the map (in tiles).
  * @property {number} dimensions.height The height (in tiles) of the map.
  * @property {number} dimensions.width The width (in tiles) of the map.
  * @property {LayerMap[]} tiles An array of layers of tiles.
