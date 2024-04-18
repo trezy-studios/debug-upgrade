@@ -45,5 +45,5 @@ export async function loadGame() {
 		store.set(() => ({ isLoadingAssets: false }))
 	}
 
-	// store.state.controlsManager.start()
+	store.state.controlsManager.start()
 }

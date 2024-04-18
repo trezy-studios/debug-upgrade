@@ -7,7 +7,7 @@ import { makeStore } from 'statery'
 
 
 // Local imports
-// import { ControlsManager } from '../game/ControlsManager.js'
+import { ControlsManager } from '../game/ControlsManager.js'
 import { getCSSCustomPropertyValue } from "../helpers/getCSSCustomPropertyValue.js"
 import { IPCBridge } from '../helpers/IPCBridge.js'
 import { SCENES } from '../data/SCENES.js'
@@ -29,8 +29,11 @@ export const store = makeStore({
 	/** @type {number} */
 	cameraOffsetY: 0,
 
-	// /** @type {ControlsManager} */
-	// controlsManager: new ControlsManager,
+	/** @type {null | import('../../types/ControlSchema.js').ControlSchema[]} */
+	controls: null,
+
+	/** @type {ControlsManager} */
+	controlsManager: new ControlsManager,
 
 	/** @type {null | string} */
 	currentMapID: null,

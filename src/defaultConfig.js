@@ -1,8 +1,80 @@
+// Local imports
+import { ACTIONS } from './renderer/data/ACTIONS.js'
+
+
+
+
+
 export default {
 	'settings::accessibility::colorblindType': 'none',
 	'settings::accessibility::headingFontFace': 'Thaleah',
 	'settings::accessibility::textFontFace': 'Awkward',
 	'settings::accessibility::usePixelFonts': true,
+	'settings::controls': [
+		{
+			label: ACTIONS.MOVE_CURSOR_RIGHT,
+			mappings: {
+				keyboard: {
+					primary: ['KeyD'],
+					secondary: ['ArrowRight'],
+				},
+			},
+			repeatFrequency: 150,
+		},
+
+		{
+			label: ACTIONS.MOVE_CURSOR_UP,
+			mappings: {
+				keyboard: {
+					primary: ['KeyW'],
+					secondary: ['ArrowUp'],
+				},
+			},
+			repeatFrequency: 150,
+		},
+
+		{
+			label: ACTIONS.MOVE_CURSOR_DOWN,
+			mappings: {
+				keyboard: {
+					primary: ['KeyS'],
+					secondary: ['ArrowDown'],
+				},
+			},
+			repeatFrequency: 150,
+		},
+
+		{
+			label: ACTIONS.MOVE_CURSOR_LEFT,
+			mappings: {
+				keyboard: {
+					primary: ['KeyA'],
+					secondary: ['ArrowLeft'],
+				},
+			},
+			repeatFrequency: 150,
+		},
+
+		{
+			label: ACTIONS.PLACE_TILESET,
+			mappings: {
+				keyboard: {
+					primary: ['Space'],
+					secondary: [],
+				},
+			},
+		},
+
+		{
+			label: ACTIONS.SKIP_TIMER,
+			mappings: {
+				keyboard: {
+					primary: ['Enter'],
+					secondary: [],
+				},
+			},
+		},
+	],
 	'settings::graphics::displayMode': 'fullscreen',
 	'settings::graphics::displayResolution::height': 2160,
 	'settings::graphics::displayResolution::width': 3840,
@@ -23,87 +95,4 @@ export default {
 	'settings::system::showRAMUsage': true,
 
 	'settings::state::mostRecentSaveID': null,
-
-	// "settings": {
-	// 	"controls": [
-	// 		{
-	// 			"label": "Move Cursor Right",
-	// 			"mappings": {
-	// 				"keyboard": {
-	// 					"primary": [
-	// 						"KeyD"
-	// 					],
-	// 					"secondary": [
-	// 						"ArrowRight"
-	// 					]
-	// 				}
-	// 			},
-	// 			"repeatFrequency": 150
-	// 		},
-	// 		{
-	// 			"label": "Move Cursor Up",
-	// 			"mappings": {
-	// 				"keyboard": {
-	// 					"primary": [
-	// 						"KeyW"
-	// 					],
-	// 					"secondary": [
-	// 						"ArrowUp"
-	// 					]
-	// 				}
-	// 			},
-	// 			"repeatFrequency": 150
-	// 		},
-	// 		{
-	// 			"label": "Move Cursor Down",
-	// 			"mappings": {
-	// 				"keyboard": {
-	// 					"primary": [
-	// 						"KeyS"
-	// 					],
-	// 					"secondary": [
-	// 						"ArrowDown"
-	// 					]
-	// 				}
-	// 			},
-	// 			"repeatFrequency": 150
-	// 		},
-	// 		{
-	// 			"label": "Move Cursor Left",
-	// 			"mappings": {
-	// 				"keyboard": {
-	// 					"primary": [
-	// 						"KeyA"
-	// 					],
-	// 					"secondary": [
-	// 						"ArrowLeft"
-	// 					]
-	// 				}
-	// 			},
-	// 			"repeatFrequency": 150
-	// 		},
-	// 		{
-	// 			"label": "Place Tileset",
-	// 			"mappings": {
-	// 				"keyboard": {
-	// 					"primary": [
-	// 						"Space"
-	// 					],
-	// 					"secondary": []
-	// 				}
-	// 			}
-	// 		},
-	// 		{
-	// 			"label": "Skip Timer",
-	// 			"mappings": {
-	// 				"keyboard": {
-	// 					"primary": [
-	// 						"Enter"
-	// 					],
-	// 					"secondary": []
-	// 				}
-	// 			}
-	// 		}
-	// 	]
-	// }
 }

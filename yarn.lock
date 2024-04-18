@@ -4785,6 +4785,7 @@ __metadata:
     postcss: "npm:^8.4.38"
     prettier: "npm:^3.2.5"
     prop-types: "npm:^15.8.1"
+    rafael: "npm:^5.0.2"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     sass: "npm:^1.75.0"
@@ -10165,6 +10166,13 @@ __metadata:
   version: 5.1.1
   resolution: "quick-lru@npm:5.1.1"
   checksum: 10c0/a24cba5da8cec30d70d2484be37622580f64765fb6390a928b17f60cd69e8dbd32a954b3ff9176fa1b86d86ff2ba05252fae55dc4d40d0291c60412b0ad096da
+  languageName: node
+  linkType: hard
+
+"rafael@npm:^5.0.2":
+  version: 5.0.2
+  resolution: "rafael@npm:5.0.2"
+  checksum: 10c0/c3ad2bdba3af06195a539f2dc8b65f357a3dde4822c76dfe145141ccc3ebc42326b4975b8356d74d9519397de6091bb1245661ff11688fe3e325da7eae13cef9
   languageName: node
   linkType: hard
 

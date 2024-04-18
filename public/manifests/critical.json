@@ -185,5 +185,12 @@
 		"loadingCategory": "settings",
 		"path": "settings::state::mostRecentSaveID",
 		"type": "setting"
+	},
+	{
+		"alias": "controls",
+		"displayName": "Controls",
+		"loadingCategory": "settings",
+		"path": "settings::controls",
+		"type": "setting"
 	}
 ]

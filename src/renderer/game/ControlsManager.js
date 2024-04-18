@@ -1,11 +1,17 @@
+// Module imports
+import { schedule } from 'rafael/lib/schedule.js'
+
+
+
+
+
 // Local imports
 import { ACTIONS } from '../data/ACTIONS.js'
 import { ACTION_HANDLERS } from '../data/ACTION_HANDLERS.js'
 import { EventEmitter } from './EventEmitter.js'
 import { Gamepad } from './Gamepad.js'
 import { Keyboard } from './Keyboard.js'
-import { schedule } from 'rafael/lib/schedule.js'
-import { store } from '../newStore/store.js'
+import { store } from '../store/store.js'
 
 
 

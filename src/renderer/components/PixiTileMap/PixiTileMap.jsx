@@ -54,14 +54,32 @@ export function PixiTileMap({
 		layers,
 	])
 
-	const x = useMemo(() => cameraOffsetX + (cursorX * 16), [
+	const x = useMemo(() => {
+		let result = cameraOffsetX
+
+		if (isCursor) {
+			result += cursorX * 16
+		}
+
+		return result
+	}, [
 		cameraOffsetX,
 		cursorX,
+		isCursor,
 	])
 
-	const y = useMemo(() => cameraOffsetY + (cursorY * 16), [
+	const y = useMemo(() => {
+		let result = cameraOffsetY
+
+		if (isCursor) {
+			result += cursorY * 16
+		}
+
+		return result
+	}, [
 		cameraOffsetY,
 		cursorY,
+		isCursor,
 	])
 
 	return (
