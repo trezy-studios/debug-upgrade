@@ -3,6 +3,7 @@ import {
 	useEffect,
 	useMemo,
 	useRef,
+	useState,
 } from 'react'
 import { motion } from 'framer-motion'
 import { useStore } from 'statery'
@@ -32,25 +33,32 @@ import { store } from '../../store/store.js'
 export function PlaySceneCenterPanelContents() {
 	const {
 		currentMap,
-		currentQueueIndex,
 		resolution,
 		stageHeight,
 		stageWidth,
 		uiScale,
 	} = useStore(store)
 
+	const [initialCenteringIsComplete, setInitialCenteringIsComplete] = useState(false)
 	const stageWrapperRef = useRef(null)
 
-	const currentTileset = useMemo(() => currentMap.queue[currentQueueIndex], [currentQueueIndex])
+	const currentTileset = useMemo(() => currentMap.queue[0], [currentMap])
 
 	useEffect(() => {
+		if (initialCenteringIsComplete) {
+			return
+		}
+
 		store.set(() => ({
 			cameraOffsetX: ((stageWidth / resolution) / uiScale) - (currentMap.width * (16 / resolution)),
 			cameraOffsetY: ((stageHeight / resolution) / uiScale) - (currentMap.height * (16 / resolution)),
 		}))
+
+		setInitialCenteringIsComplete(true)
 	}, [
 		currentMap,
 		currentTileset,
+		initialCenteringIsComplete,
 		resolution,
 		stageHeight,
 		stageWidth,
@@ -65,10 +73,13 @@ export function PlaySceneCenterPanelContents() {
 			<PixiStage resizeToRef={stageWrapperRef}>
 				<PixiDragManager>
 					<PixiGrid />
-					<PixiTileMap layers={currentMap.tiles} />
-					<PixiTileMap
-						isCursor={true}
-						layers={currentTileset.tiles} />
+					<PixiTileMap tilestacks={currentMap.tilestacks} />
+
+					{Boolean(currentTileset) && (
+						<PixiTileMap
+							isCursor={true}
+							tilestacks={currentTileset.tilestacks} />
+					)}
 				</PixiDragManager>
 			</PixiStage>
 		</motion.div>

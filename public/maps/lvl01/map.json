@@ -3,7 +3,7 @@
 		"height": 3,
 		"width": 12
 	},
-	"tiles": [
+	"layers": [
 		{
 			"0|1": {
 				"tileID": "2",
@@ -63,7 +63,7 @@
 				"height": 1,
 				"width": 3
 			},
-			"tiles": [
+			"layers": [
 				{
 					"0|0": {
 						"tileID": "2",
@@ -85,7 +85,7 @@
 				"height": 1,
 				"width": 3
 			},
-			"tiles": [
+			"layers": [
 				{
 					"0|0": {
 						"tileID": "2",

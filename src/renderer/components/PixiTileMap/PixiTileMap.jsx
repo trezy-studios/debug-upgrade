@@ -9,7 +9,8 @@ import { useStore } from 'statery'
 
 
 // Local imports
-import { PixiTileMapLayer } from '../PixiTileMapLayer/PixiTileMapLayer.jsx'
+import { parseCoordinateString } from '../../helpers/parseCoordinateString.js'
+import { PixiTileMapTile } from '../PixiTileMapTile/PixiTileMapTile.jsx'
 import { store } from '../../store/store.js'
 
 
@@ -22,11 +23,11 @@ import { store } from '../../store/store.js'
  * @component
  * @param {object} props All props
  * @param {boolean} [props.isCursor] Whether this tilemap is being used as a cursor.
- * @param {import('../../../types/TileMapData.js').LayerMap[]} props.layers The layers to be rendered.
+ * @param {Map<string, Set<import('../../../types/TileMapData.js').TileConfig>>} props.tilestacks The tilestacks to be rendered.
  */
 export function PixiTileMap({
 	isCursor = false,
-	layers,
+	tilestacks,
 }) {
 	const {
 		cameraOffsetX,
@@ -43,18 +44,32 @@ export function PixiTileMap({
 		return 1
 	}, [isCursor])
 
-	const renderedLayers = useMemo(() => {
-		return layers.map((layerMap, index) => {
-			return (
-				<PixiTileMapLayer
-					key={index}
-					isCursor={isCursor}
-					layerMap={layerMap} />
-			)
-		})
+	const renderedTilestacks = useMemo(() => {
+		const result = []
+
+		for (const [coordinateString, tilestack] of tilestacks) {
+			let index = 0
+
+			for (const tile of tilestack) {
+				const [x, y] = parseCoordinateString(coordinateString)
+
+				result.push((
+					<PixiTileMapTile
+						key={`${coordinateString}::${index}`}
+						isCursor={isCursor}
+						tile={tile}
+						x={x}
+						y={y} />
+				))
+
+				index += 1
+			}
+		}
+
+		return result
 	}, [
 		isCursor,
-		layers,
+		tilestacks,
 	])
 
 	const x = useMemo(() => {
@@ -90,12 +105,12 @@ export function PixiTileMap({
 			alpha={alpha}
 			x={x}
 			y={y}>
-			{renderedLayers}
+			{renderedTilestacks}
 		</Container>
 	)
 }
 
 PixiTileMap.propTypes = {
 	isCursor: PropTypes.bool,
-	layers: PropTypes.arrayOf(PropTypes.object).isRequired,
+	tilestacks: PropTypes.instanceOf(Map).isRequired,
 }

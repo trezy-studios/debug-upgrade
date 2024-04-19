@@ -17,7 +17,7 @@ import { store } from '../../store/store.js'
 
 
 // Constants
-const BlockedFilter = new ColorOverlayFilter(0xff0000, 0.8)
+const BLOCKED_FILTER = new ColorOverlayFilter(0xff0000, 0.8)
 
 
 
@@ -42,11 +42,13 @@ export function PixiTileMapTile({
 	} = useStore(store)
 
 	const filters = useMemo(() => {
+		const result = []
+
 		if (isCursor && currentMap.isBlockedAt(x + cursorX, y + cursorY)) {
-			return [BlockedFilter]
+			result.push(BLOCKED_FILTER)
 		}
 
-		return []
+		return result
 	}, [
 		currentMap,
 		cursorX,

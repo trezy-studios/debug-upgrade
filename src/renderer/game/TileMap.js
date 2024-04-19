@@ -10,6 +10,7 @@ import {
 
 // Local imports
 import { fetchAsJSON } from '../helpers/fetchAsJSON.js'
+import { parseCoordinateString } from '../helpers/parseCoordinateString.js'
 import { store } from '../store/store.js'
 
 
@@ -17,8 +18,8 @@ import { store } from '../store/store.js'
 
 
 // Types
-/** @typedef {import('../../types/TileMapData.js').BaseTileMapData} BaseTileMapData */
 /** @typedef {import('../../types/TileMapData.js').LayerMap} LayerMap */
+/** @typedef {import('../../types/TileMapData.js').TileConfig} TileConfig */
 /** @typedef {import('../../types/TileMapData.js').TileMapData} TileMapData */
 
 
@@ -51,6 +52,9 @@ export class TileMap {
 	/** @type {TileMap[]} */
 	#queue
 
+	/** @type {Map<string, Set<TileConfig>>} */
+	#tilestacks = new Map
+
 	/** @type {null | number} */
 	#width
 
@@ -63,58 +67,67 @@ export class TileMap {
 	\****************************************************************************/
 
 	/**
+	 * Creates tile stacks for each occupied coordinate in the map.
+	 */
+	#generateTileStacks() {
+		this.#data.layers.forEach(layer => {
+			Object.entries(layer).forEach(([coordinateString, tileData]) => {
+				if (!tileData) {
+					return
+				}
+
+				let tilestack = this.#tilestacks.get(coordinateString)
+
+				if (!tilestack) {
+					tilestack = new Set
+					this.#tilestacks.set(coordinateString, tilestack)
+				}
+
+				tilestack.add(tileData)
+			})
+		})
+	}
+
+	/**
 	 * Calculates the map's dimensions.
 	 */
 	#recalculateDimensions() {
-		const {
-			maxX,
-			maxY,
-			minX,
-			minY,
-		} = this.layers.reduce((accumulator, layer) => {
-			const occupiedCoordinates = Object.keys(layer)
+		/** @type {null | number} */
+		let maxX = null
+		/** @type {null | number} */
+		let maxY = null
+		/** @type {null | number} */
+		let minX = null
+		/** @type {null | number} */
+		let minY = null
 
-			occupiedCoordinates.forEach(coordinateString => {
-				const [x, y] = coordinateString
-					.split('|')
-					.map(Number)
+		for (const [coordinateString] of this.#tilestacks) {
+			const [x, y] = parseCoordinateString(coordinateString)
 
-				if (accumulator.maxX === null) {
-					accumulator.maxX = x
-				} else {
-					accumulator.maxX = Math.max(accumulator.maxX, x)
-				}
+			if (maxX === null) {
+				maxX = x
+			} else {
+				maxX = Math.max(maxX, x)
+			}
 
-				if (accumulator.maxY === null) {
-					accumulator.maxY = y
-				} else {
-					accumulator.maxY = Math.max(accumulator.maxY, y)
-				}
+			if (maxY === null) {
+				maxY = y
+			} else {
+				maxY = Math.max(maxY, y)
+			}
 
-				if (accumulator.minX === null) {
-					accumulator.minX = x
-				} else {
-					accumulator.minX = Math.min(accumulator.minX, x)
-				}
+			if (minX === null) {
+				minX = x
+			} else {
+				minX = Math.min(minX, x)
+			}
 
-				if (accumulator.minY === null) {
-					accumulator.minY = y
-				} else {
-					accumulator.minY = Math.min(accumulator.minY, y)
-				}
-			})
-
-			return accumulator
-		}, {
-			/** @type {null | number} */
-			maxX: null,
-			/** @type {null | number} */
-			maxY: null,
-			/** @type {null | number} */
-			minX: null,
-			/** @type {null | number} */
-			minY: null,
-		})
+			if (minY === null) {
+				minY = y
+			} else {
+				minY = Math.min(minY, y)
+			}
+		}
 
 		this.#height = (maxY - minY) + 1
 		this.#width = (maxX - minX) + 1
@@ -132,13 +145,24 @@ export class TileMap {
 	 * Creates a new map.
 	 *
 	 * @param {string} id The ID of the map.
-	 * @param {BaseTileMapData} [config] The map config.
+	 * @param {TileMapData} [config] The map config.
 	 */
 	constructor(id, config) {
 		this.#id = id
 
 		if (config) {
 			this.#data = config
+
+			if (config.queue) {
+				this.#queue = /** @type {TileMap[]} */ (config.queue)
+			}
+
+			if (config.tilestacks) {
+				this.#tilestacks = config.tilestacks
+			} else {
+				this.#generateTileStacks()
+			}
+
 			this.#recalculateDimensions()
 		}
 	}
@@ -156,25 +180,18 @@ export class TileMap {
 	 *
 	 * @param {number} x The horizontal axis coordinate.
 	 * @param {number} y The vertical axis coordinate.
-	 * @returns {(import('../../types/TileData.js').TileData | null)[]}
+	 * @returns {import('../../types/TileData.js').TileData[]}
 	 */
 	getTilesAt(x, y) {
-		if ((x < 0) || (y < 0)) {
-			return Array(this.layers.length).fill(null)
+		const tilestack = this.#tilestacks.get(`${x}|${y}`)
+
+		if (!tilestack) {
+			return []
 		}
 
-		const coordinateString = `${x}|${y}`
-
-		return this.layers.map(layer => {
-			const tileData = layer[coordinateString]
-
-			if (!tileData) {
-				return null
-			}
-
-			const resourcepack = store.state.resourcepacks.get(tileData.resourcepackID)
-
-			return resourcepack.meta.tiles[tileData.tileID]
+		return Array.from(tilestack).map(tileConfig => {
+			const resourcepack = store.state.resourcepacks.get(tileConfig.resourcepackID)
+			return resourcepack.meta.tiles[tileConfig.tileID]
 		})
 	}
 
@@ -186,15 +203,18 @@ export class TileMap {
 	 * @returns {boolean} Whether the provided coordinates are blocked.
 	 */
 	isBlockedAt(x, y) {
+		let isBlocked = false
+
 		const tileStack = this.getTilesAt(x, y)
 
-		return tileStack.some(tileData => {
+		for (const tileData of tileStack) {
 			if (tileData?.isBlocking || tileData?.isTraversable) {
-				return true
+				isBlocked = true
+				break
 			}
+		}
 
-			return false
-		})
+		return isBlocked
 	}
 
 	/**
@@ -253,6 +273,7 @@ export class TileMap {
 		this.#meta = meta
 		this.#data = data
 
+		this.#generateTileStacks()
 		this.#recalculateDimensions()
 	}
 
@@ -273,7 +294,7 @@ export class TileMap {
 	 * Public instance getters/setters
 	\****************************************************************************/
 
-	/** @returns {string} The ID of this map. */
+	/** @returns {TileMapData} The ID of this map. */
 	get data() {
 		return this.#data
 	}
@@ -295,7 +316,7 @@ export class TileMap {
 
 	/** @returns {LayerMap[]} An array of layer maps. */
 	get layers() {
-		return this.#data.tiles
+		return this.#data.layers
 	}
 
 	/** @returns {string} The ID of this map. */
@@ -308,9 +329,9 @@ export class TileMap {
 		return this.#queue
 	}
 
-	/** @returns {LayerMap[]} An array of layer maps. */
-	get tiles() {
-		return this.#data.tiles
+	/** @returns {Map<string, Set<TileConfig>>} Tilestacks for all occupied coordinates. */
+	get tilestacks() {
+		return this.#tilestacks
 	}
 
 	/** @returns {number} The width of the map (in tiles). */

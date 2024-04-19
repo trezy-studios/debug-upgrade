@@ -72,6 +72,9 @@ export const store = makeStore({
 	isSettingUpPixi: false,
 
 	/** @type {number} */
+	lastPlaceUpdate: 0,
+
+	/** @type {number} */
 	mainVolume: 0,
 
 	/** @type {null | string} */
