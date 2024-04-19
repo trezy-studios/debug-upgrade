@@ -92,11 +92,20 @@ export const store = makeStore({
 	/** @type {Map<string, import('../../types/Resourcepack.js').Resourcepack>} */
 	resourcepacks: new Map,
 
+	/** @type {number} */
+	robotX: 0,
+
+	/** @type {number} */
+	robotY: 0,
+
 	/** @type {null | import('../../types/SaveData.js').SaveData} */
 	saveData: null,
 
 	/** @type {SCENES[]} */
 	sceneHistory: [SCENES.LOADING_GAME],
+
+	/** @type {Map<string, import('pixi.js').Spritesheet>} */
+	spritesheetCache: new Map,
 
 	/** @type {number} */
 	soundEffectsVolume: 0,

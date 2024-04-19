@@ -17,6 +17,7 @@ import styles from './PlaySceneCenterPanelContents.module.scss'
 
 import { PixiDragManager } from '../PixiDragManager/PixiDragManager.jsx'
 import { PixiGrid } from '../PixiGrid/PixiGrid.jsx'
+import { PixiRobot } from '../PixiRobot/PixiRobot.jsx'
 import { PixiStage } from '../PixiStage/PixiStage.jsx'
 import { PixiTileMap } from '../PixiTileMap/PixiTileMap.jsx'
 import { store } from '../../store/store.js'
@@ -80,6 +81,8 @@ export function PlaySceneCenterPanelContents() {
 							isCursor={true}
 							tilestacks={currentTileset.tilestacks} />
 					)}
+
+					<PixiRobot />
 				</PixiDragManager>
 			</PixiStage>
 		</motion.div>
