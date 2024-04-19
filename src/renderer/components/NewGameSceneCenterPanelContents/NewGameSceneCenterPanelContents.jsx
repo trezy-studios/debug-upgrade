@@ -208,7 +208,7 @@ export function NewGameSceneCenterPanelContents() {
 											levelsComplete: 0,
 										})
 
-										return [saveData.id, `${(levelsComplete / levelCount) * 100}%`, filesize(saveData.size)]
+										return [saveData.id, `${((levelsComplete / levelCount) * 100).toFixed(2).toString().padStart(6, ' ')}%`, filesize(saveData.size)]
 									}),
 								},
 							],
