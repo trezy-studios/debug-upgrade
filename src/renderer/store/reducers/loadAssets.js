@@ -1,5 +1,9 @@
 // Module imports
-import { Assets } from 'pixi.js'
+import {
+	Assets,
+	BaseTexture,
+	Spritesheet,
+} from 'pixi.js'
 
 
 
@@ -7,6 +11,7 @@ import { Assets } from 'pixi.js'
 
 // Local imports
 import { AudioLibrary } from '../../helpers/AudioLibrary.js'
+import { fetchAsJSON } from '../../helpers/fetchAsJSON.js'
 import { IPCBridge } from '../../helpers/IPCBridge.js'
 import { setLoadingItem } from './setLoadingItem.js'
 import { store } from '../store.js'
@@ -23,7 +28,6 @@ import { store } from '../store.js'
  * @param {Function} [options.onAssetLoadStart] Fired before an asset starts loading.
  * @param {Function} [options.onAssetLoadEnd] Fired when an asset is finished loading.
  * @param {Function} [options.onDone] Fired when all associated assets have been loaded.
- * @returns {Promise<void>}
  */
 export async function loadAssets(manifestIDs, options = {}) {
 	const {
@@ -68,24 +72,34 @@ export async function loadAssets(manifestIDs, options = {}) {
 				break
 			}
 
-			case 'json': {
-				await fetch(asset.src)
-				break
-			}
-
 			case 'setting': {
 				const value = await IPCBridge.getConfig(asset.path)
-				store.set(() => ({ [asset.alias]: value }))
+				store.set(() => ({
+					[asset.alias]: value,
+				}))
 				break
 			}
 
 			case 'sprite': {
-				Assets.add(asset.alias, asset.src)
+				Assets.add({
+					alias: asset.alias,
+					src: asset.src,
+				})
 				await Assets.load(asset.alias)
 				break
 			}
 
-			case 'video': {
+			case 'spritesheet': {
+				const atlasData = await fetchAsJSON(asset.src)
+				const imageSrc = asset.src.replace(/\/\w+\.json?$/u, `/${atlasData.meta.image}`)
+				const texture = BaseTexture.from(imageSrc)
+				const spritesheet = new Spritesheet(texture, atlasData)
+				await spritesheet.parse()
+				store.set(previousState => {
+					const newSpritesheetCache = new Map(previousState.spritesheetCache)
+					newSpritesheetCache.set(asset.alias, spritesheet)
+					return { spritesheetCache: newSpritesheetCache }
+				})
 				break
 			}
 

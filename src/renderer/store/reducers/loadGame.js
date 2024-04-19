@@ -41,7 +41,12 @@ export async function loadGame() {
 
 	if (!areAssetsLoaded) {
 		store.set(() => ({ isLoadingAssets: true }))
-		await executePromiseWithMinimumDuration(loadAssets(['critical', 'overworld']), MINIMUM_DURATION)
+		await executePromiseWithMinimumDuration(loadAssets([
+			'critical',
+			'fonts',
+			'settings',
+			'overworld',
+		]), MINIMUM_DURATION)
 		store.set(() => ({ isLoadingAssets: false }))
 	}
 

@@ -1,0 +1,9 @@
+[
+	{
+		"alias": "robots::grabbot",
+		"displayName": "Robots - Grabbot",
+		"src": "sprites/robots/grabbot.json",
+		"type": "spritesheet",
+		"loadingCategory": "sprites"
+	}
+]

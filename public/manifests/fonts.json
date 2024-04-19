@@ -1,0 +1,14 @@
+[
+	{
+		"alias": "\"Awkward\" Font",
+		"src": "public/fonts/awkward/awkward.woff2",
+		"type": "font",
+		"loadingCategory": "user interface"
+	},
+	{
+		"alias": "\"Thaleah\" Font",
+		"src": "public/fonts/thaleah/thaleah.woff2",
+		"type": "font",
+		"loadingCategory": "user interface"
+	}
+]
