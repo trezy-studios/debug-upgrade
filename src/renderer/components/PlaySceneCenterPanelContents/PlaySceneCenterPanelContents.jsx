@@ -21,6 +21,7 @@ import { PixiRobot } from '../PixiRobot/PixiRobot.jsx'
 import { PixiStage } from '../PixiStage/PixiStage.jsx'
 import { PixiTileMap } from '../PixiTileMap/PixiTileMap.jsx'
 import { store } from '../../store/store.js'
+import { useGameLoop } from '../../hooks/useGameLoop.js'
 
 
 
@@ -65,6 +66,8 @@ export function PlaySceneCenterPanelContents() {
 		stageWidth,
 		uiScale,
 	])
+
+	useGameLoop()
 
 	return (
 		<motion.div

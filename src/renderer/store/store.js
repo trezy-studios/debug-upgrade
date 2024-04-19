@@ -83,6 +83,9 @@ export const store = makeStore({
 	/** @type {number} */
 	musicVolume: 0,
 
+	/** @type {number} */
+	now: performance.now(),
+
 	/** @type {null | import('pixi.js').Application} */
 	pixiApp: null,
 
@@ -118,6 +121,21 @@ export const store = makeStore({
 
 	/** @type {Map<string, import('../../types/TileMapData.js').TileMapData>} */
 	tilemaps: new Map,
+
+	/** @type {null | number} */
+	timerGracePeriod: null,
+
+	/** @type {null | number} */
+	timerPathfindingStartedAt: null,
+
+	/** @type {null | number} */
+	timerStartedAt: null,
+
+	/** @type {null | number} */
+	timerStoppedAt: null,
+
+	/** @type {string} */
+	timerString: '00:00',
 
 	/** @type {number} */
 	uiScale: /** @type {number} */ (getCSSCustomPropertyValue('ui-scale')),
