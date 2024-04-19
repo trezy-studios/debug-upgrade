@@ -4779,6 +4779,7 @@ __metadata:
     framer-motion: "npm:^11.1.3"
     howler: "npm:^2.2.4"
     ngraph.graph: "npm:^20.0.1"
+    ngraph.path: "npm:^1.5.0"
     pixi-filters: "npm:^5.3.0"
     pixi-viewport: "npm:^5.1.0"
     pixi.js: "npm:^7.4.2"
@@ -8834,6 +8835,13 @@ __metadata:
   dependencies:
     ngraph.events: "npm:^1.2.1"
   checksum: 10c0/a8c8d9505b776b5437696d13c1fabebfa0c9d88e93ca9801d08aaf50cf44bf8be22dfb410d950a68d86071da65c887e508ae07708ed035ab2b47cf62eabc4ded
+  languageName: node
+  linkType: hard
+
+"ngraph.path@npm:^1.5.0":
+  version: 1.5.0
+  resolution: "ngraph.path@npm:1.5.0"
+  checksum: 10c0/2dc4d1b831d8ed798af691e6cc706a9516b663c847e4c559b637fc0304da9bed04dbe41b1fe00451883fdc556f47d15b6940cce9a4d793a05a65e07b2635fd2e
   languageName: node
   linkType: hard
 
