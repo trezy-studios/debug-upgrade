@@ -2,6 +2,7 @@
 import { moveSystem } from './systems/moveSystem.js'
 import { pathfindingSystem } from './systems/pathfindingSystem.js'
 import { timeSystem } from './systems/timeSystem.js'
+import { victorySystem } from './systems/victorySystem.js'
 
 
 
@@ -16,6 +17,7 @@ export function gameLoop() {
 	timeSystem()
 	pathfindingSystem()
 	moveSystem()
+	victorySystem()
 
 	return true
 }
