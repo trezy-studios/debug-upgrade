@@ -3,6 +3,7 @@ import {
 	BaseTexture,
 	Spritesheet,
 } from 'pixi.js'
+import createGraph from 'ngraph.graph'
 
 
 
@@ -12,15 +13,19 @@ import {
 import { fetchAsJSON } from '../helpers/fetchAsJSON.js'
 import { parseCoordinateString } from '../helpers/parseCoordinateString.js'
 import { store } from '../store/store.js'
+import { updateTileMapGraphLinks } from '../helpers/updateTileMapGraphLinks.js'
+import { Vector2 } from './Vector2.js'
 
 
 
 
 
 // Types
+/** @typedef {import('../../types/CoordinateString.js').CoordinateString} CoordinateString */
 /** @typedef {import('../../types/TileMapData.js').LayerMap} LayerMap */
 /** @typedef {import('../../types/TileMapData.js').TileConfig} TileConfig */
 /** @typedef {import('../../types/TileMapData.js').TileMapData} TileMapData */
+/** @typedef {import('../../types/Vector2Object.js').Vector2Object} Vector2Object */
 
 
 
@@ -37,8 +42,14 @@ export class TileMap {
 	/** @type {TileMapData} */
 	#data
 
-	/** @type {Map<*, *>} */
+	/** @type {Map<string, *>} */
 	#dependencies = new Map
+
+	/** @type {Vector2[]} */
+	#destinations
+
+	/** @type {import('ngraph.graph').Graph} */
+	#graph = createGraph()
 
 	/** @type {null | number} */
 	#height
@@ -52,7 +63,10 @@ export class TileMap {
 	/** @type {TileMap[]} */
 	#queue
 
-	/** @type {Map<string, Set<TileConfig>>} */
+	/** @type {Vector2} */
+	#startingPosition
+
+	/** @type {Map<CoordinateString, Set<TileConfig>>} */
 	#tilestacks = new Map
 
 	/** @type {null | number} */
@@ -66,21 +80,59 @@ export class TileMap {
 	 * Private instance methods
 	\****************************************************************************/
 
+	/** Generates the graph for this tilemap. */
+	#generateGraph() {
+		for (const [coordinateString] of this.#tilestacks) {
+			const [x, y] = parseCoordinateString(coordinateString)
+			const tilestack = this.getTilesAt(x, y)
+
+			for (const tileMeta of tilestack) {
+				if (this.#graph.hasNode(coordinateString)) {
+					const node = this.#graph.getNode(coordinateString)
+
+					if (tileMeta.isBlocking) {
+						node.data.isBlocking = true
+						node.data.isTraversable = false
+					} else if (tileMeta.isTraversable && !node.data.isBlocking) {
+						node.data.isTraversable = tileMeta.isTraversable
+					}
+				} else {
+					const nodeData = {
+						isBlocking: tileMeta.isBlocking,
+						isTraversable: tileMeta.isTraversable,
+						position: {
+							x,
+							y,
+						},
+						tileStack: [],
+					}
+
+					this.#graph.addNode(coordinateString, nodeData)
+				}
+			}
+		}
+
+		updateTileMapGraphLinks(this.#graph)
+	}
+
 	/**
 	 * Creates tile stacks for each occupied coordinate in the map.
 	 */
 	#generateTileStacks() {
 		this.#data.layers.forEach(layer => {
 			Object.entries(layer).forEach(([coordinateString, tileData]) => {
+				/** @type {CoordinateString} */
+				const typedCoordinateString = /** @type {*} */ (coordinateString)
+
 				if (!tileData) {
 					return
 				}
 
-				let tilestack = this.#tilestacks.get(coordinateString)
+				let tilestack = this.#tilestacks.get(typedCoordinateString)
 
 				if (!tilestack) {
 					tilestack = new Set
-					this.#tilestacks.set(coordinateString, tilestack)
+					this.#tilestacks.set(typedCoordinateString, tilestack)
 				}
 
 				tilestack.add(tileData)
@@ -153,6 +205,10 @@ export class TileMap {
 		if (config) {
 			this.#data = config
 
+			if (config.destinations) {
+				this.#destinations = /** @type {Vector2[]} */ (config.destinations)
+			}
+
 			if (config.queue) {
 				this.#queue = /** @type {TileMap[]} */ (config.queue)
 			}
@@ -164,6 +220,7 @@ export class TileMap {
 			}
 
 			this.#recalculateDimensions()
+			this.#generateGraph()
 		}
 	}
 
@@ -226,11 +283,9 @@ export class TileMap {
 		for (const dependencyID of Object.keys(this.#meta.dependencies)) {
 			const [
 				meta,
-				robots,
 				tiles,
 			] = await Promise.all([
 				fetchAsJSON(`resourcepacks/${dependencyID}/meta.json`),
-				fetchAsJSON(`resourcepacks/${dependencyID}/robots.json`),
 				fetchAsJSON(`resourcepacks/${dependencyID}/tiles.json`),
 			])
 
@@ -240,7 +295,6 @@ export class TileMap {
 
 			dependencies[dependencyID] = {
 				meta,
-				robots,
 				tiles,
 				tilesSpritesheet,
 			}
@@ -256,6 +310,8 @@ export class TileMap {
 
 			return { resourcepacks: newResourcepacks }
 		})
+
+		this.#generateGraph()
 	}
 
 	/**
@@ -275,6 +331,13 @@ export class TileMap {
 
 		this.#generateTileStacks()
 		this.#recalculateDimensions()
+
+		store.set(() => ({
+			robotPosition: new Vector2(
+				this.#data.startingPosition.x,
+				this.#data.startingPosition.y,
+			),
+		}))
 	}
 
 	/**
@@ -304,6 +367,27 @@ export class TileMap {
 		return this.#dependencies
 	}
 
+	/** @returns {Vector2[]} */
+	get destinations() {
+		if (!this.#data) {
+			throw new Error('Cannot access starting position for tilesets')
+		}
+
+		if (!this.#destinations) {
+			this.#destinations = this.#data.destinations.map(destination => new Vector2(
+				destination.x,
+				destination.y,
+			))
+		}
+
+		return this.#destinations
+	}
+
+	/** @returns {import('ngraph.graph').Graph} The graph backing this map. */
+	get graph() {
+		return this.#graph
+	}
+
 	/** @returns {number} The height of the map (in tiles). */
 	get height() {
 		return this.#height
@@ -329,7 +413,23 @@ export class TileMap {
 		return this.#queue
 	}
 
-	/** @returns {Map<string, Set<TileConfig>>} Tilestacks for all occupied coordinates. */
+	/** @returns {Vector2} */
+	get startingPosition() {
+		if (!this.#data) {
+			throw new Error('Cannot access starting position for tilesets')
+		}
+
+		if (!this.#startingPosition) {
+			this.#startingPosition = new Vector2(
+				this.#data.startingPosition.x,
+				this.#data.startingPosition.y,
+			)
+		}
+
+		return this.#startingPosition
+	}
+
+	/** @returns {Map<CoordinateString, Set<TileConfig>>} Tilestacks for all occupied coordinates. */
 	get tilestacks() {
 		return this.#tilestacks
 	}

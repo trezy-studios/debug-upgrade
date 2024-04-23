@@ -1,7 +1,7 @@
 // Local imports
-import { parseCoordinateString } from './parseCoordinateString.js'
 import { store } from '../store/store.js'
 import { TileMap } from '../game/TileMap.js'
+import { Vector2 } from '../game/Vector2.js'
 
 
 
@@ -22,9 +22,10 @@ export function mergeTileMaps(tilemapA, tilemapB) {
 	const newTilestacks = new Map(tilemapA.tilestacks)
 
 	for (const [coordinateString, tilestack] of tilemapB.tilestacks) {
-		const [x, y] = parseCoordinateString(coordinateString)
+		const coordinate = Vector2.fromString(coordinateString)
 
-		const adjustedCoordinateString = `${x + cursorX}|${y + cursorY}`
+		const adjustedCoordinate = Vector2.add(coordinate, new Vector2(cursorX, cursorY))
+		const adjustedCoordinateString = adjustedCoordinate.toString()
 
 		const existingTilestack = newTilestacks.get(adjustedCoordinateString)
 
@@ -38,6 +39,7 @@ export function mergeTileMaps(tilemapA, tilemapB) {
 	}
 
 	return new TileMap(tilemapA.id, {
+		destinations: tilemapA.destinations,
 		queue: tilemapA.queue.slice(1),
 		tilestacks: newTilestacks,
 	})

@@ -23,8 +23,7 @@ export function PixiRobot() {
 	const {
 		cameraOffsetX,
 		cameraOffsetY,
-		robotX,
-		robotY,
+		robotPosition,
 		spritesheetCache,
 	} = useStore(store)
 
@@ -43,14 +42,14 @@ export function PixiRobot() {
 		state,
 	])
 
-	const x = useMemo(() => ((robotX * 16) + cameraOffsetX) + 1, [
+	const x = useMemo(() => ((robotPosition.x * 16) + cameraOffsetX) + 1, [
 		cameraOffsetX,
-		robotX,
+		robotPosition.x,
 	])
 
-	const y = useMemo(() => ((robotY * 16) + cameraOffsetY) - 2, [
+	const y = useMemo(() => ((robotPosition.y * 16) + cameraOffsetY) - 2, [
 		cameraOffsetY,
-		robotY,
+		robotPosition.y,
 	])
 
 	return (

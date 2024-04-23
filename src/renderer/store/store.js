@@ -11,6 +11,7 @@ import { ControlsManager } from '../game/ControlsManager.js'
 import { getCSSCustomPropertyValue } from "../helpers/getCSSCustomPropertyValue.js"
 import { IPCBridge } from '../helpers/IPCBridge.js'
 import { SCENES } from '../data/SCENES.js'
+import { Vector2 } from '../game/Vector2.js'
 
 
 
@@ -40,6 +41,9 @@ export const store = makeStore({
 
 	/** @type {null | import('../game/TileMap.js').TileMap} */
 	currentMap: null,
+
+	/** @type {null | *[]} */
+	currentPath: null,
 
 	/** @type {null | string} */
 	currentLoadingCategory: null,
@@ -94,6 +98,18 @@ export const store = makeStore({
 
 	/** @type {Map<string, import('../../types/Resourcepack.js').Resourcepack>} */
 	resourcepacks: new Map,
+
+	/** @type {null | number} */
+	robotDestinationX: null,
+
+	/** @type {null | number} */
+	robotDestinationY: null,
+
+	/** @type {Vector2} */
+	robotDestination: null,
+
+	/** @type {Vector2} */
+	robotPosition: null,
 
 	/** @type {number} */
 	robotX: 0,
