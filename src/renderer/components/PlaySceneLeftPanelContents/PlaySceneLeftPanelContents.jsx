@@ -18,8 +18,9 @@ import { ButtonStack } from '../ButtonStack/ButtonStack.jsx'
 import { DropdownButton } from '../DropdownButton/DropdownButton.jsx'
 import { HorizontalRule } from '../HorizontalRule/HorizontalRule.jsx'
 import { PanelMenu } from '../Panel/PanelMenu.jsx'
-import { SCENES } from '../../data/SCENES.js'
 import { pushScene } from '../../store/reducers/pushScene.js'
+import { SCENES } from '../../data/SCENES.js'
+import { Timer } from '../Timer/Timer.jsx'
 
 
 
@@ -92,81 +93,89 @@ export function PlaySceneLeftPanelContents() {
 	}, [])
 
 	return (
-		<PanelMenu>
-			<ButtonStack>
-				<Button
-					navGroupID={'left panel'}
-					navGroupLinks={NAV_GROUP_LINKS}
-					nodeID={'overworld'}
-					onActivate={handleRestartLevelClick}
-					onClick={handleRestartLevelClick}>
-					{'Restart Level'}
-				</Button>
+		<>
+			<Timer
+				isBordered
+				isCentered
+				isLarge
+				isMonospace />
 
-				<HorizontalRule />
-
-				<Button
-					navGroupID={'left panel'}
-					navGroupLinks={NAV_GROUP_LINKS}
-					nodeID={'overworld'}
-					onActivate={handleSettingsClick}
-					onClick={handleSettingsClick}>
-					{'Settings'}
-				</Button>
-
-				<DropdownButton
-					isNegative
-					onChevronClick={handleExitMenuClick}>
+			<PanelMenu>
+				<ButtonStack>
 					<Button
-						isNegative
 						navGroupID={'left panel'}
 						navGroupLinks={NAV_GROUP_LINKS}
-						nodeID={'quit'}
-						onActivate={handleExitClick}
-						onClick={handleExitClick}>
-						{'Exit'}
+						nodeID={'overworld'}
+						onActivate={handleRestartLevelClick}
+						onClick={handleRestartLevelClick}>
+						{'Restart Level'}
 					</Button>
-				</DropdownButton>
 
-				<motion.div
-					animate={isExitMenuVisible ? 'visible' : 'hidden'}
-					className={styles['exit-menu']}
-					onMouseEnter={handleExitMenuMouseEnter}
-					onMouseLeave={handleExitMenuMouseLeave}
-					variants={EXIT_MENU_VARIANTS}>
-					<ButtonStack isSubstack>
+					<HorizontalRule />
+
+					<Button
+						navGroupID={'left panel'}
+						navGroupLinks={NAV_GROUP_LINKS}
+						nodeID={'overworld'}
+						onActivate={handleSettingsClick}
+						onClick={handleSettingsClick}>
+						{'Settings'}
+					</Button>
+
+					<DropdownButton
+						isNegative
+						onChevronClick={handleExitMenuClick}>
 						<Button
 							isNegative
 							navGroupID={'left panel'}
 							navGroupLinks={NAV_GROUP_LINKS}
-							nodeID={'overworld'}
-							onActivate={handleExitLevelClick}
-							onClick={handleExitLevelClick}>
-							{'Exit Level'}
+							nodeID={'quit'}
+							onActivate={handleExitClick}
+							onClick={handleExitClick}>
+							{'Exit'}
 						</Button>
+					</DropdownButton>
 
-						<Button
-							isNegative
-							navGroupID={'left panel'}
-							navGroupLinks={NAV_GROUP_LINKS}
-							nodeID={'main menu'}
-							onActivate={handleMainMenuClick}
-							onClick={handleMainMenuClick}>
-							{'Main Menu'}
-						</Button>
+					<motion.div
+						animate={isExitMenuVisible ? 'visible' : 'hidden'}
+						className={styles['exit-menu']}
+						onMouseEnter={handleExitMenuMouseEnter}
+						onMouseLeave={handleExitMenuMouseLeave}
+						variants={EXIT_MENU_VARIANTS}>
+						<ButtonStack isSubstack>
+							<Button
+								isNegative
+								navGroupID={'left panel'}
+								navGroupLinks={NAV_GROUP_LINKS}
+								nodeID={'overworld'}
+								onActivate={handleExitLevelClick}
+								onClick={handleExitLevelClick}>
+								{'Exit Level'}
+							</Button>
 
-						<Button
-							isNegative
-							navGroupID={'left panel'}
-							navGroupLinks={NAV_GROUP_LINKS}
-							nodeID={'main menu'}
-							onActivate={handleQuitToDesktopClick}
-							onClick={handleQuitToDesktopClick}>
-							{'Desktop'}
-						</Button>
-					</ButtonStack>
-				</motion.div>
-			</ButtonStack>
-		</PanelMenu>
+							<Button
+								isNegative
+								navGroupID={'left panel'}
+								navGroupLinks={NAV_GROUP_LINKS}
+								nodeID={'main menu'}
+								onActivate={handleMainMenuClick}
+								onClick={handleMainMenuClick}>
+								{'Main Menu'}
+							</Button>
+
+							<Button
+								isNegative
+								navGroupID={'left panel'}
+								navGroupLinks={NAV_GROUP_LINKS}
+								nodeID={'main menu'}
+								onActivate={handleQuitToDesktopClick}
+								onClick={handleQuitToDesktopClick}>
+								{'Desktop'}
+							</Button>
+						</ButtonStack>
+					</motion.div>
+				</ButtonStack>
+			</PanelMenu>
+		</>
 	)
 }
