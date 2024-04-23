@@ -23,7 +23,7 @@ import { Vector2 } from '../../game/Vector2.js'
 export function PixiRobot() {
 	const {
 		cameraOffset,
-		robotPosition,
+		robotPixelPosition,
 		spritesheetCache,
 	} = useStore(store)
 
@@ -43,11 +43,11 @@ export function PixiRobot() {
 	])
 
 	const position = useMemo(() => new Vector2(
-		((robotPosition.x * 16) + cameraOffset.x) + 1,
-		((robotPosition.y * 16) + cameraOffset.y) - 2,
+		(robotPixelPosition.x + cameraOffset.x) + 1,
+		(robotPixelPosition.y + cameraOffset.y) - 2,
 	), [
 		cameraOffset,
-		robotPosition,
+		robotPixelPosition,
 	])
 
 	return (

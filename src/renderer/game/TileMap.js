@@ -333,6 +333,10 @@ export class TileMap {
 		this.#recalculateDimensions()
 
 		store.set(() => ({
+			robotPixelPosition: new Vector2(
+				this.#data.startingPosition.x * 16,
+				this.#data.startingPosition.y * 16,
+			),
 			robotPosition: new Vector2(
 				this.#data.startingPosition.x,
 				this.#data.startingPosition.y,
