@@ -22,6 +22,7 @@ import { PixiStage } from '../PixiStage/PixiStage.jsx'
 import { PixiTileMap } from '../PixiTileMap/PixiTileMap.jsx'
 import { store } from '../../store/store.js'
 import { useGameLoop } from '../../hooks/useGameLoop.js'
+import { Vector2 } from '../../game/Vector2.js'
 
 
 
@@ -52,8 +53,10 @@ export function PlaySceneCenterPanelContents() {
 		}
 
 		store.set(() => ({
-			cameraOffsetX: ((stageWidth / resolution) / uiScale) - (currentMap.width * (16 / resolution)),
-			cameraOffsetY: ((stageHeight / resolution) / uiScale) - (currentMap.height * (16 / resolution)),
+			cameraOffset: new Vector2(
+				((stageWidth / resolution) / uiScale) - (currentMap.width * (16 / resolution)),
+				((stageHeight / resolution) / uiScale) - (currentMap.height * (16 / resolution)),
+			),
 		}))
 
 		setInitialCenteringIsComplete(true)

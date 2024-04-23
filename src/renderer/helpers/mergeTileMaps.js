@@ -14,17 +14,14 @@ import { Vector2 } from '../game/Vector2.js'
  * @returns {TileMap} tilemapB The second tilemap to be merged.
  */
 export function mergeTileMaps(tilemapA, tilemapB) {
-	const {
-		cursorX,
-		cursorY,
-	} = store.state
+	const { cursorPosition } = store.state
 
 	const newTilestacks = new Map(tilemapA.tilestacks)
 
 	for (const [coordinateString, tilestack] of tilemapB.tilestacks) {
 		const coordinate = Vector2.fromString(coordinateString)
 
-		const adjustedCoordinate = Vector2.add(coordinate, new Vector2(cursorX, cursorY))
+		const adjustedCoordinate = Vector2.add(coordinate, cursorPosition)
 		const adjustedCoordinateString = adjustedCoordinate.toString()
 
 		const existingTilestack = newTilestacks.get(adjustedCoordinateString)

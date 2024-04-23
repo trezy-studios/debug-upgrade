@@ -1,6 +1,6 @@
 // Module imports
 import {
-	useLayoutEffect,
+	useEffect,
 	useRef,
 } from 'react'
 import { motion } from 'framer-motion'
@@ -33,9 +33,9 @@ export function OverworldSceneCenterPanelContents() {
 
 	const overworldWrapperRef = useRef(null)
 
-	useLayoutEffect(() => {
-		focusOverworldLevel(saveData.lastLevelAccessed)
-	}, [saveData])
+	// useEffect(() => {
+	// 	focusOverworldLevel(saveData.lastLevelAccessed)
+	// }, [saveData])
 
 	return (
 		<motion.div

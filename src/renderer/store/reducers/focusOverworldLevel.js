@@ -2,6 +2,7 @@
 import { animate } from 'framer-motion/dom'
 import { LEVEL_LAYOUT } from '../../data/LEVEL_LAYOUT.js'
 import { store } from '../store.js'
+import { Vector2 } from '../../game/Vector2.js'
 
 
 
@@ -21,8 +22,7 @@ export function focusOverworldLevel(levelID, isSmooth) {
 	const levelOffsetY = -(blockData.position.y + (sectionData?.position.y ?? 0))
 
 	const {
-		cameraOffsetX,
-		cameraOffsetY,
+		cameraOffset,
 		resolution,
 		stageHeight,
 		stageWidth,
@@ -33,11 +33,21 @@ export function focusOverworldLevel(levelID, isSmooth) {
 	const stageCenterY = (stageHeight / resolution) / uiScale
 
 	const cameraOffsetXAnimationOptions = {
-		onUpdate: latest => store.set(() => ({ cameraOffsetX: latest })),
+		onUpdate: latest => store.set(previousState => ({
+			cameraOffset: new Vector2(
+				latest,
+				previousState.cameraOffset.y
+			),
+		})),
 	}
 
 	const cameraOffsetYAnimationOptions = {
-		onUpdate: latest => store.set(() => ({ cameraOffsetY: latest })),
+		onUpdate: latest => store.set(previousState => ({
+			cameraOffset: new Vector2(
+				previousState.cameraOffset.x,
+				latest,
+			),
+		})),
 	}
 
 	if (!isSmooth) {
@@ -45,6 +55,6 @@ export function focusOverworldLevel(levelID, isSmooth) {
 		cameraOffsetXAnimationOptions.duration = 0
 	}
 
-	animate(cameraOffsetX, stageCenterX + levelOffsetX, cameraOffsetXAnimationOptions)
-	animate(cameraOffsetY, stageCenterY + levelOffsetY, cameraOffsetYAnimationOptions)
+	animate(cameraOffset.x, stageCenterX + levelOffsetX, cameraOffsetXAnimationOptions)
+	animate(cameraOffset.y, stageCenterY + levelOffsetY, cameraOffsetYAnimationOptions)
 }

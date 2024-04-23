@@ -1,5 +1,6 @@
 // Local imports
 import { store } from '../store.js'
+import { Vector2 } from '../../game/Vector2.js'
 
 
 
@@ -13,7 +14,10 @@ import { store } from '../store.js'
  */
 export const moveCursor = (x, y) => {
 	store.set(previousState => {
-		const { currentMap } = previousState
+		const {
+			currentMap,
+			cursorPosition,
+		} = previousState
 
 		if (!currentMap) {
 			console.error('Failed to get current map', previousState)
@@ -26,8 +30,10 @@ export const moveCursor = (x, y) => {
 		}
 
 		return {
-			cursorX: previousState.cursorX + x,
-			cursorY: previousState.cursorY + y,
+			cursorPosition: new Vector2(
+				cursorPosition.x + x,
+				cursorPosition.y + y,
+			)
 		}
 	})
 }

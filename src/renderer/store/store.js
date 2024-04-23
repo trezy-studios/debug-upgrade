@@ -24,11 +24,8 @@ export const store = makeStore({
 	/** @type {number} */
 	assetLoadingProgress: 0,
 
-	/** @type {number} */
-	cameraOffsetX: 0,
-
-	/** @type {number} */
-	cameraOffsetY: 0,
+	/** @type {Vector2} */
+	cameraOffset: new Vector2(0, 0),
 
 	/** @type {null | import('../../types/ControlSchema.js').ControlSchema[]} */
 	controls: null,
@@ -54,11 +51,8 @@ export const store = makeStore({
 	/** @type {number} */
 	currentQueueIndex: 0,
 
-	/** @type {number} */
-	cursorX: 0,
-
-	/** @type {number} */
-	cursorY: 0,
+	/** @type {Vector2} */
+	cursorPosition: new Vector2(0, 0),
 
 	/** @type {null | string} */
 	focusedOverworldLevel: 'lvl01',
@@ -99,23 +93,11 @@ export const store = makeStore({
 	/** @type {Map<string, import('../../types/Resourcepack.js').Resourcepack>} */
 	resourcepacks: new Map,
 
-	/** @type {null | number} */
-	robotDestinationX: null,
-
-	/** @type {null | number} */
-	robotDestinationY: null,
-
 	/** @type {Vector2} */
 	robotDestination: null,
 
 	/** @type {Vector2} */
 	robotPosition: null,
-
-	/** @type {number} */
-	robotX: 0,
-
-	/** @type {number} */
-	robotY: 0,
 
 	/** @type {null | import('../../types/SaveData.js').SaveData} */
 	saveData: null,

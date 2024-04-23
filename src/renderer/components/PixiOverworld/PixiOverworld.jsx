@@ -13,7 +13,6 @@ import { useStore } from 'statery'
 
 // Local imports
 import { LEVEL_LAYOUT } from '../../data/LEVEL_LAYOUT.js'
-// import { PixiOverworldMask } from '../PixiOverworldMask/PixiOverworldMask.jsx'
 import { PixiOverworldRouter } from '../PixiOverworldRouter/PixiOverworldRouter.jsx'
 import { PixiOverworldSection } from '../PixiOverworldSection/PixiOverworldSection.jsx'
 import { store } from '../../store/store.js'
@@ -28,10 +27,7 @@ import { store } from '../../store/store.js'
  * @component
  */
 export function PixiOverworld() {
-	const {
-		cameraOffsetX,
-		cameraOffsetY,
-	} = useStore(store)
+	const { cameraOffset } = useStore(store)
 
 	const texture = useMemo(() => Assets.get('overworld::background'), [])
 
@@ -47,8 +43,8 @@ export function PixiOverworld() {
 
 	return (
 		<Container
-			x={cameraOffsetX}
-			y={cameraOffsetY}>
+			x={cameraOffset.x}
+			y={cameraOffset.y}>
 			<Sprite
 				name={'background'}
 				texture={texture} />
@@ -56,10 +52,6 @@ export function PixiOverworld() {
 			{mappedLayout}
 
 			<PixiOverworldRouter />
-
-			{/* <PixiOverworldMask
-				height={texture.height}
-				width={texture.width} /> */}
 		</Container>
 	)
 }

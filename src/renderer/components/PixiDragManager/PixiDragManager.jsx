@@ -13,6 +13,7 @@ import { useStore } from 'statery'
 
 // Local imports
 import { store } from '../../store/store.js'
+import { Vector2 } from '../../game/Vector2.js'
 
 
 
@@ -43,8 +44,10 @@ export function PixiDragManager({
 			if (isDragging) {
 				store.set(previousState => {
 					return {
-						cameraOffsetX: previousState.cameraOffsetX + (event.movementX / uiScale),
-						cameraOffsetY: previousState.cameraOffsetY + (event.movementY / uiScale),
+						cameraOffset: new Vector2(
+							previousState.cameraOffset.x + (event.movementX / uiScale),
+							previousState.cameraOffset.y + (event.movementY / uiScale),
+						),
 					}
 				})
 			}

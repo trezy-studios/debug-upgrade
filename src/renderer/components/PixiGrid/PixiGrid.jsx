@@ -47,8 +47,7 @@ export function PixiGrid({
 	pitch = DEFAULT_PITCH,
 }) {
 	const {
-		cameraOffsetX,
-		cameraOffsetY,
+		cameraOffset,
 		resolution,
 		stageHeight,
 		stageWidth,
@@ -83,8 +82,8 @@ export function PixiGrid({
 			],
 			uLineThickness: lineThickness,
 			uOffset: [
-				cameraOffsetX * resolution * uiScale,
-				cameraOffsetY * resolution * uiScale,
+				cameraOffset.x * resolution * uiScale,
+				cameraOffset.y * resolution * uiScale,
 			],
 			uPitch: [
 				pitch.x * resolution,
@@ -99,8 +98,7 @@ export function PixiGrid({
 		gridWidth,
 		lineAlpha,
 		lineThickness,
-		cameraOffsetX,
-		cameraOffsetY,
+		cameraOffset,
 		pitch.x,
 		pitch.y,
 		pixiApp,

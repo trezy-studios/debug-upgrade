@@ -9,6 +9,7 @@ import { useStore } from 'statery'
 
 // Local imports
 import { store } from '../../store/store.js'
+import { Vector2 } from '../../game/Vector2.js'
 
 
 
@@ -21,8 +22,7 @@ import { store } from '../../store/store.js'
  */
 export function PixiRobot() {
 	const {
-		cameraOffsetX,
-		cameraOffsetY,
+		cameraOffset,
 		robotPosition,
 		spritesheetCache,
 	} = useStore(store)
@@ -42,14 +42,12 @@ export function PixiRobot() {
 		state,
 	])
 
-	const x = useMemo(() => ((robotPosition.x * 16) + cameraOffsetX) + 1, [
-		cameraOffsetX,
-		robotPosition.x,
-	])
-
-	const y = useMemo(() => ((robotPosition.y * 16) + cameraOffsetY) - 2, [
-		cameraOffsetY,
-		robotPosition.y,
+	const position = useMemo(() => new Vector2(
+		((robotPosition.x * 16) + cameraOffset.x) + 1,
+		((robotPosition.y * 16) + cameraOffset.y) - 2,
+	), [
+		cameraOffset,
+		robotPosition,
 	])
 
 	return (
@@ -57,7 +55,7 @@ export function PixiRobot() {
 			filters={filters}
 			isPlaying
 			textures={texture}
-			x={x}
-			y={y} />
+			x={position.x}
+			y={position.y} />
 	)
 }

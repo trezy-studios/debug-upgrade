@@ -12,8 +12,7 @@ export function placeTileset() {
 	store.set(previousState => {
 		const {
 			currentMap,
-			cursorX,
-			cursorY,
+			cursorPosition,
 			lastPlaceUpdate,
 		} = previousState
 
@@ -30,7 +29,7 @@ export function placeTileset() {
 		for (const [coordinateString] of currentTileset.tilestacks) {
 			const [x, y] = parseCoordinateString(coordinateString)
 
-			if (currentMap.isBlockedAt(x + cursorX, y + cursorY)) {
+			if (currentMap.isBlockedAt(x + cursorPosition.x, y + cursorPosition.y)) {
 				isBlocked = true
 				break
 			}

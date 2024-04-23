@@ -1,5 +1,6 @@
 // Local imports
 import { store } from '../store.js'
+import { Vector2 } from '../../game/Vector2.js'
 
 
 
@@ -11,10 +12,8 @@ import { store } from '../store.js'
 export function prepareStateForGameplay() {
 	store.set(() => {
 		return {
-			cameraOffsetX: 0,
-			cameraOffsetY: 0,
-			cursorX: 0,
-			cursorY: 0,
+			cameraOffset: new Vector2(0, 0),
+			cursorPosition: new Vector2(0, 0),
 			timerGracePeriod: 10000,
 		}
 	})

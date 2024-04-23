@@ -12,6 +12,7 @@ import { useStore } from 'statery'
 import { parseCoordinateString } from '../../helpers/parseCoordinateString.js'
 import { PixiTileMapTile } from '../PixiTileMapTile/PixiTileMapTile.jsx'
 import { store } from '../../store/store.js'
+import { Vector2 } from '../../game/Vector2.js'
 
 
 
@@ -30,10 +31,8 @@ export function PixiTileMap({
 	tilestacks,
 }) {
 	const {
-		cameraOffsetX,
-		cameraOffsetY,
-		cursorX,
-		cursorY,
+		cameraOffset,
+		cursorPosition,
 	} = useStore(store)
 
 	const alpha = useMemo(() => {
@@ -72,39 +71,31 @@ export function PixiTileMap({
 		tilestacks,
 	])
 
-	const x = useMemo(() => {
-		let result = cameraOffsetX
+	const position = useMemo(() => {
+		let result = new Vector2(
+			cameraOffset.x,
+			cameraOffset.y,
+		)
 
 		if (isCursor) {
-			result += cursorX * 16
+			result = Vector2.add(result, new Vector2(
+				cursorPosition.x * 16,
+				cursorPosition.y * 16,
+			))
 		}
 
 		return result
 	}, [
-		cameraOffsetX,
-		cursorX,
-		isCursor,
-	])
-
-	const y = useMemo(() => {
-		let result = cameraOffsetY
-
-		if (isCursor) {
-			result += cursorY * 16
-		}
-
-		return result
-	}, [
-		cameraOffsetY,
-		cursorY,
+		cameraOffset,
+		cursorPosition,
 		isCursor,
 	])
 
 	return (
 		<Container
 			alpha={alpha}
-			x={x}
-			y={y}>
+			x={position.x}
+			y={position.y}>
 			{renderedTilestacks}
 		</Container>
 	)
