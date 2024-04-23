@@ -19,7 +19,7 @@ import { useStore } from 'statery'
 // Local imports
 import { focusOverworldLevel } from '../../store/reducers/focusOverworldLevel.js'
 import { isBlockVisible } from '../../store/reducers/isBlockVisible.js'
-import { replaceScene } from '../../store/reducers/replaceScene.js'
+import { pushScene } from '../../store/reducers/pushScene.js'
 import { SCENES } from '../../data/SCENES.js'
 import { setCurrentMapID } from '../../store/reducers/setCurrentMapID.js'
 import { store } from '../../store/store.js'
@@ -59,7 +59,7 @@ export function PixiOverworldBlock({ block }) {
 			}
 
 			setCurrentMapID(block.name)
-			replaceScene(SCENES.LOADING_MAP)
+			pushScene(SCENES.LOADING_MAP)
 		} else {
 			focusOverworldLevel(block.name, true)
 			setIsFocused(true)

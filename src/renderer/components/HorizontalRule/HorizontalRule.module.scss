@@ -1,0 +1,6 @@
+.horizontal-rule {
+	background-color: hsla(var(--palette-dark-grey-hsl), 0.5);
+	border: none;
+	height: calc(1px * var(--ui-scale));
+	width: 100%;
+}

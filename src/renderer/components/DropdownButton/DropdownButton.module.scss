@@ -1,0 +1,70 @@
+@import '../../styles/functions/generateCornerCutPath';
+
+.chevron {
+	bottom: 0;
+	clip-path: none;
+	position: absolute;
+	right: 0;
+	top: 0;
+
+	&:before {
+		background-color: currentColor;
+		clip-path: polygon(
+			0 0,
+			calc(1px * var(--ui-scale)) 0,
+			calc(1px * var(--ui-scale)) calc(1px * var(--ui-scale)),
+			calc(2px * var(--ui-scale)) calc(1px * var(--ui-scale)),
+			calc(2px * var(--ui-scale)) calc(2px * var(--ui-scale)),
+			calc(3px * var(--ui-scale)) calc(2px * var(--ui-scale)),
+			calc(3px * var(--ui-scale)) calc(1px * var(--ui-scale)),
+			calc(4px * var(--ui-scale)) calc(1px * var(--ui-scale)),
+			calc(4px * var(--ui-scale)) 0,
+			calc(5px * var(--ui-scale)) 0,
+			calc(5px * var(--ui-scale)) calc(1px * var(--ui-scale)),
+			calc(4px * var(--ui-scale)) calc(1px * var(--ui-scale)),
+			calc(4px * var(--ui-scale)) calc(2px * var(--ui-scale)),
+			calc(3px * var(--ui-scale)) calc(2px * var(--ui-scale)),
+			calc(3px * var(--ui-scale)) calc(3px * var(--ui-scale)),
+			calc(2px * var(--ui-scale)) calc(3px * var(--ui-scale)),
+			calc(2px * var(--ui-scale)) calc(2px * var(--ui-scale)),
+			calc(1px * var(--ui-scale)) calc(2px * var(--ui-scale)),
+			calc(1px * var(--ui-scale)) calc(1px * var(--ui-scale)),
+			0 calc(1px * var(--ui-scale)),
+		);
+		content: '';
+		display: block;
+		height: calc(3px * var(--ui-scale));
+		width: calc(5px * var(--ui-scale));
+	}
+}
+
+.expandable-control {
+	align-items: stretch;
+	clip-path: generateCornerCutPath((
+		'clipSize': 3,
+		'uiScale': var(--ui-scale),
+	));
+	display: flex;
+	gap: calc(1px * var(--ui-scale));
+	position: relative;
+	width: 100%;
+
+	button {
+		clip-path: none;
+
+		&:first-child {
+			clip-path: polygon(
+				0 0,
+				calc(100% - calc(12px * var(--ui-scale))) 0,
+				calc(100% - calc(12px * var(--ui-scale))) 100%,
+				0 100%,
+			);
+			flex-grow: 1;
+		}
+
+		&:last-child {
+			flex-grow: 0;
+			width: auto;
+		}
+	}
+}
