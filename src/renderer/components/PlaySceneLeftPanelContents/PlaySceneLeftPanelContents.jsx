@@ -21,6 +21,7 @@ import { PanelHeader } from '../PanelHeader/PanelHeader.jsx'
 import { PanelMenu } from '../Panel/PanelMenu.jsx'
 import { pushScene } from '../../store/reducers/pushScene.js'
 import { SCENES } from '../../data/SCENES.js'
+import { TileQueueVisualiser } from '../TileQueueVisualiser/TileQueueVisualiser.jsx'
 import { Timer } from '../Timer/Timer.jsx'
 
 
@@ -103,9 +104,7 @@ export function PlaySceneLeftPanelContents() {
 					isMonospace />
 			</PanelHeader>
 
-			<div>
-
-			</div>
+			<TileQueueVisualiser />
 
 			<PanelMenu>
 				<ButtonStack>

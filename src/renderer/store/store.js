@@ -49,6 +49,12 @@ export const store = makeStore({
 	/** @type {ControlsManager} */
 	controlsManager: new ControlsManager,
 
+	/** @type {null | string} */
+	currentLoadingCategory: null,
+
+	/** @type {null | string} */
+	currentLoadingItem: null,
+
 	/** @type {null | TileMap} */
 	currentMap: null,
 
@@ -58,11 +64,8 @@ export const store = makeStore({
 	/** @type {null | Vector2Object[]} */
 	currentPath: null,
 
-	/** @type {null | string} */
-	currentLoadingCategory: null,
-
-	/** @type {null | string} */
-	currentLoadingItem: null,
+	/** @type {null | number} */
+	currentQueueIndex: null,
 
 	/** @type {Vector2} */
 	cursorPosition: new Vector2(0, 0),

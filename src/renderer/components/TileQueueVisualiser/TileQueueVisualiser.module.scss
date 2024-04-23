@@ -1,0 +1,11 @@
+.tile-queue-visualiser {
+	flex-grow: 1;
+	flex-shrink: 1;
+	margin-bottom: calc(10px * var(--ui-scale));
+	margin-top: calc(10px * var(--ui-scale));
+	overflow: hidden;
+
+	> * {
+		margin-top: calc(5px * var(--ui-scale));
+	}
+}

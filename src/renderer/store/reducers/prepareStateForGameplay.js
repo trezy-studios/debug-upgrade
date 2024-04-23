@@ -14,6 +14,7 @@ export function prepareStateForGameplay() {
 		return {
 			cameraOffset: new Vector2(0, 0),
 			currentPath: null,
+			currentQueueIndex: 0,
 			cursorPosition: new Vector2(0, 0),
 			isVictorious: false,
 			lastPlaceUpdate: 0,

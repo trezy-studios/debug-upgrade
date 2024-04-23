@@ -1,0 +1,11 @@
+.tilemap-visualiser {
+	.tilemap {
+		position: relative;
+		scale: var(--ui-scale);
+		transform-origin: top left;
+
+		.tile {
+			position: absolute;
+		}
+	}
+}

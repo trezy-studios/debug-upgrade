@@ -12,6 +12,7 @@ export function placeTileset() {
 	store.set(previousState => {
 		const {
 			currentMap,
+			currentQueueIndex,
 			cursorPosition,
 			lastPlaceUpdate,
 		} = previousState
@@ -43,6 +44,7 @@ export function placeTileset() {
 
 		return {
 			currentMap: mergedTileMap,
+			currentQueueIndex: currentQueueIndex + 1,
 			lastPlaceUpdate: now,
 		}
 	})
