@@ -22,8 +22,8 @@ import { Vector2 } from './Vector2.js'
 
 // Types
 /** @typedef {import('../../types/CoordinateString.js').CoordinateString} CoordinateString */
-/** @typedef {import('../../types/TileMapData.js').LayerMap} LayerMap */
-/** @typedef {import('../../types/TileMapData.js').TileConfig} TileConfig */
+/** @typedef {import('../../types/LayerMap.js').LayerMap} LayerMap */
+/** @typedef {import('../../types/TileConfig.js').TileConfig} TileConfig */
 /** @typedef {import('../../types/TileMapData.js').TileMapData} TileMapData */
 /** @typedef {import('../../types/Vector2Object.js').Vector2Object} Vector2Object */
 

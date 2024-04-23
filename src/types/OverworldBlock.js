@@ -5,6 +5,7 @@
  * @property {boolean} [right] Whether the block is connected to conduit at the right.
  * @property {boolean} [top] Whether the block is connected to conduit at the top.
  */
+
 /**
  * @typedef {object} OverworldBlock
  * @property {string} name The name of the block.
