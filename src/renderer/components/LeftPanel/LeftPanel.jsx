@@ -7,7 +7,6 @@ import { useStore } from 'statery'
 
 
 // Local imports
-import { DecoratedHeader } from '../DecoratedHeader/DecoratedHeader.jsx'
 import { getCurrentScene } from '../../store/reducers/getCurrentScene.js'
 import { Panel } from '../Panel/Panel.jsx'
 import { SCENES } from '../../data/SCENES.js'
@@ -54,8 +53,6 @@ export function LeftPanel() {
 
 	return (
 		<Panel variants={PANEL_VARIANTS}>
-			<DecoratedHeader>{'Menu'}</DecoratedHeader>
-
 			<AnimatePresence mode={'wait'}>
 				{(currentScene === SCENES.PLAY) && (
 					<PlaySceneLeftPanelContents key={'PlaySceneLeftPanelContents'} />

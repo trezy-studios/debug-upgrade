@@ -2,6 +2,8 @@
 import { backToScene } from '../../store/reducers/backToScene.js'
 import { Button } from '../Button/Button.jsx'
 import { ButtonStack } from '../ButtonStack/ButtonStack.jsx'
+import { DecoratedHeader } from '../DecoratedHeader/DecoratedHeader.jsx'
+import { PanelHeader } from '../PanelHeader/PanelHeader.jsx'
 import { PanelMenu } from '../Panel/PanelMenu.jsx'
 import { pushScene } from '../../store/reducers/pushScene.js'
 import { SCENES } from '../../data/SCENES.js'
@@ -34,26 +36,32 @@ function handleSettingsClick() {
  */
 export function OverworldSceneLeftPanelContents() {
 	return (
-		<PanelMenu>
-			<ButtonStack>
-				<Button
-					navGroupID={'left panel'}
-					navGroupLinks={navGroupLinks}
-					nodeID={'settings'}
-					onActivate={handleSettingsClick}
-					onClick={handleSettingsClick}>
-					{'Settings'}
-				</Button>
+		<>
+			<PanelHeader key={'panel-header'}>
+				<DecoratedHeader>{'Menu'}</DecoratedHeader>
+			</PanelHeader>
 
-				<Button
-					navGroupID={'left panel'}
-					navGroupLinks={navGroupLinks}
-					nodeID={'main menu'}
-					onActivate={handleMainMenuClick}
-					onClick={handleMainMenuClick}>
-					{'Main Menu'}
-				</Button>
-			</ButtonStack>
-		</PanelMenu>
+			<PanelMenu>
+				<ButtonStack>
+					<Button
+						navGroupID={'left panel'}
+						navGroupLinks={navGroupLinks}
+						nodeID={'settings'}
+						onActivate={handleSettingsClick}
+						onClick={handleSettingsClick}>
+						{'Settings'}
+					</Button>
+
+					<Button
+						navGroupID={'left panel'}
+						navGroupLinks={navGroupLinks}
+						nodeID={'main menu'}
+						onActivate={handleMainMenuClick}
+						onClick={handleMainMenuClick}>
+						{'Main Menu'}
+					</Button>
+				</ButtonStack>
+			</PanelMenu>
+		</>
 	)
 }

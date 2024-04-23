@@ -17,6 +17,7 @@ import { Button } from '../Button/Button.jsx'
 import { ButtonStack } from '../ButtonStack/ButtonStack.jsx'
 import { DropdownButton } from '../DropdownButton/DropdownButton.jsx'
 import { HorizontalRule } from '../HorizontalRule/HorizontalRule.jsx'
+import { PanelHeader } from '../PanelHeader/PanelHeader.jsx'
 import { PanelMenu } from '../Panel/PanelMenu.jsx'
 import { pushScene } from '../../store/reducers/pushScene.js'
 import { SCENES } from '../../data/SCENES.js'
@@ -94,11 +95,17 @@ export function PlaySceneLeftPanelContents() {
 
 	return (
 		<>
-			<Timer
-				isBordered
-				isCentered
-				isLarge
-				isMonospace />
+			<PanelHeader key={'panel-header'}>
+				<Timer
+					isBordered
+					isCentered
+					isLarge
+					isMonospace />
+			</PanelHeader>
+
+			<div>
+
+			</div>
 
 			<PanelMenu>
 				<ButtonStack>
