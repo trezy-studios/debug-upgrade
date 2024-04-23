@@ -11,7 +11,7 @@ import { SCENES } from '../../data/SCENES.js'
 
 
 // Constants
-const navGroupLinks = ['center panel']
+const navGroupLinks = ['left panel']
 
 
 
