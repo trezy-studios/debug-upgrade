@@ -100,6 +100,7 @@ export function LoadingMapSceneCenterPanelContents() {
 					`Loading ${currentMapID}...`,
 				],
 			}])
+			prepareStateForGameplay()
 			return
 		}
 
@@ -182,7 +183,6 @@ export function LoadingMapSceneCenterPanelContents() {
 				})
 				.then(() => wait(1000))
 				.then(() => {
-					prepareStateForGameplay()
 					setIsPreparingQueue(false)
 					setIsDone(true)
 					return null

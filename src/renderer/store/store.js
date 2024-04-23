@@ -17,6 +17,22 @@ import { Vector2 } from '../game/Vector2.js'
 
 
 
+// Types
+/** @typedef {import('pixi.js').Application} PixiApplication */
+/** @typedef {import('pixi.js').Spritesheet} PixiSpritesheet */
+/** @typedef {import('pixi-viewport').Viewport} PixiViewport */
+
+/** @typedef {import('../../types/ControlSchema.js').ControlSchema} ControlSchema */
+/** @typedef {import('../../types/Vector2Object.js').Vector2Object} Vector2Object */
+/** @typedef {import('../../types/Resourcepack.js').Resourcepack} Resourcepack */
+/** @typedef {import('../../types/SaveData.js').SaveData} SaveData */
+/** @typedef {import('../game/TileMap.js').TileMap} TileMap */
+/** @typedef {import('../../types/TileMapData.js').TileMapData} TileMapData */
+
+
+
+
+
 export const store = makeStore({
 	/** @type {boolean} */
 	areAssetsLoaded: false,
@@ -27,19 +43,19 @@ export const store = makeStore({
 	/** @type {Vector2} */
 	cameraOffset: new Vector2(0, 0),
 
-	/** @type {null | import('../../types/ControlSchema.js').ControlSchema[]} */
+	/** @type {null | ControlSchema[]} */
 	controls: null,
 
 	/** @type {ControlsManager} */
 	controlsManager: new ControlsManager,
 
+	/** @type {null | TileMap} */
+	currentMap: null,
+
 	/** @type {null | string} */
 	currentMapID: null,
 
-	/** @type {null | import('../game/TileMap.js').TileMap} */
-	currentMap: null,
-
-	/** @type {null | *[]} */
+	/** @type {null | Vector2Object[]} */
 	currentPath: null,
 
 	/** @type {null | string} */
@@ -47,9 +63,6 @@ export const store = makeStore({
 
 	/** @type {null | string} */
 	currentLoadingItem: null,
-
-	/** @type {number} */
-	currentQueueIndex: 0,
 
 	/** @type {Vector2} */
 	cursorPosition: new Vector2(0, 0),
@@ -69,6 +82,9 @@ export const store = makeStore({
 	/** @type {boolean} */
 	isSettingUpPixi: false,
 
+	/** @type {boolean} */
+	isVictorious: false,
+
 	/** @type {number} */
 	lastPlaceUpdate: 0,
 
@@ -84,13 +100,13 @@ export const store = makeStore({
 	/** @type {number} */
 	now: performance.now(),
 
-	/** @type {null | import('pixi.js').Application} */
+	/** @type {null | PixiApplication} */
 	pixiApp: null,
 
 	/** @type {number} */
 	resolution: 1,
 
-	/** @type {Map<string, import('../../types/Resourcepack.js').Resourcepack>} */
+	/** @type {Map<string, Resourcepack>} */
 	resourcepacks: new Map,
 
 	/** @type {Vector2} */
@@ -99,13 +115,19 @@ export const store = makeStore({
 	/** @type {Vector2} */
 	robotPosition: null,
 
-	/** @type {null | import('../../types/SaveData.js').SaveData} */
+	/** @type {Vector2} */
+	robotPixelPosition: null,
+
+	/** @type {number} */
+	robotSpeed: 0.2,
+
+	/** @type {null | SaveData} */
 	saveData: null,
 
 	/** @type {SCENES[]} */
 	sceneHistory: [SCENES.LOADING_GAME],
 
-	/** @type {Map<string, import('pixi.js').Spritesheet>} */
+	/** @type {Map<string, PixiSpritesheet>} */
 	spritesheetCache: new Map,
 
 	/** @type {number} */
@@ -117,7 +139,7 @@ export const store = makeStore({
 	/** @type {number} */
 	stageWidth: 0,
 
-	/** @type {Map<string, import('../../types/TileMapData.js').TileMapData>} */
+	/** @type {Map<string, TileMapData>} */
 	tilemaps: new Map,
 
 	/** @type {null | number} */
@@ -135,10 +157,13 @@ export const store = makeStore({
 	/** @type {string} */
 	timerString: '00:00',
 
+	/** @type {null | number} */
+	totalMoves: null,
+
 	/** @type {number} */
 	uiScale: /** @type {number} */ (getCSSCustomPropertyValue('ui-scale')),
 
-	/** @type {null | import('pixi-viewport').Viewport} */
+	/** @type {null | PixiViewport} */
 	viewport: null,
 })
 
