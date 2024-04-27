@@ -44,6 +44,8 @@ export function TileMapVisualiser({ tilemap }) {
 			const elementStack = []
 			result.push(elementStack)
 
+			let tileIndex = 0
+
 			for (const tile of tilestack) {
 				const resourcepack = resourcepacks.get(tile.resourcepackID)
 				const texture = resourcepack.tilesSpritesheet.textures[tile.tileID]
@@ -54,6 +56,7 @@ export function TileMapVisualiser({ tilemap }) {
 
 				elementStack.push((
 					<div
+						key={`${coordinateString}::${tileIndex}`}
 						className={styles['tile']}
 						style={{
 							backgroundImage: `url(${baseImageURL})`,
@@ -64,6 +67,8 @@ export function TileMapVisualiser({ tilemap }) {
 							width: texture.frame.width,
 						}} />
 				))
+
+				tileIndex += 1
 			}
 		}
 
