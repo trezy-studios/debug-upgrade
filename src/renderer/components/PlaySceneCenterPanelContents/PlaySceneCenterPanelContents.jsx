@@ -15,6 +15,7 @@ import { useStore } from 'statery'
 // Local imports
 import styles from './PlaySceneCenterPanelContents.module.scss'
 
+import { EndOfRoundScreen } from '../EndOfRoundScreen/EndOfRoundScreen.jsx'
 import { PixiDragManager } from '../PixiDragManager/PixiDragManager.jsx'
 import { PixiGrid } from '../PixiGrid/PixiGrid.jsx'
 import { PixiRobot } from '../PixiRobot/PixiRobot.jsx'
@@ -91,6 +92,8 @@ export function PlaySceneCenterPanelContents() {
 					<PixiRobot />
 				</PixiDragManager>
 			</PixiStage>
+
+			<EndOfRoundScreen />
 		</motion.div>
 	)
 }
