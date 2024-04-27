@@ -33,9 +33,9 @@ export function OverworldSceneCenterPanelContents() {
 
 	const overworldWrapperRef = useRef(null)
 
-	// useEffect(() => {
-	// 	focusOverworldLevel(saveData.lastLevelAccessed)
-	// }, [saveData])
+	useEffect(() => {
+		focusOverworldLevel(saveData.lastLevelAccessed)
+	}, [saveData])
 
 	return (
 		<motion.div
