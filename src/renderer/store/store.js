@@ -125,7 +125,7 @@ export const store = makeStore({
 	robotPixelPosition: null,
 
 	/** @type {number} */
-	robotSpeed: 0.2,
+	robotSpeed: 0.4,
 
 	/** @type {null | SaveData} */
 	saveData: null,
