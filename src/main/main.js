@@ -17,6 +17,7 @@ import { handleGetConfig } from './helpers/handleGetConfig.js'
 import { handleGetSaves } from './helpers/handleGetSaves.js'
 import { handleInitialiseDirectories } from './helpers/handleInitialiseDirectories.js'
 import { handleSetConfig } from './helpers/handleSetConfig.js'
+import { handleUpdateSaveData } from './helpers/handleUpdateSaveData.js'
 import { handleWindowReady } from './helpers/handleWindowReady.js'
 // import { handleDisplayModeChanged } from './helpers/handleDisplayModeChanged.js'
 // import { handleExportTileset } from './helpers/handleExportTileset.js'
@@ -49,8 +50,9 @@ app.on('window-all-closed', handleAllWindowsClosed)
 ipcMain.handle('createSave', handleCreateSave)
 ipcMain.handle('getSaves', handleGetSaves)
 ipcMain.handle('getConfig', handleGetConfig)
-ipcMain.handle('setConfig', handleSetConfig)
 ipcMain.handle('initialiseDirectories', handleInitialiseDirectories)
+ipcMain.handle('setConfig', handleSetConfig)
+ipcMain.handle('updateSaveData', handleUpdateSaveData)
 // ipcMain.handle('exportTileset', handleExportTileset)
 // ipcMain.handle('getContentMeta', handleGetContentMeta)
 // ipcMain.handle('getDisplaysInformation', handleGetDisplaysInformation)

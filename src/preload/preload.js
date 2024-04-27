@@ -8,11 +8,18 @@ import {
 
 
 
+// Types
+/** @typedef {import('../types/SaveData.js').SaveData} SaveData */
+
+
+
+
+
 contextBridge.exposeInMainWorld('IPCBridge', {
 	/**
 	 * Creates a new save file.
 	 *
-	 * @returns {Promise<import('../types/SaveData.js').SaveData>} The save data that was created.
+	 * @returns {Promise<SaveData>} The save data that was created.
 	 */
 	createSave: () => ipcRenderer.invoke('createSave'),
 
@@ -20,7 +27,7 @@ contextBridge.exposeInMainWorld('IPCBridge', {
 	 * Retrieves all save data.
 	 *
 	 * @param {string[]} [saveIDs] An array of IDs to load save data for.
-	 * @returns {Promise<import('../types/SaveData.js').SaveData[]>} An array of data from all saves.
+	 * @returns {Promise<SaveData[]>} An array of data from all saves.
 	 */
 	getSaves: saveIDs => ipcRenderer.invoke('getSaves', saveIDs),
 
@@ -48,4 +55,12 @@ contextBridge.exposeInMainWorld('IPCBridge', {
 	setConfig: (key, value) => {
 		ipcRenderer.invoke('setConfig', key, value)
 	},
+
+	/**
+	 * Updates a save file.
+	 *
+	 * @param {SaveData} saveData The updated save data.
+	 * @returns {Promise<SaveData>} Whether the directories were successfully created.
+	 */
+	updateSaveData: saveData => ipcRenderer.invoke('updateSaveData', saveData),
 })

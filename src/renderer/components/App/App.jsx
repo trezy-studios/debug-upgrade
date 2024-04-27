@@ -7,6 +7,7 @@ import { useStore } from 'statery'
 
 
 // Local imports
+import { Autosave } from '../Autosave/Autosave.jsx'
 import { getCurrentScene } from '../../store/reducers/getCurrentScene.js'
 import { LoadingGameScene } from '../LoadingGameScene/LoadingGameScene.jsx'
 import { MainScene } from '../MainScene/MainScene.jsx'
@@ -54,6 +55,8 @@ export function App() {
 						<MainScene />
 					)}
 				</AnimatePresence>
+
+				<Autosave />
 			</WholePixelContainer>
 			{/* </NavGraphContextProvider> */}
 

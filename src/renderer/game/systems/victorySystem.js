@@ -1,4 +1,5 @@
 // Local imports
+import { markLevelAsComplete } from '../../store/reducers/markLevelAsComplete.js'
 import { store } from '../../store/store.js'
 import { Vector2 } from '../Vector2.js'
 
@@ -22,5 +23,6 @@ export function victorySystem() {
 			isVictorious: true,
 			timerStoppedAt: now,
 		})
+		markLevelAsComplete(currentMap.id)
 	}
 }

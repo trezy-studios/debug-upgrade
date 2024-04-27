@@ -19,6 +19,7 @@ import { DropdownButton } from '../DropdownButton/DropdownButton.jsx'
 import { HorizontalRule } from '../HorizontalRule/HorizontalRule.jsx'
 import { PanelHeader } from '../PanelHeader/PanelHeader.jsx'
 import { PanelMenu } from '../Panel/PanelMenu.jsx'
+import { persistSaveData } from '../../store/reducers/persistSaveData.js'
 import { pushScene } from '../../store/reducers/pushScene.js'
 import { SCENES } from '../../data/SCENES.js'
 import { TileQueueVisualiser } from '../TileQueueVisualiser/TileQueueVisualiser.jsx'
@@ -41,16 +42,19 @@ const EXIT_MENU_VARIANTS = {
 
 /** Fired when the main menu button is clicked. */
 function handleMainMenuClick() {
+	persistSaveData()
 	backToScene(SCENES.MAIN_MENU)
 }
 
 /** Fired when the exit level button is clicked. */
 function handleExitLevelClick() {
+	persistSaveData()
 	pushScene(SCENES.OVERWORLD)
 }
 
 /** Fired when the quit to desktop button is clicked. */
 function handleQuitToDesktopClick() {
+	persistSaveData()
 	console.error('Quit isn\'t implemented yet.')
 	// quitToDesktop()
 }
@@ -63,6 +67,7 @@ function handleRestartLevelClick() {
 
 /** Fired when the settings button is clicked. */
 function handleSettingsClick() {
+	persistSaveData()
 	console.error('Settings aren\'t implemented yet.')
 	// pushScene(SCENES.SETTINGS)
 }

@@ -1,0 +1,37 @@
+@keyframes loader {
+	from {
+		background-position-x: 0;
+	}
+	to {
+		background-position-x: calc(((var(--sprite-frame-size) * var(--ui-scale)) * var(--frame-count)) * -1);
+	}
+}
+
+.autosave {
+	--sprite-frame-size: 32px;
+	--frame-count: 8;
+
+	--render-height: calc(var(--sprite-frame-size) * var(--ui-scale));
+	--render-width: calc(var(--sprite-frame-size) * var(--ui-scale));
+
+	--padding: 5px;
+	--viewport-padding: 5px;
+
+	animation-duration: 1s;
+	animation-timing-function: steps(calc(var(--frame-count)), end);
+	animation-iteration-count: infinite;
+	animation-name: loader;
+
+	background-image: url('sprites/ui/loader2.png');
+	background-position: top left;
+	background-repeat: no-repeat;
+	background-size:
+		calc(var(--render-width) * var(--frame-count))
+		var(--render-height);
+	bottom: calc((var(--viewport-padding) + var(--padding)) * var(--ui-scale));
+	position: absolute;
+	right: calc((var(--viewport-padding) + var(--padding)) * var(--ui-scale));
+	height: var(--render-height);
+	width: var(--render-width);
+	z-index: 100;
+}

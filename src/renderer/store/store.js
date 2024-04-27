@@ -83,6 +83,9 @@ export const store = makeStore({
 	isLoadingAssets: false,
 
 	/** @type {boolean} */
+	isSaving: false,
+
+	/** @type {boolean} */
 	isSettingUpPixi: false,
 
 	/** @type {boolean} */
