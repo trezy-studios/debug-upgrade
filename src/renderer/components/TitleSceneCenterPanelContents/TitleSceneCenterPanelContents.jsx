@@ -1,6 +1,9 @@
 // Module imports
+import {
+	useEffect,
+	useLayoutEffect,
+} from 'react'
 import { motion } from 'framer-motion'
-import { useLayoutEffect } from 'react'
 import { useStore } from 'statery'
 
 
@@ -16,6 +19,7 @@ import { GameTitle } from '../GameTitle/GameTitle.jsx'
 import { pushScene } from '../../store/reducers/pushScene.js'
 import { SCENES } from '../../data/SCENES.js'
 import { store } from '../../store/store.js'
+import { unloadSave } from '../../store/reducers/unloadSave.js'
 import { useNavGraphContext } from '../NavGraph/NavGraphContext.jsx'
 
 
@@ -59,6 +63,10 @@ export function TitleSceneCenterPanelContents() {
 		focusNode,
 		mostRecentSaveID,
 	])
+
+	useEffect(() => {
+		unloadSave()
+	}, [])
 
 	return (
 		<motion.div
