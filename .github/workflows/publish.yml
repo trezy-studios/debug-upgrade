@@ -20,6 +20,9 @@ on:
       - .yarnrc
       - LICENSE
 
+permissions:
+  contents: write
+
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
