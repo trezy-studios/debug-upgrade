@@ -62,7 +62,7 @@ jobs:
         with:
           username: ${{ secrets.steamBuildUsername }}
           configVdf: ${{ secrets.steamBuildConfigVDF }}
-          appId: ${{ env.STEAM_APP_ID }}
+          appId: ${{ vars.STEAM_APP_ID }}
           buildDescription: ${{ inputs.version }}
           rootPath: builds
           depot1Path: win32
