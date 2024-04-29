@@ -97,11 +97,10 @@ jobs:
       - publish-github-release
     with:
       branch: ${{ github.ref_name }}
+      environment: production
       version: ${{ needs.get-next-version.outputs.version }}
       zipPrefix: Debug
     secrets:
-      steamAppID: ${{ secrets.STEAM_APP_ID }}
       steamBuildUsername: ${{ secrets.STEAM_BUILD_USERNAME }}
       steamBuildConfigVDF: ${{ secrets.STEAM_BUILD_CONFIG_VDF }}
-      steamDemoAppID: ${{ secrets.STEAM_DEMO_APP_ID }}
       token: ${{ secrets.GITHUB_TOKEN }}
