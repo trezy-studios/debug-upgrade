@@ -1,0 +1,190 @@
+{
+	"dimensions": {
+		"height": 3,
+		"width": 12
+	},
+	"layers": [
+		{
+			"0|0": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"0|1": {
+				"tileID": "2",
+				"resourcepackID": "default"
+			},
+			"0|2": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"0|3": {
+				"tileID": "21",
+				"resourcepackID": "default"
+			},
+			"1|1": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"1|2": {
+				"tileID": "21",
+				"resourcepackID": "default"
+			},
+			"5|0": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|1": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|2": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"5|3": {
+				"tileID": "21",
+				"resourcepackID": "default"
+			},
+			"6|0": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"6|1": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"6|2": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"6|3": {
+				"tileID": "21",
+				"resourcepackID": "default"
+			},
+			"10|1": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"10|2": {
+				"tileID": "21",
+				"resourcepackID": "default"
+			},
+			"11|0": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"11|1": {
+				"tileID": "7",
+				"resourcepackID": "default"
+			},
+			"11|2": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"11|3": {
+				"tileID": "21",
+				"resourcepackID": "default"
+			}
+		}
+	],
+	"destinations": [
+		{
+			"x": 11,
+			"y": 1
+		}
+	],
+	"startingPosition": {
+		"x": 0,
+		"y": 1
+	},
+	"queue": [
+		{
+			"dimensions": {
+				"height": 1,
+				"width": 3
+			},
+			"layers": [
+				{
+					"0|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"1|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"2|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					}
+				}
+			]
+		},
+		{
+			"dimensions": {
+				"height": 2,
+				"width": 2
+			},
+			"layers": [
+				{
+					"0|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"0|1": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"1|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					}
+				}
+			]
+		},
+		{
+			"dimensions": {
+				"height": 2,
+				"width": 2
+			},
+			"layers": [
+				{
+					"0|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"1|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"1|1": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					}
+				}
+			]
+		},
+		{
+			"dimensions": {
+				"height": 1,
+				"width": 3
+			},
+			"layers": [
+				{
+					"0|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"1|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"2|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					}
+				}
+			]
+		}
+	]
+}

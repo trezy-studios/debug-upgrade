@@ -2,9 +2,9 @@
 	"dependencies": {
 		"default": "0.0.0-development"
 	},
-	"id": "lvl01",
-	"name": "Precondition Required",
-	"description": "Nice & easy.",
+	"id": "lvl02",
+	"name": "Conflict",
+	"description": "There's something in the way...",
 	"type": "maps",
 	"version": "0.0.0-development"
 }
