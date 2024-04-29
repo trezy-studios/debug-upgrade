@@ -98,7 +98,7 @@ jobs:
     with:
       branch: ${{ github.ref_name }}
       version: ${{ needs.get-next-version.outputs.version }}
-      zipPrefix: The-Inn-at-Nightfall
+      zipPrefix: Debug
     secrets:
       steamAppID: ${{ secrets.STEAM_APP_ID }}
       steamBuildUsername: ${{ secrets.STEAM_BUILD_USERNAME }}
