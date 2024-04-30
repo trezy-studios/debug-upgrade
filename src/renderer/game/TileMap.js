@@ -104,7 +104,6 @@ export class TileMap {
 							x,
 							y,
 						},
-						tileStack: [],
 					}
 
 					this.#graph.addNode(coordinateString, nodeData)
@@ -118,7 +117,7 @@ export class TileMap {
 	/**
 	 * Creates tile stacks for each occupied coordinate in the map.
 	 */
-	#generateTileStacks() {
+	#generateTilestacks() {
 		this.#data.layers.forEach(layer => {
 			Object.entries(layer).forEach(([coordinateString, tileData]) => {
 				/** @type {CoordinateString} */
@@ -216,7 +215,7 @@ export class TileMap {
 			if (config.tilestacks) {
 				this.#tilestacks = config.tilestacks
 			} else {
-				this.#generateTileStacks()
+				this.#generateTilestacks()
 			}
 
 			this.#recalculateDimensions()
@@ -262,9 +261,9 @@ export class TileMap {
 	isBlockedAt(x, y) {
 		let isBlocked = false
 
-		const tileStack = this.getTilesAt(x, y)
+		const tilestack = this.getTilesAt(x, y)
 
-		for (const tileData of tileStack) {
+		for (const tileData of tilestack) {
 			if (tileData?.isBlocking || tileData?.isTraversable) {
 				isBlocked = true
 				break
@@ -329,7 +328,7 @@ export class TileMap {
 		this.#meta = meta
 		this.#data = data
 
-		this.#generateTileStacks()
+		this.#generateTilestacks()
 		this.#recalculateDimensions()
 
 		store.set(() => ({
