@@ -1,36 +1,43 @@
 // Module imports
 import {
-	Assets,
-	// BaseTexture,
-	// BufferResource,
-	// Filter,
-	// Texture,
-	// WRAP_MODES,
-} from 'pixi.js'
-import {
-	Container,
-	Sprite,
-} from '@pixi/react'
-// import tinycolor from 'tinycolor2'
-import { useMemo } from 'react'
-import { useStore } from 'statery'
-
-
-
-
+  Assets,
+  // BaseTexture,
+  // BufferResource,
+  Filter,
+  SpriteMaskFilter,
+  Texture,
+  // Texture,
+  // WRAP_MODES,
+} from "pixi.js";
+import { Container, Sprite, useTick } from "@pixi/react";
+import tinycolor from "tinycolor2";
+import { useEffect, useMemo, useRef } from "react";
+import { useStore } from "statery";
 
 // Local imports
-import { isBlockVisible } from '../../store/reducers/isBlockVisible.js'
-import { LEVEL_LAYOUT } from '../../data/LEVEL_LAYOUT.js'
-import { PixiOverworldRouter } from '../PixiOverworldRouter/PixiOverworldRouter.jsx'
-import { PixiOverworldSection } from '../PixiOverworldSection/PixiOverworldSection.jsx'
-// @ts-expect-error This file exists, I've just gotta figure out how to get Typescript to not bitch about glsl files.
-import shader from '../../shaders/OverworldFog.glsl'
-import { store } from '../../store/store.js'
+import { isBlockVisible } from "../../store/reducers/isBlockVisible.js";
+import { LEVEL_LAYOUT } from "../../data/LEVEL_LAYOUT.js";
+import { PixiOverworldRouter } from "../PixiOverworldRouter/PixiOverworldRouter.jsx";
+import { PixiOverworldSection } from "../PixiOverworldSection/PixiOverworldSection.jsx";
+import shader from "../../shaders/OverworldFog.glsl";
+import { store } from "../../store/store.js";
 
-
-
-
+/**
+ * Remaps a value from one range to another.
+ *
+ * @param {number} value The value to be remapped.
+ * @param {number} low1 The low end of the original range.
+ * @param {number} high1 The high end of the original range.
+ * @param {number} low2 The low end of the target range.
+ * @param {number} high2 The high end of the target range.
+ * @returns {number} The remapped value.
+ * @example
+ * const remappedValue = remap(0.5, 0, 1, 0, 100);
+ * console.log(remappedValue); // 50
+ */
+const remap = (value, low1, high1, low2, high2) => {
+  return low2 + ((value - low1) * (high2 - low2)) / (high1 - low1);
+};
 
 /**
  * Renders the overworld.
@@ -38,161 +45,93 @@ import { store } from '../../store/store.js'
  * @component
  */
 export function PixiOverworld() {
-	const {
-		cameraOffset,
-		// resolution,
-		// stageHeight,
-		// stageWidth,
-		// uiScale,
-	} = useStore(store)
+  const { cameraOffset, resolution, stageHeight, stageWidth, uiScale } =
+    useStore(store);
 
-	const blocksToRender = useMemo(() => {
-		return Object
-			.values(LEVEL_LAYOUT.blocks)
-			.filter(blockData => isBlockVisible(blockData.name))
-	}, [])
+  const ref = useRef();
 
-	// const pointsTexture = useMemo(() => {
-	// 	// const data = new Uint8Array(blocksToRender.length * 4)
+  const fogmapBlocksToUnhide = useMemo(() => {
+    const visibleBlocks = Object.values(LEVEL_LAYOUT.blocks).filter(
+      (blockData) => isBlockVisible(blockData.name),
+    );
+    return Array.from(
+      new Set(visibleBlocks.map((blockData) => blockData.fogmap)).values(),
+    );
+  }, []);
 
-	// 	// blocksToRender.map((blockData, index) => {
-	// 	// 	let x = blockData.position.x
-	// 	// 	let y = blockData.position.y
+  const overworldTexture = useMemo(
+    () => Assets.get("overworld::background"),
+    [],
+  );
+  const overworldFogMap = useMemo(() => Assets.get("overworld::fogmap"), []);
 
-	// 	// 	if (blockData.section) {
-	// 	// 		const sectionData = LEVEL_LAYOUT.sections[blockData.section]
-	// 	// 		x += sectionData.position.x
-	// 	// 		y += sectionData.position.y
-	// 	// 	}
+  const { scaledStageHeight, scaledStageWidth } = useMemo(
+    () => ({
+      scaledStageWidth: stageWidth * resolution,
+      scaledStageHeight: stageHeight * resolution,
+    }),
+    [resolution, stageHeight, stageWidth, uiScale],
+  );
 
-	// 	// 	const scaledX = x * uiScale
-	// 	// 	const scaledY = y * uiScale
+  const mappedLayout = useMemo(() => {
+    return Object.values(LEVEL_LAYOUT.sections).map((sectionData) => (
+      <PixiOverworldSection key={sectionData.name} data={sectionData} />
+    ));
+  }, []);
 
-	// 	// 	const normalizedX = scaledX / stageWidth
-	// 	// 	const normalizedY = scaledY / stageHeight
+  const uniforms = useMemo(() => {
+    const color = tinycolor("#30346d").toRgb();
+    const uFogColor = new Uint8Array(4);
+    uFogColor[0] = color.r;
+    uFogColor[1] = color.g;
+    uFogColor[2] = color.b;
+    uFogColor[3] = 255;
 
-	// 	// 	const dataIndex = index * 4
-	// 	// 	data[dataIndex] = normalizedX * 255
-	// 	// 	data[dataIndex + 1] = normalizedY * 255
-	// 	// 	data[dataIndex + 2] = 0
-	// 	// 	data[dataIndex + 3] = 255
-	// 	// })
+    const uFogmapBlocksToUnhide = new Uint8Array(64);
+    for (let i = 0; i < 64; i++) {
+      uFogmapBlocksToUnhide[i] = fogmapBlocksToUnhide[i] || 0;
+    }
 
-	// 	// const buffer = new BufferResource(data, {
-	// 	// 	height: 1,
-	// 	// 	width: blocksToRender.length,
-	// 	// })
+    return {
+      uFogColor,
+      uTime: 0,
+      uFogMap: overworldFogMap,
+      uScale: uiScale,
+      uStageHeight: scaledStageHeight,
+      uStageWidth: scaledStageWidth,
+      uFogmapBlocksToUnhide: fogmapBlocksToUnhide,
+    };
+  }, [
+    fogmapBlocksToUnhide,
+    overworldTexture,
+    overworldFogMap,
+    scaledStageHeight,
+    scaledStageWidth,
+    resolution,
+    uiScale,
+  ]);
 
-	// 	const data = new Uint8Array(8)
-	// 	data[0] = (16 / (stageWidth / resolution)) * 255
-	// 	data[1] = (16 / (stageHeight / resolution)) * 255
-	// 	data[2] = 0
-	// 	data[3] = 255
+  const filters = useMemo(() => {
+    const filter = new Filter(null, shader, uniforms);
+    filter.autoFit = false;
+    return [filter];
+  }, [uniforms]);
 
-	// 	// data[4] = ((32 * uiScale) / stageWidth) * 255
-	// 	// data[5] = ((32 * uiScale) / stageHeight) * 255
-	// 	// data[6] = 0
-	// 	// data[7] = 255
+  // For animation
+  useTick((_, { lastTime }) => {
+    // prevent overflow in shader
+    const adjustedCurrentTimeTime = lastTime % 1e10;
+    const overlayFogFilter = filters[0];
+    overlayFogFilter.uniforms.uTime = adjustedCurrentTimeTime;
+  });
 
-	// 	console.log({data})
+  return (
+    <Container filters={filters} x={cameraOffset.x} y={cameraOffset.y}>
+      <Sprite ref={ref} name={"background"} texture={overworldTexture} />
 
-	// 	const buffer = new BufferResource(data, {
-	// 		height: 1,
-	// 		width: 2,
-	// 	})
+      {mappedLayout}
 
-	// 	// Create PIXI texture from data
-	// 	const baseTexture = new BaseTexture(buffer, { wrapMode: WRAP_MODES.CLAMP })
-
-	// 	return new Texture(baseTexture)
-	// }, [
-	// 	blocksToRender,
-	// 	stageHeight,
-	// 	stageWidth,
-	// ])
-
-	const texture = useMemo(() => Assets.get('overworld::background'), [])
-
-	// const {
-	// 	scaledStageHeight,
-	// 	scaledStageWidth,
-	// } = useMemo(() => ({
-	// 	scaledStageWidth: stageWidth * resolution,
-	// 	scaledStageHeight: stageHeight * resolution,
-	// }), [
-	// 	resolution,
-	// 	stageHeight,
-	// 	stageWidth,
-	// 	uiScale,
-	// ])
-
-	const mappedLayout = useMemo(() => {
-		return Object
-			.values(LEVEL_LAYOUT.sections)
-			.map(sectionData => (
-				<PixiOverworldSection
-					key={sectionData.name}
-					data={sectionData} />
-			))
-	}, [])
-
-	// const uniforms = useMemo(() => {
-	// 	// const color = tinycolor('#30346d').toRgb()
-	// 	const color = tinycolor('red').toRgb()
-	// 	const radius = 2
-
-	// 	const uFogColor = new Uint8Array(4)
-
-	// 	uFogColor[0] = color.r / 255
-	// 	uFogColor[1] = color.g / 255
-	// 	uFogColor[2] = color.b / 255
-	// 	uFogColor[3] = 1
-
-	// 	return {
-	// 		uFogColor,
-	// 		uOffset: [
-	// 			cameraOffsetX, // * resolution * uiScale,
-	// 			cameraOffsetY, // * resolution * uiScale,
-	// 		],
-	// 		uPointsCount: 2, //blocksToRender.length,
-	// 		uPointsTexture: pointsTexture,
-	// 		uRadius: [
-	// 			radius / stageWidth,
-	// 			radius / stageHeight,
-	// 		],
-	// 		uScale: uiScale,
-	// 		uStageHeight: scaledStageHeight,
-	// 		uStageWidth: scaledStageWidth,
-	// 	}
-	// }, [
-	// 	blocksToRender,
-	// 	cameraOffsetX,
-	// 	cameraOffsetY,
-	// 	scaledStageHeight,
-	// 	scaledStageWidth,
-	// 	pointsTexture,
-	// 	resolution,
-	// 	uiScale,
-	// ])
-
-	// const filters = useMemo(() => [new Filter(null, shader, uniforms)], [uniforms])
-
-	return (
-		<Container
-			// filters={filters}
-			x={cameraOffset.x}
-			y={cameraOffset.y}>
-			{/* <Sprite
-				name={'pointsTexture'}
-				scale={10}
-				texture={pointsTexture} /> */}
-			<Sprite
-				name={'background'}
-				texture={texture} />
-
-			{mappedLayout}
-
-			<PixiOverworldRouter />
-		</Container>
-	)
+      <PixiOverworldRouter />
+    </Container>
+  );
 }

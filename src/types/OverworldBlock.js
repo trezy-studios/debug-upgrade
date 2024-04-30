@@ -9,6 +9,7 @@
 /**
  * @typedef {object} OverworldBlock
  * @property {string} name The name of the block.
+ * @property {number=} fogmap Optional, associated fogmap color (0-255) to reveal when the block is unlocked.
  * @property {string} [section] The name of the section to which this block belongs.
  * @property {string[]} [prerequisite] A list of block names which must be completed before this block is available.
  * @property {OverworldBlockConnections} [connections] A mapping of conduit-connected sides.
@@ -19,4 +20,4 @@
  * 	y: number,
  * }} position The coordinates of this block.
  */
-export const OverworldBlock = {}
+export const OverworldBlock = {};
