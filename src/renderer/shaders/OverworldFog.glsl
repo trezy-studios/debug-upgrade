@@ -23,8 +23,9 @@ float easeIn(float t, float b, float c, float d) {
 // fade that color in
 // otherwise show background color
 
-float remap(float value, float low1, float high1, float low2, float high2) {
-	return low2 + (value - low1) * (high2 - low2) / (high1 - low1);
+bool fuzzyMatch(float a, float b) {
+	float epsilon = 1e-4;
+	return abs(a - b) < epsilon;
 }
 
 void main() {
@@ -40,7 +41,9 @@ void main() {
 	bool hidden = true; 
 
 	for (int i = 0; i < 64; i++) {
-		if (fogMapColor.a == 1.0 && fogMapColor.r == uFogmapBlocksToUnhide[i] / 255.0) {
+		bool coveredByFogMap = fogMapColor.a == 1.0;
+		// we need to match with epsilon because of floating point precision
+		if (coveredByFogMap && fuzzyMatch(fogMapColor.r, uFogmapBlocksToUnhide[i] / 255.0)) {
 			hidden = false;
 			break;
 		}

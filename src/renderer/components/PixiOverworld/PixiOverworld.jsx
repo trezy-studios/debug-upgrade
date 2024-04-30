@@ -55,7 +55,7 @@ export function PixiOverworld() {
       (blockData) => isBlockVisible(blockData.name),
     );
     return Array.from(
-      new Set(visibleBlocks.map((blockData) => blockData.fogmap)).values(),
+      new Set(visibleBlocks.map((blockData) => blockData.fogmap || 0)).values(),
     );
   }, []);
 
@@ -91,6 +91,11 @@ export function PixiOverworld() {
     for (let i = 0; i < 64; i++) {
       uFogmapBlocksToUnhide[i] = fogmapBlocksToUnhide[i] || 0;
     }
+
+    console.log({
+      fogmapBlocksToUnhide,
+      uFogmapBlocksToUnhide,
+    });
 
     return {
       uFogColor,

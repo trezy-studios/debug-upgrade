@@ -10,8 +10,6 @@
  * @returns {Promise<*>} The result of the executed promise.
  */
 export function executePromiseWithMinimumDuration(promise, minimumDuration) {
-	// TODO remove (just for testing)
-	minimumDuration = 0;
 	const startedAt = performance.now();
 
 	return new Promise((resolve) => {
