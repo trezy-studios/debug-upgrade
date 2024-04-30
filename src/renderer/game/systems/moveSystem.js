@@ -6,6 +6,25 @@ import { Vector2 } from '../Vector2.js'
 
 
 
+/**
+ * Calculates the current cell along an arbitrary axis based on the position and direction of the movement.
+ *
+ * @param {number} pixelPosition The pixel position along an axis.
+ * @param {number} travelDirection The current direction of travel along the axis.
+ * @returns {number} The axial position of the cell.
+ */
+function calculateAxialCell(pixelPosition, travelDirection) {
+	if (travelDirection < 0) {
+		return Math.ceil(pixelPosition / 16)
+	} else {
+		return Math.floor(pixelPosition / 16)
+	}
+}
+
+
+
+
+
 /** Moves the robot. */
 export function moveSystem() {
 	const { currentPath } = store.state
@@ -27,51 +46,46 @@ export function moveSystem() {
 			totalMoves,
 		} = previousState
 
+		const patch = {
+			totalMoves: totalMoves + 1,
+		}
+
 		let path = currentPath
-		let nextPathSegment = path[0]
-		let nextPathSegmentVector = new Vector2(
-			nextPathSegment.x,
-			nextPathSegment.y,
+		const nextPathSegmentVector = new Vector2(
+			path[0].x,
+			path[0].y,
 		)
 
 		if (Vector2.areEqual(robotPosition, nextPathSegmentVector)) {
 			path = [...currentPath]
 			path.shift()
-			nextPathSegment = path[0]
 
-			if (nextPathSegment) {
-				return {
-					totalMoves: totalMoves + 1,
-					currentPath: path,
-				}
-			}
-
-			return {
-				robotPixelPosition: new Vector2(
+			if (path.length) {
+				patch.currentPath = path
+			} else {
+				patch.currentPath = null
+				patch.robotPixelPosition = new Vector2(
 					previousState.robotPosition.x * 16,
 					previousState.robotPosition.y * 16,
-				),
-				totalMoves: totalMoves + 1,
-				currentPath: null,
+				)
 			}
+		} else {
+			const travelDirection = Vector2.direction(robotPosition, nextPathSegmentVector)
+			const travelDistance = new Vector2(
+				travelDirection.x * robotSpeed,
+				travelDirection.y * robotSpeed,
+			)
+			const newRobotPixelPosition = Vector2.add(robotPixelPosition, travelDistance)
+
+			const newRobotPosition = new Vector2(
+				calculateAxialCell(newRobotPixelPosition.x, travelDirection.x),
+				calculateAxialCell(newRobotPixelPosition.y, travelDirection.y),
+			)
+
+			patch.robotPosition = newRobotPosition
+			patch.robotPixelPosition = newRobotPixelPosition
 		}
 
-		const travelDirection = Vector2.subtract(nextPathSegmentVector, robotPosition)
-		const travelDistance = new Vector2(
-			travelDirection.x * robotSpeed,
-			travelDirection.y * robotSpeed,
-		)
-		const newRobotPixelPosition = Vector2.add(robotPixelPosition, travelDistance)
-		const newRobotPosition = new Vector2(
-			Math.floor(newRobotPixelPosition.x / 16),
-			Math.floor(newRobotPixelPosition.y / 16),
-		)
-
-		return {
-			robotPosition: newRobotPosition,
-			robotPixelPosition: newRobotPixelPosition,
-			totalMoves: previousState.totalMoves + 1,
-			currentPath: path,
-		}
+		return patch
 	})
 }
