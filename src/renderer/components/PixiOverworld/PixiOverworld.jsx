@@ -23,23 +23,6 @@ import shader from "../../shaders/OverworldFog.glsl";
 import { store } from "../../store/store.js";
 
 /**
- * Remaps a value from one range to another.
- *
- * @param {number} value The value to be remapped.
- * @param {number} low1 The low end of the original range.
- * @param {number} high1 The high end of the original range.
- * @param {number} low2 The low end of the target range.
- * @param {number} high2 The high end of the target range.
- * @returns {number} The remapped value.
- * @example
- * const remappedValue = remap(0.5, 0, 1, 0, 100);
- * console.log(remappedValue); // 50
- */
-const remap = (value, low1, high1, low2, high2) => {
-  return low2 + ((value - low1) * (high2 - low2)) / (high1 - low1);
-};
-
-/**
  * Renders the overworld.
  *
  * @component
@@ -91,11 +74,6 @@ export function PixiOverworld() {
     for (let i = 0; i < 64; i++) {
       uFogmapBlocksToUnhide[i] = fogmapBlocksToUnhide[i] || 0;
     }
-
-    console.log({
-      fogmapBlocksToUnhide,
-      uFogmapBlocksToUnhide,
-    });
 
     return {
       uFogColor,

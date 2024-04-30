@@ -18,11 +18,6 @@ float easeIn(float t, float b, float c, float d) {
 	return c * (t /= d) * t + b;
 }
 
-// TODO
-// if color matches transition color in texture
-// fade that color in
-// otherwise show background color
-
 bool fuzzyMatch(float a, float b) {
 	float epsilon = 1e-4;
 	return abs(a - b) < epsilon;
