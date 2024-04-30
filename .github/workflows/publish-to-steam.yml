@@ -6,6 +6,9 @@ on:
       branch:
         required: true
         type: string
+      environment:
+        required: true
+        type: string
       version:
         required: true
         type: string
@@ -17,15 +20,12 @@ on:
         required: true
       steamBuildConfigVDF:
         required: true
-      steamDemoAppID:
-        required: true
-      steamAppID:
-        required: true
       token:
         required: true
 
 jobs:
   publish-to-steam:
+    environment: ${{ inputs.environment }}
     runs-on: ubuntu-latest
     continue-on-error: true
 
@@ -62,7 +62,7 @@ jobs:
         with:
           username: ${{ secrets.steamBuildUsername }}
           configVdf: ${{ secrets.steamBuildConfigVDF }}
-          appId: ${{ inputs.branch == 'demo' && secrets.steamDemoAppID || secrets.steamAppID }}
+          appId: ${{ vars.STEAM_APP_ID }}
           buildDescription: ${{ inputs.version }}
           rootPath: builds
           depot1Path: win32

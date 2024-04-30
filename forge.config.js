@@ -68,8 +68,8 @@ module.exports = {
 	publishers: [
 		new PublisherGithub({
 			repository: {
-				owner: 'Github User or Org username',
-				name: 'Repo',
+				owner: 'trezy-studios',
+				name: 'debug-upgrade',
 			},
 			prerelease: true,
 		}),

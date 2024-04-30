@@ -68,14 +68,14 @@
 		},
 		"10": {
 			"id": "10",
-			"isBlocking": false,
-			"isTraversable": true,
+			"isBlocking": true,
+			"isTraversable": false,
 			"name": "Wall"
 		},
 		"11": {
 			"id": "11",
-			"isBlocking": false,
-			"isTraversable": true,
+			"isBlocking": true,
+			"isTraversable": false,
 			"name": "Wall (Bottom)"
 		},
 		"12": {
@@ -135,7 +135,7 @@
 		"21": {
 			"id": "21",
 			"isBlocking": false,
-			"isTraversable": true,
+			"isTraversable": false,
 			"name": "Shadow"
 		},
 		"22": {
