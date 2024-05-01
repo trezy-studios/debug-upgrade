@@ -37,7 +37,7 @@ export function PixiOverworld() {
 		uiScale,
 	} = useStore(store)
 
-	const ref = useRef()
+	const backgroundColor = '#140c1c'
 
 	const fogmapBlocksToUnhide = useMemo(() => {
 		const visibleBlocks = Object
@@ -72,7 +72,7 @@ export function PixiOverworld() {
 	}, [])
 
 	const uniforms = useMemo(() => {
-		const color = tinycolor('#30346d').toRgb()
+		const color = tinycolor(backgroundColor).toRgb()
 		const uFogColor = new Uint8Array(4)
 		uFogColor[0] = color.r
 		uFogColor[1] = color.g
@@ -125,7 +125,6 @@ export function PixiOverworld() {
 			x={cameraOffset.x}
 			y={cameraOffset.y}>
 			<Sprite
-				ref={ref}
 				name={'background'}
 				texture={overworldTexture} />
 
