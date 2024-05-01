@@ -47,6 +47,53 @@ export class Vector2 {
 	}
 
 	/**
+	 * Determines the direction from one vector to another.
+	 *
+	 * @param {Vector2} vectorA The starting vector.
+	 * @param {Vector2} vectorB The destination vector.
+	 * @returns {Vector2} The distance between the vectors.
+	 */
+	static direction(vectorA, vectorB) {
+		if (!(vectorA instanceof Vector2) || !(vectorB instanceof Vector2)) {
+			throw new TypeError('Cannot subtract non-vectors.')
+		}
+
+		const result = new Vector2(0, 0)
+
+		if (vectorB.x < vectorA.x) {
+			result.x = -1
+		} else if (vectorB.x > vectorA.x) {
+			result.x = 1
+		}
+
+		if (vectorB.y < vectorA.y) {
+			result.y = -1
+		} else if (vectorB.y > vectorA.y) {
+			result.y = 1
+		}
+
+		return result
+	}
+
+	/**
+	 * Determines the distance between 2 vectors.
+	 *
+	 * @param {Vector2} vectorA The starting vector.
+	 * @param {Vector2} vectorB The destination vector.
+	 * @returns {Vector2} The distance between the vectors.
+	 */
+	static distance(vectorA, vectorB) {
+		if (!(vectorA instanceof Vector2) || !(vectorB instanceof Vector2)) {
+			throw new TypeError('Cannot subtract non-vectors.')
+		}
+
+		return new Vector2(
+			Math.abs(vectorB.x - vectorA.x),
+			Math.abs(vectorB.y - vectorA.y),
+		)
+	}
+
+	/**
 	 * Gets the distance between two vectors.
 	 *
 	 * @param {Vector2} vectorA The first vector to be compared.
@@ -86,8 +133,8 @@ export class Vector2 {
 	/**
 	 * Subtracts the values of two vectors.
 	 *
-	 * @param {Vector2} vectorA The first vector to be subtracted.
-	 * @param {Vector2} vectorB The second vector to be subtracted.
+	 * @param {Vector2} vectorA The vector to be subtracted from.
+	 * @param {Vector2} vectorB The vector to subtract.
 	 * @returns {Vector2} A new Vector2 representing the result of the operation.
 	 */
 	static subtract(vectorA, vectorB) {
