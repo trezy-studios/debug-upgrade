@@ -132,7 +132,9 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				bottom: true,
 			},
-			links: ['junction01'],
+			links: [
+				'junction01',
+			],
 			type: 'level',
 			position: {
 				x: 34,
@@ -146,8 +148,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				top: true,
 			},
-			links: ['junction01'],
-			prerequisite: ['lvl01'],
+			links: [
+				'junction01',
+			],
+			prerequisite: [
+				'lvl01',
+			],
 			type: 'level',
 			position: {
 				x: 2,
@@ -161,8 +167,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				top: true,
 			},
-			links: ['junction01'],
-			prerequisite: ['lvl01'],
+			links: [
+				'junction01',
+			],
+			prerequisite: [
+				'lvl01',
+			],
 			type: 'level',
 			position: {
 				x: 66,
@@ -178,7 +188,9 @@ export const LEVEL_LAYOUT = {
 				'lvl03',
 				'section01Lock',
 			],
-			prerequisite: ['lvl01'],
+			prerequisite: [
+				'lvl01',
+			],
 			type: 'junction',
 			position: {
 				x: 40,
@@ -236,7 +248,9 @@ export const LEVEL_LAYOUT = {
 				'lvl04',
 				'lvl06',
 			],
-			prerequisite: ['lvl04'],
+			prerequisite: [
+				'lvl04',
+			],
 			type: 'level',
 			position: {
 				x: 146,
@@ -254,7 +268,9 @@ export const LEVEL_LAYOUT = {
 				'lvl05',
 				'lvl07',
 			],
-			prerequisite: ['lvl05'],
+			prerequisite: [
+				'lvl05',
+			],
 			type: 'level',
 			position: {
 				x: 146,
@@ -267,8 +283,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				right: true,
 			},
-			links: ['lvl06'],
-			prerequisite: ['lvl06'],
+			links: [
+				'lvl06',
+			],
+			prerequisite: [
+				'lvl06',
+			],
 			type: 'level',
 			position: {
 				x: 114,
@@ -288,7 +308,9 @@ export const LEVEL_LAYOUT = {
 				'lvl09',
 				'junction02',
 			],
-			prerequisite: ['lvl04'],
+			prerequisite: [
+				'lvl04',
+			],
 			type: 'level',
 			position: {
 				x: 146,
@@ -301,8 +323,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				right: true,
 			},
-			links: ['lvl08'],
-			prerequisite: ['lvl08'],
+			links: [
+				'lvl08',
+			],
+			prerequisite: [
+				'lvl08',
+			],
 			type: 'level',
 			position: {
 				x: 82,
@@ -320,7 +346,9 @@ export const LEVEL_LAYOUT = {
 				'lvl11',
 				'junction02',
 			],
-			prerequisite: ['lvl08'],
+			prerequisite: [
+				'lvl08',
+			],
 			type: 'level',
 			position: {
 				x: 114,
@@ -333,8 +361,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				top: true,
 			},
-			links: ['lvl10'],
-			prerequisite: ['lvl10'],
+			links: [
+				'lvl10',
+			],
+			prerequisite: [
+				'lvl10',
+			],
 			type: 'level',
 			position: {
 				x: 114,
@@ -347,8 +379,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				left: true,
 			},
-			links: ['junction02'],
-			prerequisite: ['lvl08'],
+			links: [
+				'junction02',
+			],
+			prerequisite: [
+				'lvl08',
+			],
 			type: 'level',
 			position: {
 				x: 178,
@@ -363,7 +399,9 @@ export const LEVEL_LAYOUT = {
 				'lvl10',
 				'lvl12',
 			],
-			prerequisite: ['lvl08'],
+			prerequisite: [
+				'lvl08',
+			],
 			type: 'junction',
 			position: {
 				x: 152,
@@ -394,7 +432,9 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				right: true,
 			},
-			links: ['section02Lock'],
+			links: [
+				'section02Lock',
+			],
 			prerequisite: [
 				'lvl04',
 				'lvl05',
@@ -424,7 +464,9 @@ export const LEVEL_LAYOUT = {
 				'router',
 				'lvl14',
 			],
-			prerequisite: ['section02Boss'],
+			prerequisite: [
+				'section02Boss',
+			],
 			type: 'level',
 			position: {
 				x: 2,
@@ -442,7 +484,9 @@ export const LEVEL_LAYOUT = {
 				'lvl13',
 				'junction03',
 			],
-			prerequisite: ['lvl13'],
+			prerequisite: [
+				'lvl13',
+			],
 			type: 'level',
 			position: {
 				x: 34,
@@ -461,7 +505,9 @@ export const LEVEL_LAYOUT = {
 				'lvl16',
 				'junction03',
 			],
-			prerequisite: ['lvl14'],
+			prerequisite: [
+				'lvl14',
+			],
 			type: 'level',
 			position: {
 				x: 50,
@@ -479,7 +525,9 @@ export const LEVEL_LAYOUT = {
 				'lvl15',
 				'lvl17',
 			],
-			prerequisite: ['lvl15'],
+			prerequisite: [
+				'lvl15',
+			],
 			type: 'level',
 			position: {
 				x: 18,
@@ -492,8 +540,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				bottom: true,
 			},
-			links: ['lvl16'],
-			prerequisite: ['lvl16'],
+			links: [
+				'lvl16',
+			],
+			prerequisite: [
+				'lvl16',
+			],
 			type: 'level',
 			position: {
 				x: 18,
@@ -511,7 +563,9 @@ export const LEVEL_LAYOUT = {
 				'junction03',
 				'junction04',
 			],
-			prerequisite: ['lvl14'],
+			prerequisite: [
+				'lvl14',
+			],
 			type: 'level',
 			position: {
 				x: 50,
@@ -524,8 +578,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				right: true,
 			},
-			links: ['junction04'],
-			prerequisite: ['lvl18'],
+			links: [
+				'junction04',
+			],
+			prerequisite: [
+				'lvl18',
+			],
 			type: 'level',
 			position: {
 				x: 18,
@@ -543,7 +601,9 @@ export const LEVEL_LAYOUT = {
 				'lvl21',
 				'junction04',
 			],
-			prerequisite: ['lvl18'],
+			prerequisite: [
+				'lvl18',
+			],
 			type: 'level',
 			position: {
 				x: 82,
@@ -556,8 +616,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				top: true,
 			},
-			links: ['lvl20'],
-			prerequisite: ['lvl20'],
+			links: [
+				'lvl20',
+			],
+			prerequisite: [
+				'lvl20',
+			],
 			type: 'level',
 			position: {
 				x: 66,
@@ -573,7 +637,9 @@ export const LEVEL_LAYOUT = {
 				'lvl16',
 				'section03Lock',
 			],
-			prerequisite: ['lvl14'],
+			prerequisite: [
+				'lvl14',
+			],
 			type: 'junction',
 			position: {
 				x: 56,
@@ -588,7 +654,9 @@ export const LEVEL_LAYOUT = {
 				'lvl19',
 				'lvl20',
 			],
-			prerequisite: ['lvl18'],
+			prerequisite: [
+				'lvl18',
+			],
 			type: 'junction',
 			position: {
 				x: 56,
@@ -625,7 +693,9 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				left: true,
 			},
-			links: ['section03Lock'],
+			links: [
+				'section03Lock',
+			],
 			prerequisite: [
 				'lvl13',
 				'lvl14',
@@ -658,7 +728,9 @@ export const LEVEL_LAYOUT = {
 				'lvl25',
 				'junction05',
 			],
-			prerequisite: ['section03Boss'],
+			prerequisite: [
+				'section03Boss',
+			],
 			type: 'level',
 			position: {
 				x: 50,
@@ -671,8 +743,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				bottom: true,
 			},
-			links: ['junction05'],
-			prerequisite: ['lvl22'],
+			links: [
+				'junction05',
+			],
+			prerequisite: [
+				'lvl22',
+			],
 			type: 'level',
 			position: {
 				x: 2,
@@ -685,8 +761,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				left: true,
 			},
-			links: ['junction05'],
-			prerequisite: ['lvl22'],
+			links: [
+				'junction05',
+			],
+			prerequisite: [
+				'lvl22',
+			],
 			type: 'level',
 			position: {
 				x: 18,
@@ -706,7 +786,9 @@ export const LEVEL_LAYOUT = {
 				'lvl26',
 				'lvl27',
 			],
-			prerequisite: ['lvl22'],
+			prerequisite: [
+				'lvl22',
+			],
 			type: 'level',
 			position: {
 				x: 82,
@@ -719,8 +801,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				left: true,
 			},
-			links: ['lvl25'],
-			prerequisite: ['lvl25'],
+			links: [
+				'lvl25',
+			],
+			prerequisite: [
+				'lvl25',
+			],
 			type: 'level',
 			position: {
 				x: 114,
@@ -742,7 +828,9 @@ export const LEVEL_LAYOUT = {
 				'lvl29',
 				'lvl30',
 			],
-			prerequisite: ['lvl25'],
+			prerequisite: [
+				'lvl25',
+			],
 			type: 'level',
 			position: {
 				x: 82,
@@ -755,8 +843,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				right: true,
 			},
-			links: ['lvl27'],
-			prerequisite: ['lvl27'],
+			links: [
+				'lvl27',
+			],
+			prerequisite: [
+				'lvl27',
+			],
 			type: 'level',
 			position: {
 				x: 50,
@@ -769,8 +861,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				left: true,
 			},
-			links: ['lvl27'],
-			prerequisite: ['lvl27'],
+			links: [
+				'lvl27',
+			],
+			prerequisite: [
+				'lvl27',
+			],
 			type: 'level',
 			position: {
 				x: 146,
@@ -783,8 +879,12 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				top: true,
 			},
-			links: ['lvl27'],
-			prerequisite: ['lvl27'],
+			links: [
+				'lvl27',
+			],
+			prerequisite: [
+				'lvl27',
+			],
 			type: 'level',
 			position: {
 				x: 82,
@@ -798,7 +898,9 @@ export const LEVEL_LAYOUT = {
 				'lvl23',
 				'lvl24',
 			],
-			prerequisite: ['lvl22'],
+			prerequisite: [
+				'lvl22',
+			],
 			type: 'junction',
 			position: {
 				x: 8,
@@ -835,7 +937,9 @@ export const LEVEL_LAYOUT = {
 			connections: {
 				top: true,
 			},
-			links: ['section04Lock'],
+			links: [
+				'section04Lock',
+			],
 			prerequisite: [
 				'lvl22',
 				'lvl23',

@@ -101,7 +101,7 @@ export function PixiGrid({
 
 	const filters = useMemo(() => [new Filter(null, shader, uniforms)], [uniforms])
 
-  const draw = useCallback(
+	const draw = useCallback(
 		/**
 		 * @param {import('pixi.js').Graphics} graphics The graphics object to be manipulated.
 		 */
@@ -124,9 +124,9 @@ export function PixiGrid({
 }
 
 PixiGrid.propTypes = {
-  lineAlpha: PropTypes.number,
-  lineThickness: PropTypes.number,
-  pitch: PropTypes.shape({
+	lineAlpha: PropTypes.number,
+	lineThickness: PropTypes.number,
+	pitch: PropTypes.shape({
 		x: PropTypes.number,
 		y: PropTypes.number,
 	}),
