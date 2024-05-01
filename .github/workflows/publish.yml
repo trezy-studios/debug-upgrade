@@ -11,13 +11,6 @@ on:
       - .gitignore
       - .yarnrc
       - LICENSE
-  pull_request:
-    paths-ignore:
-      - '**.md'
-      - .editorconfig
-      - .gitignore
-      - .yarnrc
-      - LICENSE
 
 permissions:
   contents: write
