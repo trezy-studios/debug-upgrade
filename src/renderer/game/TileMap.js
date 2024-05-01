@@ -77,6 +77,45 @@ export class TileMap {
 
 
 	/****************************************************************************\
+	 * Constructor
+	\****************************************************************************/
+
+	/**
+	 * Creates a new map.
+	 *
+	 * @param {string} id The ID of the map.
+	 * @param {TileMapData} [config] The map config.
+	 */
+	constructor(id, config) {
+		this.#id = id
+
+		if (config) {
+			this.#data = config
+
+			if (config.destinations) {
+				this.#destinations = /** @type {Vector2[]} */ (config.destinations)
+			}
+
+			if (config.queue) {
+				this.#queue = /** @type {TileMap[]} */ (config.queue)
+			}
+
+			if (config.tilestacks) {
+				this.#tilestacks = config.tilestacks
+			} else {
+				this.#generateTilestacks()
+			}
+
+			this.#recalculateDimensions()
+			this.#generateGraph()
+		}
+	}
+
+
+
+
+
+	/****************************************************************************\
 	 * Private instance methods
 	\****************************************************************************/
 
@@ -189,45 +228,6 @@ export class TileMap {
 
 
 	/****************************************************************************\
-	 * Constructor
-	\****************************************************************************/
-
-	/**
-	 * Creates a new map.
-	 *
-	 * @param {string} id The ID of the map.
-	 * @param {TileMapData} [config] The map config.
-	 */
-	constructor(id, config) {
-		this.#id = id
-
-		if (config) {
-			this.#data = config
-
-			if (config.destinations) {
-				this.#destinations = /** @type {Vector2[]} */ (config.destinations)
-			}
-
-			if (config.queue) {
-				this.#queue = /** @type {TileMap[]} */ (config.queue)
-			}
-
-			if (config.tilestacks) {
-				this.#tilestacks = config.tilestacks
-			} else {
-				this.#generateTilestacks()
-			}
-
-			this.#recalculateDimensions()
-			this.#generateGraph()
-		}
-	}
-
-
-
-
-
-	/****************************************************************************\
 	 * Public instance methods
 	\****************************************************************************/
 
@@ -236,7 +236,7 @@ export class TileMap {
 	 *
 	 * @param {number} x The horizontal axis coordinate.
 	 * @param {number} y The vertical axis coordinate.
-	 * @returns {import('../../types/TileData.js').TileData[]}
+	 * @returns {import('../../types/TileData.js').TileData[]} The tile data for the tilestack at the requested coordinate.
 	 */
 	getTilesAt(x, y) {
 		const tilestack = this.#tilestacks.get(`${x}|${y}`)
@@ -370,7 +370,7 @@ export class TileMap {
 		return this.#dependencies
 	}
 
-	/** @returns {Vector2[]} */
+	/** @returns {Vector2[]} An array of possible destinations for this map. */
 	get destinations() {
 		if (!this.#data) {
 			throw new Error('Cannot access starting position for tilesets')
@@ -416,7 +416,7 @@ export class TileMap {
 		return this.#queue
 	}
 
-	/** @returns {Vector2} */
+	/** @returns {Vector2} The position at which the robot must start. */
 	get startingPosition() {
 		if (!this.#data) {
 			throw new Error('Cannot access starting position for tilesets')

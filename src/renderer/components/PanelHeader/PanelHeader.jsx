@@ -25,12 +25,13 @@ const VARIANTS = {
 /**
  * Renders a panel header.
  *
+ * @component
  * @param {object} props All props.
- * @param {import('react').ReactNode} [props.children] Child components.
+ * @param {import('react').ReactNode} [props.children] The component's children.
  */
-export function PanelHeader(props) {
-	const { children } = props
-
+export function PanelHeader({
+	children = null,
+}) {
 	return (
 		<motion.div
 			animate={'visible'}

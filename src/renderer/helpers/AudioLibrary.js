@@ -129,7 +129,7 @@ export const AudioLibrary = new class AudioLibraryClass {
 	/**
 	 * Loads all audio files.
 	 *
-	 * @param {object} assetData
+	 * @param {object} assetData The asset data for the audio file to be loaded.
 	 */
 	async load(assetData) {
 		if (this.get(assetData.alias)) {

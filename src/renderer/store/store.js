@@ -8,7 +8,7 @@ import { makeStore } from 'statery'
 
 // Local imports
 import { ControlsManager } from '../game/ControlsManager.js'
-import { getCSSCustomPropertyValue } from "../helpers/getCSSCustomPropertyValue.js"
+import { getCSSCustomPropertyValue } from '../helpers/getCSSCustomPropertyValue.js'
 import { IPCBridge } from '../helpers/IPCBridge.js'
 import { SCENES } from '../data/SCENES.js'
 import { Vector2 } from '../game/Vector2.js'

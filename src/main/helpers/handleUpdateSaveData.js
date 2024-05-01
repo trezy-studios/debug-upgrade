@@ -16,7 +16,7 @@ import { getAppDataPath } from './getAppDataPath.js'
 /**
  * Updates a save file.
  *
- * @param {*} _
+ * @param {*} _ Unused.
  * @param {import('../../types/SaveData.js').SaveData} saveData The updates save data.
  */
 export async function handleUpdateSaveData(_, saveData) {

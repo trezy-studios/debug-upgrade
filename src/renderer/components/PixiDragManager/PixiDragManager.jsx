@@ -19,14 +19,12 @@ import { Vector2 } from '../../game/Vector2.js'
 
 
 
-
 /**
  * Manages click-and-drag functionality for the Pixi stage.
  *
  * @component
- *
- * @param {Object} props All props.
- * @param {import('react').ReactNode} [props.children] Children to be rendered.
+ * @param {object} props All props.
+ * @param {import('react').ReactNode} [props.children] The component's children.
  */
 export function PixiDragManager({
 	children = null,

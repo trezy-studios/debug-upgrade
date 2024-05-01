@@ -36,6 +36,8 @@ const VARIANTS = {
 
 /**
  * Renders the items in the tile queue.
+ *
+ * @component
  */
 export function TileQueueVisualiser() {
 	const {
@@ -76,7 +78,10 @@ export function TileQueueVisualiser() {
 				</motion.div>
 			)
 		})
-	}, [currentMap])
+	}, [
+		currentMap,
+		currentQueueIndex,
+	])
 
 	return (
 		<motion.div

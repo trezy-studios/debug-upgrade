@@ -2,8 +2,8 @@
  * Calculates the distance between nodes based on their elements' screen space
  * positions.
  *
- * @param {object} nodeA
- * @param {object} nodeB
+ * @param {object} nodeA The first node to test.
+ * @param {object} nodeB The second node to test.
  * @returns {number} The distance between the two nodes in pixels.
  */
 export function getDistanceBetweenNodes(nodeA, nodeB) {

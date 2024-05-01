@@ -1,8 +1,22 @@
 [
 	{
+		"alias": "uv::test",
+		"displayName": "UV Coordinates Tester",
+		"src": "sprites/uv.png",
+		"type": "sprite",
+		"loadingCategory": "sprites"
+	},
+	{
 		"alias": "overworld::background",
 		"displayName": "Overworld - Background",
 		"src": "sprites/overworld/overworld.background.png",
+		"type": "sprite",
+		"loadingCategory": "sprites"
+	},
+	{
+		"alias": "overworld::fogmap",
+		"displayName": "Overworld - Fogmap",
+		"src": "sprites/overworld/overworld.fogmap.png",
 		"type": "sprite",
 		"loadingCategory": "sprites"
 	},

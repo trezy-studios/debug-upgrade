@@ -1,5 +1,7 @@
 /**
  * Updates the links in a tilemap's graph based on the traversability of its nodes.
+ *
+ * @param {import('ngraph.graph').Graph} graph The graph to be updated.
  */
 export function updateTileMapGraphLinks(graph) {
 	graph.forEachNode(node => {
@@ -37,9 +39,9 @@ export function updateTileMapGraphLinks(graph) {
 				}
 			})
 		} else if (isBlocking) {
-			graph.forEachLinkedNode(node.id, (_, link) =>{
+			graph.forEachLinkedNode(node.id, (_, link) => {
 				graph.removeLink(link)
-			})
+			}, false)
 		}
 	})
 }

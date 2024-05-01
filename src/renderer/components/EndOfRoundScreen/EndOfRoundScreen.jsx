@@ -80,6 +80,7 @@ export function EndOfRoundScreen() {
 			unusedTilesBonus: (currentMap.queue?.length ?? 0) * 1000,
 		}
 	}, [
+		currentMap,
 		isVictorious,
 		timerGracePeriod,
 		timerPathfindingStartedAt,
@@ -110,92 +111,92 @@ export function EndOfRoundScreen() {
 				</motion.div>
 
 				<dl>
-						<motion.dt
-							animate={'visible'}
-							exit={'hidden'}
-							initial={'hidden'}
-							variants={LABEL_VARIANTS}>
-							{'Early Start'}
-						</motion.dt>
-						<motion.dd
-							animate={'visible'}
-							exit={'hidden'}
-							initial={'hidden'}
-							variants={SCORE_VARIANTS}>
-							{`+${earlyStartBonus}`}
-						</motion.dd>
-
-						<motion.dt
-							animate={'visible'}
-							exit={'hidden'}
-							initial={'hidden'}
-							variants={LABEL_VARIANTS}>
-							{'Path Bonus'}
-						</motion.dt>
-						<motion.dd
-							animate={'visible'}
-							exit={'hidden'}
-							initial={'hidden'}
-							variants={SCORE_VARIANTS}>
-							{`+${pathBonus}`}
-						</motion.dd>
-
-						<motion.dt
-							animate={'visible'}
-							exit={'hidden'}
-							initial={'hidden'}
-							variants={LABEL_VARIANTS}>
-							{'Time Bonus'}
-						</motion.dt>
-						<motion.dd
-							animate={'visible'}
-							exit={'hidden'}
-							initial={'hidden'}
-							variants={SCORE_VARIANTS}>
-							{`+${timeBonus}`}
-						</motion.dd>
-
-						<motion.dt
-							animate={'visible'}
-							exit={'hidden'}
-							initial={'hidden'}
-							variants={LABEL_VARIANTS}>
-							{'Unused Tiles'}
-						</motion.dt>
-						<motion.dd
-							animate={'visible'}
-							exit={'hidden'}
-							initial={'hidden'}
-							variants={SCORE_VARIANTS}>
-							{`+${unusedTilesBonus}`}
-						</motion.dd>
-
-						<motion.dt
-							animate={'visible'}
-							exit={'hidden'}
-							initial={'hidden'}
-							variants={LABEL_VARIANTS}>
-							{'Blocking Tiles'}
-						</motion.dt>
-						<motion.dd
-							animate={'visible'}
-							exit={'hidden'}
-							initial={'hidden'}
-							variants={SCORE_VARIANTS}>
-							{`+${blockingTilesBonus}`}
-						</motion.dd>
-					</dl>
-
-					<motion.div
+					<motion.dt
 						animate={'visible'}
-						className={styles['total']}
 						exit={'hidden'}
 						initial={'hidden'}
-						variants={TOTAL_VARIANTS}>
-						<div>{'Total'}</div>
-						<div>{earlyStartBonus + pathBonus + timeBonus + unusedTilesBonus + blockingTilesBonus}</div>
-					</motion.div>
-				</div>
+						variants={LABEL_VARIANTS}>
+						{'Early Start'}
+					</motion.dt>
+					<motion.dd
+						animate={'visible'}
+						exit={'hidden'}
+						initial={'hidden'}
+						variants={SCORE_VARIANTS}>
+						{`+${earlyStartBonus}`}
+					</motion.dd>
+
+					<motion.dt
+						animate={'visible'}
+						exit={'hidden'}
+						initial={'hidden'}
+						variants={LABEL_VARIANTS}>
+						{'Path Bonus'}
+					</motion.dt>
+					<motion.dd
+						animate={'visible'}
+						exit={'hidden'}
+						initial={'hidden'}
+						variants={SCORE_VARIANTS}>
+						{`+${pathBonus}`}
+					</motion.dd>
+
+					<motion.dt
+						animate={'visible'}
+						exit={'hidden'}
+						initial={'hidden'}
+						variants={LABEL_VARIANTS}>
+						{'Time Bonus'}
+					</motion.dt>
+					<motion.dd
+						animate={'visible'}
+						exit={'hidden'}
+						initial={'hidden'}
+						variants={SCORE_VARIANTS}>
+						{`+${timeBonus}`}
+					</motion.dd>
+
+					<motion.dt
+						animate={'visible'}
+						exit={'hidden'}
+						initial={'hidden'}
+						variants={LABEL_VARIANTS}>
+						{'Unused Tiles'}
+					</motion.dt>
+					<motion.dd
+						animate={'visible'}
+						exit={'hidden'}
+						initial={'hidden'}
+						variants={SCORE_VARIANTS}>
+						{`+${unusedTilesBonus}`}
+					</motion.dd>
+
+					<motion.dt
+						animate={'visible'}
+						exit={'hidden'}
+						initial={'hidden'}
+						variants={LABEL_VARIANTS}>
+						{'Blocking Tiles'}
+					</motion.dt>
+					<motion.dd
+						animate={'visible'}
+						exit={'hidden'}
+						initial={'hidden'}
+						variants={SCORE_VARIANTS}>
+						{`+${blockingTilesBonus}`}
+					</motion.dd>
+				</dl>
+
+				<motion.div
+					animate={'visible'}
+					className={styles['total']}
+					exit={'hidden'}
+					initial={'hidden'}
+					variants={TOTAL_VARIANTS}>
+					<div>{'Total'}</div>
+					<div>{earlyStartBonus + pathBonus + timeBonus + unusedTilesBonus + blockingTilesBonus}</div>
+				</motion.div>
+			</div>
 		</motion.div>
 	)
 }

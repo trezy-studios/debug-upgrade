@@ -1,13 +1,10 @@
 // Module imports
 import {
-	Graphics,
-	useApp,
-} from '@pixi/react'
-import {
 	useCallback,
 	useMemo,
 } from 'react'
 import { Filter } from 'pixi.js'
+import { Graphics } from '@pixi/react'
 import PropTypes from 'prop-types'
 import tinycolor from 'tinycolor2'
 import { useStore } from 'statery'
@@ -54,8 +51,6 @@ export function PixiGrid({
 		uiScale,
 	} = useStore(store)
 
-	const pixiApp = useApp()
-
 	const {
 		gridHeight,
 		gridWidth,
@@ -66,7 +61,6 @@ export function PixiGrid({
 		resolution,
 		stageHeight,
 		stageWidth,
-		uiScale,
 	])
 
 	const uniforms = useMemo(() => {
@@ -101,13 +95,13 @@ export function PixiGrid({
 		cameraOffset,
 		pitch.x,
 		pitch.y,
-		pixiApp,
+		resolution,
 		uiScale,
 	])
 
 	const filters = useMemo(() => [new Filter(null, shader, uniforms)], [uniforms])
 
-  const draw = useCallback(
+	const draw = useCallback(
 		/**
 		 * @param {import('pixi.js').Graphics} graphics The graphics object to be manipulated.
 		 */
@@ -130,9 +124,9 @@ export function PixiGrid({
 }
 
 PixiGrid.propTypes = {
-  lineAlpha: PropTypes.number,
-  lineThickness: PropTypes.number,
-  pitch: PropTypes.shape({
+	lineAlpha: PropTypes.number,
+	lineThickness: PropTypes.number,
+	pitch: PropTypes.shape({
 		x: PropTypes.number,
 		y: PropTypes.number,
 	}),

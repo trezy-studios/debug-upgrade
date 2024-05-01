@@ -49,7 +49,7 @@ function handleNewGameClick() {
  * @component
  */
 export function TitleSceneCenterPanelContents() {
-  const { mostRecentSaveID } = useStore(store)
+	const { mostRecentSaveID } = useStore(store)
 
 	const { focusNode } = useNavGraphContext()
 

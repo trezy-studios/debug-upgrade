@@ -9,6 +9,8 @@ import { Heading } from '../Heading/Heading.jsx'
 
 /**
  * Renders the game's title.
+ *
+ * @component
  */
 export function GameTitle() {
 	return (

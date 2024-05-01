@@ -12,18 +12,19 @@ import styles from './PanelMenu.module.scss'
 
 
 
-export function PanelMenu(props) {
-	const { children } = props
-
+/**
+ * @component
+ * @param {object} props All props.
+ * @param {import('react').ReactNode} [props.children] The component's children.
+ */
+export function PanelMenu({
+	children = null,
+}) {
 	return (
 		<div className={styles['panel-menu']}>
 			{children}
 		</div>
 	)
-}
-
-PanelMenu.defaultProps = {
-	children: null,
 }
 
 PanelMenu.propTypes = {

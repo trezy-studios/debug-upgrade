@@ -21,13 +21,12 @@ import packageData from '../../../package.json'
  * Creates a new window.
  */
 export async function createWindow() {
-	let display
 	const displayMode = await configStore.get('settings::graphics::displayMode')
 	// const preferredDisplay = await configStore.get('settings.graphics.preferredDisplay')
 
 	// Get the resolution of the current screen.
 	// if (preferredDisplay === 'primary') {
-		display = screen.getPrimaryDisplay()
+	const display = screen.getPrimaryDisplay()
 	// }
 
 	const mainWindow = new BrowserWindow({

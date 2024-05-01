@@ -9,6 +9,7 @@ import {
 	useState,
 } from 'react'
 import createGraph from 'ngraph.graph'
+import PropTypes from 'prop-types'
 // import { useStore } from 'statery'
 
 
@@ -28,14 +29,14 @@ import { getDistanceBetweenNodes } from '../../helpers/getDistanceBetweenNodes.j
 /** @typedef {import('ngraph.graph').NodeId} NodeID */
 /**
  * @typedef {object} ContextValue
- * @property {Function} activateNode
- * @property {Function} createLink
- * @property {Function} createNode
- * @property {NodeID} currentTargetNodeID
- * @property {Function} deactivateNode
- * @property {Function} destroyNode
- * @property {Function} focusNode
- * @property {import('ngraph.graph').Graph} graph
+ * @property {Function} [activateNode] Activate a node
+ * @property {Function} [createLink] Creates a link between two nodes.
+ * @property {Function} [createNode] Creates a new node and adds it to the graph. This will also create the node's group (if it doesn't exist yet) and link the node to the group.
+ * @property {NodeID | null} currentTargetNodeID The ID of the currently targeted node.
+ * @property {Function} [deactivateNode] Deactivate a node.
+ * @property {Function} [destroyNode] Destroys a node, removing it from the graph.
+ * @property {Function} [focusNode] Transfer focus to a node.
+ * @property {import('ngraph.graph').Graph | null} graph The graph.
  */
 
 
@@ -48,11 +49,17 @@ const NavGraphContext = createContext({
 	currentTargetNodeID: null,
 	graph: null,
 
+	// eslint-disable-next-line jsdoc/require-jsdoc
 	activateNode: () => {},
+	// eslint-disable-next-line jsdoc/require-jsdoc
 	createLink: () => {},
+	// eslint-disable-next-line jsdoc/require-jsdoc
 	createNode: () => {},
+	// eslint-disable-next-line jsdoc/require-jsdoc
 	deactivateNode: () => {},
+	// eslint-disable-next-line jsdoc/require-jsdoc
 	destroyNode: () => {},
+	// eslint-disable-next-line jsdoc/require-jsdoc
 	focusNode: () => {},
 })
 
@@ -60,9 +67,15 @@ const NavGraphContext = createContext({
 
 
 
-export function NavGraphContextProvider(props) {
-	const { children } = props
-
+/**
+ *
+ * @component
+ * @param {object} props All props.
+ * @param {import('react').ReactNode} [props.children] The component's children.
+ */
+export function NavGraphContextProvider({
+	children = null,
+}) {
 	// const { controlsManager } = useStore(store)
 
 	const [axes, setAxes] = useState({
@@ -78,7 +91,7 @@ export function NavGraphContextProvider(props) {
 		},
 	})
 	const [currentTargetNodeID, setCurrentTargetNodeID] = useState(null)
-	const [gamepadUpdate, setGamepadUpdate] = useState({})
+	// const [gamepadUpdate, setGamepadUpdate] = useState({})
 	const [graph] = useState(createGraph())
 
 	/** Traverses the graph to find adjacent nodes. */
@@ -89,7 +102,7 @@ export function NavGraphContextProvider(props) {
 		 * @param {Set<NodeID>} [options.checkedNodes] A set of nodes that have already been checked. Prevents duplicate checking and infinite loops.
 		 * @param {NodeID} [options.originNodeID] The ID of the node to start from.
 		 * @param {NodeID} options.sourceNodeID The ID of the node from which this test was started.
-		 * @returns {Set<NodeID> | NodeID[]}
+		 * @returns {Set<NodeID> | NodeID[]} The IDs of adjacent nodes.
 		 */
 		options => {
 			const {
@@ -143,7 +156,6 @@ export function NavGraphContextProvider(props) {
 		[graph],
 	)
 
-	/** Activate a node. */
 	const activateNode = useCallback(
 		/**
 		 * @param {string} nodeID The ID of the node to be activated.
@@ -158,7 +170,6 @@ export function NavGraphContextProvider(props) {
 		[graph],
 	)
 
-	/** Deactivate a node. */
 	const deactivateNode = useCallback(
 		/**
 		 * @param {string} nodeID The ID of the node to be deactivated.
@@ -173,7 +184,6 @@ export function NavGraphContextProvider(props) {
 		[graph],
 	)
 
-	/** Creates a link between two nodes. */
 	const createLink = useCallback(
 		/**
 		 * @param {string} nodeIDA The node from which the link will be created.
@@ -187,7 +197,6 @@ export function NavGraphContextProvider(props) {
 		[graph],
 	)
 
-	/** Creates a new node and adds it to the graph. This will also create the node's group (if it doesn't exist yet) and link the node to the group. */
 	const createNode = useCallback(
 		/**
 		 * @param {import('../../../types/NavGraphNodeOptions.js').NavGraphNodeOptions} options Options for the node to be created.
@@ -203,7 +212,7 @@ export function NavGraphContextProvider(props) {
 				targetRef,
 			} = options
 
-			let nodeProps = {
+			const nodeProps = {
 				groupID,
 				onActivate,
 				onDeactivate,
@@ -212,7 +221,7 @@ export function NavGraphContextProvider(props) {
 			}
 
 			if (!groupID || !targetRef || (typeof onActivate !== 'function')) {
-				return null
+				return
 			}
 
 			if (!groupID) {
@@ -268,10 +277,9 @@ export function NavGraphContextProvider(props) {
 		[
 			createLink,
 			graph,
-		]
+		],
 	)
 
-	/** Destroys a node, removing it from the graph. */
 	const destroyNode = useCallback(
 		/**
 		 * @param {string} nodeID The ID of the node to be destroyed.
@@ -327,10 +335,9 @@ export function NavGraphContextProvider(props) {
 				graph.removeNode(groupNodeID)
 			}
 		},
-		[graph]
+		[graph],
 	)
 
-	/** Transfer focus to a node. */
 	const focusNode = useCallback(
 		/**
 		 * @param {NodeID} nodeID The ID of the node to transfer focus to.
@@ -340,7 +347,7 @@ export function NavGraphContextProvider(props) {
 				return
 			}
 
-			let node = graph.getNode(nodeID)
+			const node = graph.getNode(nodeID)
 
 			const {
 				defaultTarget,
@@ -365,131 +372,125 @@ export function NavGraphContextProvider(props) {
 		[
 			graph,
 			setCurrentTargetNodeID,
-		]
+		],
 	)
 
 	/** Fired when a gamepad's joystick axis has changed. */
-	const handleAxisChanged = useCallback(event => {
-		const {
-			index,
-			state,
-		} = event
+	// const handleAxisChanged = useCallback(event => {
+	// 	const {
+	// 		index,
+	// 		state,
+	// 	} = event
 
-		const absoluteState = Math.abs(state)
-		const axisKey = [0, 2].includes(index) ? 'x' : 'y'
-		const axisIsActivated = axes[axisKey]?.isActivated
+	// 	const absoluteState = Math.abs(state)
+	// 	const axisKey = [0, 2].includes(index) ? 'x' : 'y'
+	// 	const axisIsActivated = axes[axisKey]?.isActivated
 
-		if (!axisIsActivated && (absoluteState > 0.5)) {
-			setAxes(previousState => {
-				return {
-					...previousState,
-					[axisKey]: {
-						direction: Math.sign(state),
-						isActivated: true,
-						isHandled: false,
-					},
-				}
-			})
-		} else if (axisIsActivated && (absoluteState < 0.5)) {
-			setAxes(previousState => {
-				return {
-					...previousState,
-					[axisKey]: {
-						isActivated: false,
-						isHandled: false,
-					},
-				}
-			})
-		}
-	}, [
-		activateNode,
-		axes,
-		currentTargetNodeID,
-		graph,
-	])
+	// 	if (!axisIsActivated && (absoluteState > 0.5)) {
+	// 		setAxes(previousState => {
+	// 			return {
+	// 				...previousState,
+	// 				[axisKey]: {
+	// 					direction: Math.sign(state),
+	// 					isActivated: true,
+	// 					isHandled: false,
+	// 				},
+	// 			}
+	// 		})
+	// 	} else if (axisIsActivated && (absoluteState < 0.5)) {
+	// 		setAxes(previousState => {
+	// 			return {
+	// 				...previousState,
+	// 				[axisKey]: {
+	// 					isActivated: false,
+	// 					isHandled: false,
+	// 				},
+	// 			}
+	// 		})
+	// 	}
+	// }, [axes])
 
 	/** Fired when a gamepad button is pressed. */
-	const handleButtonPressed = useCallback(event => {
-		const { index } = event
+	// const handleButtonPressed = useCallback(event => {
+	// 	const { index } = event
 
-		if (index === 0) {
-			return activateNode(currentTargetNodeID)
-		}
+	// 	if (index === 0) {
+	// 		return activateNode(currentTargetNodeID)
+	// 	}
 
-		if (index === 1) {
-			return deactivateNode(currentTargetNodeID)
-		}
+	// 	if (index === 1) {
+	// 		return deactivateNode(currentTargetNodeID)
+	// 	}
 
-		let axis = null
-		let direction = null
+	// 	let axis = null
+	// 	let direction = null
 
-		// D-pad Up
-		if (index === 12) {
-			axis = 'y'
-			direction = -1
+	// 	// D-pad Up
+	// 	if (index === 12) {
+	// 		axis = 'y'
+	// 		direction = -1
 
-		// D-pad Down
-		} else if (index === 13) {
-			axis = 'y'
-			direction = 1
+	// 	// D-pad Down
+	// 	} else if (index === 13) {
+	// 		axis = 'y'
+	// 		direction = 1
 
-		// D-pad Left
-		} else if (index === 14) {
-			axis = 'x'
-			direction = -1
+	// 	// D-pad Left
+	// 	} else if (index === 14) {
+	// 		axis = 'x'
+	// 		direction = -1
 
-		// D-pad Right
-		} else if (index === 15) {
-			axis = 'x'
-			direction = 1
-		}
+	// 	// D-pad Right
+	// 	} else if (index === 15) {
+	// 		axis = 'x'
+	// 		direction = 1
+	// 	}
 
-		if (axis && direction) {
-			setAxes(previousState => ({
-				...previousState,
-				[axis]: {
-					direction,
-					isActivated: true,
-					isHandled: false,
-				},
-			}))
-		}
-	}, [
-		activateNode,
-		currentTargetNodeID,
-		deactivateNode,
-		graph,
-		setAxes,
-	])
+	// 	if (axis && direction) {
+	// 		setAxes(previousState => ({
+	// 			...previousState,
+	// 			[axis]: {
+	// 				direction,
+	// 				isActivated: true,
+	// 				isHandled: false,
+	// 			},
+	// 		}))
+	// 	}
+	// }, [
+	// 	activateNode,
+	// 	currentTargetNodeID,
+	// 	deactivateNode,
+	// 	setAxes,
+	// ])
 
 	/** Fired when a gamepad button is released. */
-	const handleButtonReleased = useCallback(event => {
-		const { index } = event
+	// const handleButtonReleased = useCallback(event => {
+	// 	const { index } = event
 
-		let axis = null
+	// 	let axis = null
 
-		// D-pad Up/Down
-		if ([12, 13].includes(index)) {
-			axis = 'x'
+	// 	// D-pad Up/Down
+	// 	if ([12, 13].includes(index)) {
+	// 		axis = 'x'
 
-		// D-pad Right/Left
-		} else if ([14, 15].includes(index)) {
-			axis = 'y'
-		}
+	// 	// D-pad Right/Left
+	// 	} else if ([14, 15].includes(index)) {
+	// 		axis = 'y'
+	// 	}
 
-		if (axis) {
-			setAxes(previousState => ({
-				...previousState,
-				[axis]: {
-					isActivated: false,
-					isHandled: false,
-				},
-			}))
-		}
-	}, [setAxes])
+	// 	if (axis) {
+	// 		setAxes(previousState => ({
+	// 			...previousState,
+	// 			[axis]: {
+	// 				isActivated: false,
+	// 				isHandled: false,
+	// 			},
+	// 		}))
+	// 	}
+	// }, [setAxes])
 
 	/** Fired when a gamepad is connected of disconnected. Forces an update for things that depend on gamepads. */
-	const handleGamepadChange = useCallback(() => setGamepadUpdate({}), [setGamepadUpdate])
+	// const handleGamepadChange = useCallback(() => setGamepadUpdate({}), [setGamepadUpdate])
 
 	// /**
 	//  * Binds all events we need to react to on a gamepad.
@@ -603,10 +604,9 @@ export function NavGraphContextProvider(props) {
 
 								// Moving left
 								return currentNodeBoundingRect.right > boundingRect.right
-							}
+								// Vertical axis
 
-							// Vertical axis
-							if (axisKey === 'y') {
+							} else if (axisKey === 'y') {
 								// Moving down
 								if (direction === 1) {
 									return currentNodeBoundingRect.top < boundingRect.top
@@ -615,6 +615,8 @@ export function NavGraphContextProvider(props) {
 								// Moving up
 								return currentNodeBoundingRect.bottom > boundingRect.bottom
 							}
+
+							return false
 						})
 						.reduce((accumulator, node) => {
 							if (accumulator === null) {
@@ -655,9 +657,6 @@ export function NavGraphContextProvider(props) {
 		setAxes,
 	])
 
-	// @ts-ignore
-	window.navGraph = graph
-
 	return (
 		<NavGraphContext.Provider value={providerValue}>
 			{children}
@@ -665,8 +664,14 @@ export function NavGraphContextProvider(props) {
 	)
 }
 
+NavGraphContextProvider.propTypes = {
+	children: PropTypes.node,
+}
+
 /**
  * Allows access to the internals of the NavGraph Context.
+ *
+ * @returns {ContextValue} The current context state.
  */
 export function useNavGraphContext() {
 	return useContext(NavGraphContext)
@@ -675,7 +680,9 @@ export function useNavGraphContext() {
 /**
  * Adds a component to the nav graph.
  *
+ * @component
  * @param {import('../../../types/NavGraphNodeOptions.js').NavGraphNodeOptions} options All options.
+ * @param {*[]} dependencies All dependencies.
  */
 export function useNavGraphNode(options, dependencies = []) {
 	const internalID = useID()
@@ -697,22 +704,26 @@ export function useNavGraphNode(options, dependencies = []) {
 		destroyNode,
 	} = useNavGraphContext()
 
-	useLayoutEffect(() => {
-		createNode({
-			groupID,
-			id,
-			isDefault,
-			onActivate,
-			onDeactivate,
-			onFocus,
-			targetRef,
-		})
+	useLayoutEffect(
+		() => {
+			createNode({
+				groupID,
+				id,
+				isDefault,
+				onActivate,
+				onDeactivate,
+				onFocus,
+				targetRef,
+			})
 
-		groupLinks.forEach(targetNodeID => {
-			createLink(groupID, targetNodeID)
-			createLink(targetNodeID, groupID)
-		})
+			groupLinks.forEach(targetNodeID => {
+				createLink(groupID, targetNodeID)
+				createLink(targetNodeID, groupID)
+			})
 
-		return () => destroyNode(id)
-	}, dependencies)
+			return () => destroyNode(id)
+		},
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+		dependencies,
+	)
 }
