@@ -1,18 +1,18 @@
 // Module imports
 import {
-	Assets,
-	Filter,
-} from 'pixi.js'
-import {
 	Container,
 	Sprite,
 	useTick,
 } from '@pixi/react'
+
+import tinycolor from 'tinycolor2'
+
+import {
+	Assets, Filter,
+ } from 'pixi.js'
 import {
 	useMemo,
-	useRef,
 } from 'react'
-import tinycolor from 'tinycolor2'
 import { useStore } from 'statery'
 
 // Local imports
@@ -35,9 +35,8 @@ export function PixiOverworld() {
 		stageHeight,
 		stageWidth,
 		uiScale,
+		fogBackgroundColor,
 	} = useStore(store)
-
-	const backgroundColor = '#140c1c'
 
 	const fogmapBlocksToUnhide = useMemo(() => {
 		const visibleBlocks = Object
@@ -72,7 +71,7 @@ export function PixiOverworld() {
 	}, [])
 
 	const uniforms = useMemo(() => {
-		const color = tinycolor(backgroundColor).toRgb()
+		const color = tinycolor(fogBackgroundColor).toRgb()
 		const uFogColor = new Uint8Array(4)
 		uFogColor[0] = color.r
 		uFogColor[1] = color.g
@@ -103,6 +102,7 @@ export function PixiOverworld() {
 		scaledStageHeight,
 		scaledStageWidth,
 		uiScale,
+		fogBackgroundColor,
 	])
 
 	const filters = useMemo(() => {

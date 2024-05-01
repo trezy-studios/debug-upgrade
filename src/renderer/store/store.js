@@ -169,6 +169,9 @@ export const store = makeStore({
 	/** @type {number} */
 	uiScale: /** @type {number} */ (getCSSCustomPropertyValue('ui-scale')),
 
+	/** @type {string} */
+	fogBackgroundColor: /** @type {string} */ (getCSSCustomPropertyValue('palette-black')),
+
 	/** @type {null | PixiViewport} */
 	viewport: null,
 })
