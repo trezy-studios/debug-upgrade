@@ -128,6 +128,7 @@ export const LEVEL_LAYOUT = {
 		lvl01: {
 			name: 'lvl01',
 			section: 'section01',
+			fogmap: 255,
 			connections: {
 				bottom: true,
 			},
@@ -143,6 +144,7 @@ export const LEVEL_LAYOUT = {
 		lvl02: {
 			name: 'lvl02',
 			section: 'section01',
+			fogmap: 200,
 			connections: {
 				top: true,
 			},
@@ -161,6 +163,7 @@ export const LEVEL_LAYOUT = {
 		lvl03: {
 			name: 'lvl03',
 			section: 'section01',
+			fogmap: 200,
 			connections: {
 				top: true,
 			},
@@ -204,7 +207,7 @@ export const LEVEL_LAYOUT = {
 			type: 'lock',
 			position: {
 				x: 34,
-				y: 66	,
+				y: 66,
 			},
 		},
 
