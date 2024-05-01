@@ -2,8 +2,7 @@
 import { ACTIONS } from './ACTIONS.js'
 import { moveCursor } from '../store/reducers/moveCursor.js'
 import { placeTileset } from '../store/reducers/placeTileset.js'
-// import { skipGracePeriod } from '../store/reducers/skipGracePeriod.js'
-// import { store } from '../store/store.js'
+import { skipGracePeriod } from '../store/reducers/skipGracePeriod.js'
 
 
 
@@ -26,7 +25,7 @@ export const ACTION_HANDLERS = {
 	[ACTIONS.PLACE_TILESET]: () => placeTileset(),
 
 	// eslint-disable-next-line jsdoc/require-jsdoc
-	[ACTIONS.SKIP_TIMER]: () => /* skipGracePeriod() */{},
+	[ACTIONS.SKIP_TIMER]: () => skipGracePeriod(),
 
 	// eslint-disable-next-line jsdoc/require-jsdoc
 	[ACTIONS.PAUSE]: () => {
