@@ -10,24 +10,23 @@
  * @returns {Promise<*>} The result of the executed promise.
  */
 export function executePromiseWithMinimumDuration(promise, minimumDuration) {
-	const startedAt = performance.now();
+	const startedAt = performance.now()
 
-	return new Promise((resolve) => {
-		if (typeof promise === "function") {
-			promise = promise();
+	return new Promise(resolve => {
+		if (typeof promise === 'function') {
+			promise = promise()
 		}
 
 		// eslint-disable-next-line promise/catch-or-return
-		promise.then((result) => {
-			const remainingDuration =
-				minimumDuration - (performance.now() - startedAt);
+		promise.then(result => {
+			const remainingDuration = minimumDuration - (performance.now() - startedAt)
 
 			// eslint-disable-next-line promise/always-return
 			if (remainingDuration) {
-				setTimeout(() => resolve(result), remainingDuration);
+				setTimeout(() => resolve(result), remainingDuration)
 			} else {
-				resolve(result);
+				resolve(result)
 			}
-		});
-	});
+		})
+	})
 }

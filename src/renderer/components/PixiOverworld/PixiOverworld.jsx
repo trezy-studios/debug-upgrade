@@ -1,26 +1,27 @@
 // Module imports
 import {
-  Assets,
-  // BaseTexture,
-  // BufferResource,
-  Filter,
-  SpriteMaskFilter,
-  Texture,
-  // Texture,
-  // WRAP_MODES,
-} from "pixi.js";
-import { Container, Sprite, useTick } from "@pixi/react";
-import tinycolor from "tinycolor2";
-import { useEffect, useMemo, useRef } from "react";
-import { useStore } from "statery";
+	Assets,
+	Filter,
+} from 'pixi.js'
+import {
+	Container,
+	Sprite,
+	useTick,
+} from '@pixi/react'
+import {
+	useMemo,
+	useRef,
+} from 'react'
+import tinycolor from 'tinycolor2'
+import { useStore } from 'statery'
 
 // Local imports
-import { isBlockVisible } from "../../store/reducers/isBlockVisible.js";
-import { LEVEL_LAYOUT } from "../../data/LEVEL_LAYOUT.js";
-import { PixiOverworldRouter } from "../PixiOverworldRouter/PixiOverworldRouter.jsx";
-import { PixiOverworldSection } from "../PixiOverworldSection/PixiOverworldSection.jsx";
-import shader from "../../shaders/OverworldFog.glsl";
-import { store } from "../../store/store.js";
+import { isBlockVisible } from '../../store/reducers/isBlockVisible.js'
+import { LEVEL_LAYOUT } from '../../data/LEVEL_LAYOUT.js'
+import { PixiOverworldRouter } from '../PixiOverworldRouter/PixiOverworldRouter.jsx'
+import { PixiOverworldSection } from '../PixiOverworldSection/PixiOverworldSection.jsx'
+import shader from '../../shaders/OverworldFog.glsl'
+import { store } from '../../store/store.js'
 
 /**
  * Renders the overworld.
@@ -28,93 +29,109 @@ import { store } from "../../store/store.js";
  * @component
  */
 export function PixiOverworld() {
-  const { cameraOffset, resolution, stageHeight, stageWidth, uiScale } =
-    useStore(store);
+	const {
+		cameraOffset,
+		resolution,
+		stageHeight,
+		stageWidth,
+		uiScale,
+	} = useStore(store)
 
-  const ref = useRef();
+	const ref = useRef()
 
-  const fogmapBlocksToUnhide = useMemo(() => {
-    const visibleBlocks = Object.values(LEVEL_LAYOUT.blocks).filter(
-      (blockData) => isBlockVisible(blockData.name),
-    );
-    return Array.from(
-      new Set(visibleBlocks.map((blockData) => blockData.fogmap || 0)).values(),
-    );
-  }, []);
+	const fogmapBlocksToUnhide = useMemo(() => {
+		const visibleBlocks = Object
+			.values(LEVEL_LAYOUT.blocks)
+			.filter(blockData => isBlockVisible(blockData.name))
 
-  const overworldTexture = useMemo(
-    () => Assets.get("overworld::background"),
-    [],
-  );
-  const overworldFogMap = useMemo(() => Assets.get("overworld::fogmap"), []);
+		return Array.from(new Set(visibleBlocks.map(blockData => blockData.fogmap || 0)).values())
+	}, [])
 
-  const { scaledStageHeight, scaledStageWidth } = useMemo(
-    () => ({
-      scaledStageWidth: stageWidth * resolution,
-      scaledStageHeight: stageHeight * resolution,
-    }),
-    [resolution, stageHeight, stageWidth, uiScale],
-  );
+	const overworldTexture = useMemo(() => Assets.get('overworld::background'), [])
+	const overworldFogMap = useMemo(() => Assets.get('overworld::fogmap'), [])
 
-  const mappedLayout = useMemo(() => {
-    return Object.values(LEVEL_LAYOUT.sections).map((sectionData) => (
-      <PixiOverworldSection key={sectionData.name} data={sectionData} />
-    ));
-  }, []);
+	const {
+		scaledStageHeight,
+		scaledStageWidth,
+	} = useMemo(() => ({
+		scaledStageWidth: stageWidth * resolution,
+		scaledStageHeight: stageHeight * resolution,
+	}),
+	[
+		resolution,
+		stageHeight,
+		stageWidth,
+	])
 
-  const uniforms = useMemo(() => {
-    const color = tinycolor("#30346d").toRgb();
-    const uFogColor = new Uint8Array(4);
-    uFogColor[0] = color.r;
-    uFogColor[1] = color.g;
-    uFogColor[2] = color.b;
-    uFogColor[3] = 255;
+	const mappedLayout = useMemo(() => {
+		return Object.values(LEVEL_LAYOUT.sections).map(sectionData => (
+			<PixiOverworldSection
+				key={sectionData.name}
+				data={sectionData} />
+		))
+	}, [])
 
-    const uFogmapBlocksToUnhide = new Uint8Array(64);
-    for (let i = 0; i < 64; i++) {
-      uFogmapBlocksToUnhide[i] = fogmapBlocksToUnhide[i] || 0;
-    }
+	const uniforms = useMemo(() => {
+		const color = tinycolor('#30346d').toRgb()
+		const uFogColor = new Uint8Array(4)
+		uFogColor[0] = color.r
+		uFogColor[1] = color.g
+		uFogColor[2] = color.b
+		uFogColor[3] = 255
 
-    return {
-      uFogColor,
-      uTime: 0,
-      uFogMap: overworldFogMap,
-      uScale: uiScale,
-      uStageHeight: scaledStageHeight,
-      uStageWidth: scaledStageWidth,
-      uFogmapBlocksToUnhide: fogmapBlocksToUnhide,
-    };
-  }, [
-    fogmapBlocksToUnhide,
-    overworldTexture,
-    overworldFogMap,
-    scaledStageHeight,
-    scaledStageWidth,
-    resolution,
-    uiScale,
-  ]);
+		const uFogmapBlocksToUnhide = new Uint8Array(64)
 
-  const filters = useMemo(() => {
-    const filter = new Filter(null, shader, uniforms);
-    filter.autoFit = false;
-    return [filter];
-  }, [uniforms]);
+		let blockIndex = 0
 
-  // For animation
-  useTick((_, { lastTime }) => {
-    // prevent overflow in shader
-    const adjustedCurrentTimeTime = lastTime % 1e10;
-    const overlayFogFilter = filters[0];
-    overlayFogFilter.uniforms.uTime = adjustedCurrentTimeTime;
-  });
+		while (blockIndex < 64) {
+			uFogmapBlocksToUnhide[blockIndex] = fogmapBlocksToUnhide[blockIndex] ?? 0
+			blockIndex += 1
+		}
 
-  return (
-    <Container filters={filters} x={cameraOffset.x} y={cameraOffset.y}>
-      <Sprite ref={ref} name={"background"} texture={overworldTexture} />
+		return {
+			uFogColor,
+			uTime: 0,
+			uFogMap: overworldFogMap,
+			uScale: uiScale,
+			uStageHeight: scaledStageHeight,
+			uStageWidth: scaledStageWidth,
+			uFogmapBlocksToUnhide: fogmapBlocksToUnhide,
+		}
+	}, [
+		fogmapBlocksToUnhide,
+		overworldFogMap,
+		scaledStageHeight,
+		scaledStageWidth,
+		uiScale,
+	])
 
-      {mappedLayout}
+	const filters = useMemo(() => {
+		const filter = new Filter(null, shader, uniforms)
+		filter.autoFit = false
+		return [filter]
+	}, [uniforms])
 
-      <PixiOverworldRouter />
-    </Container>
-  );
+	// For animation
+	useTick((_, { lastTime }) => {
+		// prevent overflow in shader
+		const adjustedCurrentTimeTime = lastTime % 1e10
+		const overlayFogFilter = filters[0]
+		overlayFogFilter.uniforms.uTime = adjustedCurrentTimeTime
+	})
+
+	return (
+		<Container
+			filters={filters}
+			x={cameraOffset.x}
+			y={cameraOffset.y}>
+			<Sprite
+				ref={ref}
+				name={'background'}
+				texture={overworldTexture} />
+
+			{mappedLayout}
+
+			<PixiOverworldRouter />
+		</Container>
+	)
 }

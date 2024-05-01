@@ -20,4 +20,4 @@
  * 	y: number,
  * }} position The coordinates of this block.
  */
-export const OverworldBlock = {};
+export const OverworldBlock = {}
