@@ -28,7 +28,7 @@ import { useNavGraphContext } from '../NavGraph/NavGraphContext.jsx'
  * @component
  * @param {object} props All component props.
  * @param {*} [props.children] Node to be rendered inside of the button.
- * @param {string} [props.className] A string of classes to be set on the button.
+ * @param {string} [props.className] Additional classes to be applied to the component.
  * @param {boolean} [props.forceAnimationInclusion] Whether to set animation variants forcefully.
  * @param {string} [props.id] A unique identifier for this button.
  * @param {string} props.nodeID The ID to be used for this button in the navgraph.

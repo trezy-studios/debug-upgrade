@@ -8,7 +8,7 @@ import { configStore } from './configStore.js'
 /**
  * Updates user settings on disk.
  *
- * @param {*} _
+ * @param {*} _ Unused.
  * @param {string} key The config key to be updated.
  * @param {string} value The new value.
  */

@@ -9,7 +9,6 @@
 
 /**
  * @typedef {object} TileMapData
- * @property {Vector2Object[]} [destinations] An array of destinations that, if reached, will result in a victory condition.
  * @property {(Vector2Object | Vector2)[]} [destinations] An array of destinations that, if reached, will result in a victory condition.
  * @property {Dimensions} [dimensions] The size of the map (in tiles).
  * @property {LayerMap[]} [layers] An array of layers of tiles.

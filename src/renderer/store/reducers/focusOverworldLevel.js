@@ -33,15 +33,17 @@ export function focusOverworldLevel(levelID, isSmooth) {
 	const stageCenterY = (stageHeight / resolution) / uiScale
 
 	const cameraOffsetXAnimationOptions = {
+		// eslint-disable-next-line jsdoc/require-jsdoc
 		onUpdate: latest => store.set(previousState => ({
 			cameraOffset: new Vector2(
 				latest,
-				previousState.cameraOffset.y
+				previousState.cameraOffset.y,
 			),
 		})),
 	}
 
 	const cameraOffsetYAnimationOptions = {
+		// eslint-disable-next-line jsdoc/require-jsdoc
 		onUpdate: latest => store.set(previousState => ({
 			cameraOffset: new Vector2(
 				previousState.cameraOffset.x,

@@ -1,2 +1,2 @@
-/** @typedef {`${number}|${number}`} CoordinateString */
+/** @typedef {string} CoordinateString Format: xValue|yValue */
 export const CoordinateString = {}

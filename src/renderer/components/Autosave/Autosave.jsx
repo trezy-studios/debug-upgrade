@@ -34,6 +34,8 @@ const VARIANTS = {
 
 /**
  * Handles autosave and renders the indicator when a save is in progress.
+ *
+ * @component
  */
 export function Autosave() {
 	const { isSaving } = useStore(store)

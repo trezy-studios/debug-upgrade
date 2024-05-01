@@ -14,29 +14,35 @@ import styles from './PanelContent.module.scss'
 
 
 
-export function PanelContent(props) {
-	const {
-		children,
-		className,
-	} = props
-
+/**
+ * Wraps the content of a <Panel>.
+ *
+ * @component
+ * @param {object} props All props.
+ * @param {import('react').ReactNode} [props.children] The component's children.
+ * @param {string} [props.className] Additional classes to be applied to the component.
+ * @param {boolean} [props.hidden] Whether the content is hidden.
+ */
+export function PanelContent({
+	children = null,
+	className = '',
+	hidden = false,
+}) {
 	const compiledClassName = useMemo(() => {
 		return classnames(styles['panel-content'], className)
 	}, [className])
 
 	return (
 		<div
-			{...props}
-			className={compiledClassName}>
+			className={compiledClassName}
+			hidden={hidden}>
 			{children}
 		</div>
 	)
 }
 
-PanelContent.defaultProps = {
-	children: null,
-}
-
 PanelContent.propTypes = {
 	children: PropTypes.node,
+	className: PropTypes.string,
+	hidden: PropTypes.bool,
 }

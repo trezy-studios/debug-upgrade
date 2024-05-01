@@ -14,28 +14,27 @@ import styles from './DecoratedHeader.module.scss'
 
 
 
-export function DecoratedHeader(props) {
-	const {
-		children,
-		className,
-	} = props
-
+/**
+ * Renders a decorated header.
+ *
+ * @component
+ * @param {object} props All props.
+ * @param {import('react').ReactNode} [props.children] The component's children.
+ * @param {string} [props.className] Additional classes to be applied to the component.
+ */
+export function DecoratedHeader({
+	children = null,
+	className = '',
+}) {
 	const compiledClassName = useMemo(() => {
 		return classnames(styles['decorated-header'], className)
 	}, [className])
 
 	return (
-		<header
-			{...props}
-			className={compiledClassName}>
+		<header className={compiledClassName}>
 			<h2>{children}</h2>
 		</header>
 	)
-}
-
-DecoratedHeader.defaultProps = {
-	children: null,
-	className: '',
 }
 
 DecoratedHeader.propTypes = {

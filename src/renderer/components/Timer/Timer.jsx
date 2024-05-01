@@ -20,22 +20,21 @@ import { store } from '../../store/store.js'
 /**
  * A timer to represent the amount of time that has passed during the current map session.
  *
+ * @component
  * @param {object} props All component props.
- * @param {string} [props.className] A string of classes to be set on the timer.
- * @param {boolean} [props.isBordered] Whether or not this timer should have a border.
- * @param {boolean} [props.isCentered] Whether or not this timer should be centered horizontally.
- * @param {boolean} [props.isLarge] Whether or not this timer should be larger than normal.
- * @param {boolean} [props.isMonospace] Whether or not the numbers of this timer should be monospaced.
+ * @param {string} [props.className] Additional classes to be applied to the component.
+ * @param {boolean} [props.isBordered] Whether this timer should have a border.
+ * @param {boolean} [props.isCentered] Whether this timer should be centered horizontally.
+ * @param {boolean} [props.isLarge] Whether this timer should be larger than normal.
+ * @param {boolean} [props.isMonospace] Whether the numbers of this timer should be monospaced.
  */
-export function Timer(props) {
-	const {
-		className,
-		isBordered,
-		isCentered,
-		isLarge,
-		isMonospace,
-	} = props
-
+export function Timer({
+	className = '',
+	isBordered = false,
+	isCentered = false,
+	isLarge = false,
+	isMonospace = false,
+}) {
 	const { timerString } = useStore(store)
 
 	const compiledClassName = useMemo(() => {
@@ -81,14 +80,6 @@ export function Timer(props) {
 			</span>
 		</time>
 	)
-}
-
-Timer.defaultProps = {
-	className: '',
-	isBordered: false,
-	isCentered: false,
-	isLarge: false,
-	isMonospace: false,
 }
 
 Timer.propTypes = {

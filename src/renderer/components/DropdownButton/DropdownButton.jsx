@@ -23,20 +23,19 @@ import { Button } from '../Button/Button.jsx'
 /**
  * A wrapper for groups of buttons.
  *
+ * @component
  * @param {object} props All component props.
  * @param {*} [props.children] Node to be rendered inside of the button.
  * @param {boolean} [props.isAffirmative] Whether this button will cause an affirmative action.
  * @param {boolean} [props.isNegative] Whether this button will cause an negative action.
  * @param {Function} [props.onChevronClick] A function to be fired when the chevron is clicked.
  */
-export function DropdownButton(props) {
-	const {
-		children,
-		isAffirmative,
-		isNegative,
-		onChevronClick,
-	} = props
-
+export function DropdownButton({
+	children = null,
+	isAffirmative = false,
+	isNegative = false,
+	onChevronClick = null,
+}) {
 	const compiledChildren = useMemo(() => {
 		if (children === null) {
 			return children
@@ -72,7 +71,9 @@ export function DropdownButton(props) {
 	}, [children])
 
 	const handleChevronClick = useCallback((...args) => {
-		onChevronClick(...args)
+		if (onChevronClick) {
+			onChevronClick(...args)
+		}
 	}, [onChevronClick])
 
 	return (
@@ -89,14 +90,9 @@ export function DropdownButton(props) {
 	)
 }
 
-DropdownButton.defaultProps = {
-	children: null,
-	className: '',
-}
-
 DropdownButton.propTypes = {
 	children: PropTypes.node,
-	className: PropTypes.string,
 	isAffirmative: PropTypes.bool,
 	isNegative: PropTypes.bool,
+	onChevronClick: PropTypes.func,
 }

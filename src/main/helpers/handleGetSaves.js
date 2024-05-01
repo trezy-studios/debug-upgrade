@@ -16,7 +16,7 @@ import { getAppDataPath } from './getAppDataPath.js'
 /**
  * Creates all necessary directories on the local machine.
  *
- * @param {*} _
+ * @param {*} _ Unused.
  * @param {string[]} saveIDs An array of IDs for save files to be retrieved.
  * @returns {Promise<import('../../types/SaveData.js').SaveData[]>} The new save's data.
  */

@@ -1,7 +1,6 @@
 // Module imports
 import {
 	Children,
-	createElement,
 	useMemo,
 } from 'react'
 import classnames from 'classnames'
@@ -68,25 +67,27 @@ const MENU_VARIANTS = {
 /**
  * A wrapper for groups of buttons.
  *
+ * @component
  * @param {object} props All component props.
  * @param {*} [props.children] Node to be rendered inside of the button.
- * @param {string} [props.className] A string of classes to be set on the button.
+ * @param {string} [props.className] Additional classes to be applied to the component.
  * @param {boolean} [props.isSubstack] Whether this button stack is a child.
  */
-export function ButtonStack(props) {
-	const {
-		children,
-		className,
-		isSubstack,
-	} = props
-
+export function ButtonStack({
+	children = null,
+	className = '',
+	isSubstack = false,
+}) {
 	const compiledClassName = useMemo(() => {
 		return classnames({
 			[styles['button-stack']]: true,
 			[styles['is-substack']]: isSubstack,
 			[className]: true,
 		})
-	}, [className])
+	}, [
+		className,
+		isSubstack,
+	])
 
 	const compiledChildren = useMemo(() => {
 		if (children === null) {
@@ -119,12 +120,6 @@ export function ButtonStack(props) {
 			{compiledChildren}
 		</motion.menu>
 	)
-}
-
-ButtonStack.defaultProps = {
-	children: null,
-	className: '',
-	isSubstack: false,
 }
 
 ButtonStack.propTypes = {

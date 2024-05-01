@@ -26,15 +26,13 @@ import { getCSSCustomPropertyValue } from '../../helpers/getCSSCustomPropertyVal
  *
  * @component
  * @param {object} props All component props.
- * @param {import('react').ReactNode} [props.children] Node to be rendered inside of the container.
- * @param {string} [props.className] Additional classees to be applied.
+ * @param {import('react').ReactNode} [props.children] The component's children.
+ * @param {string} [props.className] Additional classes to be applied to the component.
  */
-export function WholePixelContainer(props) {
-	const {
-		children = null,
-		className = '',
-	} = props
-
+export function WholePixelContainer({
+	children = null,
+	className = '',
+}) {
 	/** @type {import('react').MutableRefObject<null | HTMLDivElement>} */
 	const containerRef = useRef(null)
 	const [state, setState] = useState({

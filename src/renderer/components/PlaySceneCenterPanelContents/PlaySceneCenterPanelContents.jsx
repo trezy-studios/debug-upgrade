@@ -85,7 +85,7 @@ export function PlaySceneCenterPanelContents() {
 
 					{Boolean(currentTileset) && (
 						<PixiTileMap
-							isCursor={true}
+							isCursor
 							tilestacks={currentTileset.tilestacks} />
 					)}
 

@@ -30,6 +30,11 @@ const VARIANTS = {
 
 
 
+/**
+ * Renders the main scene.
+ *
+ * @component
+ */
 export function MainScene() {
 	return (
 		<Scene

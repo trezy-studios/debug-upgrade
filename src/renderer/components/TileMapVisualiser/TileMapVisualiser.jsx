@@ -13,6 +13,7 @@ import styles from './TileMapVisualiser.module.scss'
 
 import { store } from '../../store/store.js'
 import { TileMap } from '../../game/TileMap.js'
+import { TileMapVisualiserTile } from '../TileMapVisualiserTile/TileMapVisualiserTile.jsx'
 import { Vector2 } from '../../game/Vector2.js'
 
 
@@ -22,22 +23,23 @@ import { Vector2 } from '../../game/Vector2.js'
 /**
  * Renders the items in the tile queue.
  *
- * @param {Object} props All props.
+ * @component
+ * @param {object} props All props.
  * @param {TileMap} props.tilemap The tilemap to be rendered.
  */
 export function TileMapVisualiser({ tilemap }) {
-	const {
-		resourcepacks,
-		uiScale,
-	} = useStore(store)
+	const { uiScale } = useStore(store)
 
 	const compiledStyles = useMemo(() => ({
 		height: tilemap.height * 16 * uiScale,
 		width: tilemap.width * 16 * uiScale,
-	}), [])
+	}), [
+		tilemap,
+		uiScale,
+	])
 
 	const renderedTilestacks = useMemo(() => {
-		let result = []
+		const result = []
 
 		for (const [coordinateString, tilestack] of tilemap.tilestacks) {
 			const position = Vector2.fromString(coordinateString)
@@ -47,25 +49,11 @@ export function TileMapVisualiser({ tilemap }) {
 			let tileIndex = 0
 
 			for (const tile of tilestack) {
-				const resourcepack = resourcepacks.get(tile.resourcepackID)
-				const texture = resourcepack.tilesSpritesheet.textures[tile.tileID]
-				const baseImage = texture.baseTexture.resource
-
-				// @ts-expect-error Actually yes it DOES exist, Typescript. It's just not declared. 🤷🏻‍♂️
-				const baseImageURL = /** @type {string} */ (baseImage.url)
-
 				elementStack.push((
-					<div
+					<TileMapVisualiserTile
 						key={`${coordinateString}::${tileIndex}`}
-						className={styles['tile']}
-						style={{
-							backgroundImage: `url(${baseImageURL})`,
-							backgroundPositionX: -texture.frame.x,
-							backgroundPositionY: -texture.frame.y,
-							left: `${position.x * 16}px`,
-							height: texture.frame.height,
-							width: texture.frame.width,
-						}} />
+						position={position}
+						tile={tile} />
 				))
 
 				tileIndex += 1
@@ -78,10 +66,7 @@ export function TileMapVisualiser({ tilemap }) {
 				{result}
 			</div>
 		)
-	}, [
-		resourcepacks,
-		tilemap,
-	])
+	}, [tilemap])
 
 	return (
 		<motion.div

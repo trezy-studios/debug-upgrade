@@ -29,7 +29,7 @@ export function moveSystem() {
 
 		let path = currentPath
 		let nextPathSegment = path[0]
-		let nextPathSegmentVector = new Vector2(
+		const nextPathSegmentVector = new Vector2(
 			nextPathSegment.x,
 			nextPathSegment.y,
 		)

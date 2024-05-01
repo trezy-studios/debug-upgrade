@@ -70,10 +70,11 @@ export class Vector2 {
 	/**
 	 * Converts a string representation of a 2d vector to a proper Vector2.
 	 *
-	 * @param {CoordinateString} coordinateString
+	 * @param {CoordinateString} coordinateString The coordinate string to parse into a Vector2.
+	 * @returns {Vector2} The instantiated Vector2.
 	 */
 	static fromString(coordinateString) {
-		if (!/^-?\d+\|-?\d+$/.test(coordinateString)) {
+		if (!/^-?\d+\|-?\d+$/u.test(coordinateString)) {
 			throw new TypeError('vector strings must conform to the format `x|y`')
 		}
 
@@ -158,10 +159,14 @@ export class Vector2 {
 	 * Public instance getters/setters
 	\****************************************************************************/
 
+	/** @returns {number} The current position of this vector on the horizontal axis. */
 	get x() {
 		return this.#x
 	}
 
+	/**
+	 * Update the position of this vector on the horizontal axis.
+	 */
 	set x(value) {
 		if (typeof value !== 'number') {
 			throw new TypeError('Vector2\'s `x` value must be a number')
@@ -169,10 +174,14 @@ export class Vector2 {
 		this.#x = value
 	}
 
+	/** @returns {number} The current position of this vector on the vertical axis. */
 	get y() {
 		return this.#y
 	}
 
+	/**
+	 * Update the position of this vector on the vertical axis.
+	 */
 	set y(value) {
 		if (typeof value !== 'number') {
 			throw new TypeError('Vector2\'s `y` value must be a number')

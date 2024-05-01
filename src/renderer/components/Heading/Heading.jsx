@@ -20,17 +20,15 @@ import styles from './Heading.module.scss'
  *
  * @component
  */
-export function Heading(props) {
-	const {
-		animate = 'animate',
-		children = null,
-		className = '',
-		exit = 'exit',
-		initial = 'initial',
-		level,
-		variants = {},
-	} = props
-
+export function Heading({
+	animate = 'animate',
+	children = null,
+	className = '',
+	exit = 'exit',
+	initial = 'initial',
+	level,
+	variants = {},
+}) {
 	const headingProps = useMemo(() => ({
 		animate,
 		className: classnames(

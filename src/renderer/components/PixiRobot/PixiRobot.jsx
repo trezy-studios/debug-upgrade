@@ -23,6 +23,13 @@ import { Vector2 } from '../../game/Vector2.js'
 
 
 
+// Types
+/** @typedef {import('pixi.js').Texture} Texture */
+
+
+
+
+
 /**
  * Renders a robot.
  *
@@ -42,14 +49,15 @@ export function PixiRobot() {
 
 	const getTexture = useCallback(
 		/**
-		 * @param {string} state
-		 * @param {string} direction
+		 * @param {string} state The current state of the robot
+		 * @param {string} direction The robot's current direction of travel.
+		 * @returns {Texture[] | undefined} The retrieved texture.
 		 */
 		(state, direction) => {
 			const spriteKey = `${state}::${direction}`
 			return spritesheet.animations[spriteKey] ?? [spritesheet.textures[spriteKey]]
 		},
-		[],
+		[spritesheet],
 	)
 
 	const currentState = useMemo(() => {
@@ -87,7 +95,10 @@ export function PixiRobot() {
 		} else if (travelDirection.y < 0) {
 			setCurrentDirection('north')
 		}
-	}, [currentPath])
+	}, [
+		currentPath,
+		robotPosition,
+	])
 
 	return (
 		<Container

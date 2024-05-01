@@ -23,16 +23,13 @@ import { PanelLoader } from './PanelLoader.jsx'
  *
  * @component
  * @param {object} props All component props.
- * @param {import('react').ReactNode} [props.children] Node to be rendered inside of the panel.
- * @param {string} [props.className] A string of classes to be set on the panel.
+ * @param {import('react').ReactNode} [props.children] The component's children.
+ * @param {string} [props.className] Additional classes to be applied to the component.
  * @param {1 | 2 | 3 | 4} [props.columnSpan] How many columns this panel should span.
  * @param {boolean} [props.isCentered] Whether or not the content of this panel should be centered (both horizontally and vertically).
  * @param {boolean} [props.isPrimary] Whether or not this button is a primary type panel.
  * @param {string} [props.id] A unique identifier which allows this component to transition between different layouts.
  * @param {object} [props.variants] An object representing variations of the component's state to be used for animations.
- * @param {object} [props.variants.animate] The typical state of the component.
- * @param {object} [props.variants.exit] The state to which the component should be animated when it is unmounted.
- * @param {object} [props.variants.initial] The state from which the component should be animated when it is mounted.
  */
 export function Panel({
 	children = null,

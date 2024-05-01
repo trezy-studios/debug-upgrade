@@ -6,177 +6,12 @@ import { schedule } from 'rafael/lib/schedule.js'
 
 
 // Local imports
-import { ACTIONS } from '../data/ACTIONS.js'
 import { ACTION_HANDLERS } from '../data/ACTION_HANDLERS.js'
+import { ACTIONS } from '../data/ACTIONS.js'
 import { EventEmitter } from './EventEmitter.js'
 import { Gamepad } from './Gamepad.js'
 import { Keyboard } from './Keyboard.js'
 import { store } from '../store/store.js'
-
-
-
-
-
-const foo = {
-	"categories": [
-		{
-			"id": "GAME",
-			"label": "Game"
-		},
-
-		{
-			"id": "MENU",
-			"label": "Menu"
-		}
-	],
-
-	"actions": [
-		{
-			"category": "GAME",
-			"id": "MOVE_CURSOR_UP",
-			"label": "Move Cursor Up",
-			"defaults": {
-				"keyboardPrimary": ["KeyW"],
-				"keyboardSecondary": ["ArrowUp"],
-				"gamepadPrimary": ["Axis::1::-"],
-				"gamepadSecondary": ["Button::12"]
-			}
-		},
-		{
-			"category": "GAME",
-			"id": "MOVE_CURSOR_DOWN",
-			"label": "Move Cursor Down",
-			"defaults": {
-				"keyboardPrimary": ["KeyS"],
-				"keyboardSecondary": ["ArrowDown"],
-				"gamepadPrimary": ["Axis::1::+"],
-				"gamepadSecondary": ["Button::13"]
-			}
-		},
-		{
-			"category": "GAME",
-			"id": "MOVE_CURSOR_LEFT",
-			"label": "Move Cursor Left",
-			"defaults": {
-				"keyboardPrimary": ["KeyA"],
-				"keyboardSecondary": ["ArrowLeft"],
-				"gamepadPrimary": ["Axis::0::-"],
-				"gamepadSecondary": ["Button::14"]
-			}
-		},
-		{
-			"category": "GAME",
-			"id": "MOVE_CURSOR_RIGHT",
-			"label": "Move Cursor Right",
-			"defaults": {
-				"keyboardPrimary": ["KeyD"],
-				"keyboardSecondary": ["ArrowRight"],
-				"gamepadPrimary": ["Axis::0::+"],
-				"gamepadSecondary": ["Button::15"]
-			}
-		},
-		{
-			"category": "GAME",
-			"id": "PLACE_TILESET",
-			"label": "Place Tileset",
-			"defaults": {
-				"keyboardPrimary": ["Enter"],
-				"keyboardSecondary": [],
-				"gamepadPrimary": ["Button::0"],
-				"gamepadSecondary": []
-			}
-		},
-		{
-			"category": "GAME",
-			"id": "SKIP_TIMER",
-			"label": "Skip Timer",
-			"defaults": {
-				"keyboardPrimary": ["Space"],
-				"keyboardSecondary": [],
-				"gamepadPrimary": ["Button::3"],
-				"gamepadSecondary": []
-			}
-		},
-		{
-			"category": "GAME",
-			"id": "PAUSE",
-			"label": "Pause",
-			"defaults": {
-				"keyboardPrimary": ["Escape"],
-				"keyboardSecondary": [],
-				"gamepadPrimary": ["Button::9"],
-				"gamepadSecondary": []
-			}
-		},
-
-		{
-			"category": "MENU",
-			"id": "UP",
-			"label": "Up",
-			"defaults": {
-				"keyboardPrimary": ["ArrowUp"],
-				"keyboardSecondary": [],
-				"gamepadPrimary": ["Button::12"],
-				"gamepadSecondary": []
-			}
-		},
-		{
-			"category": "MENU",
-			"id": "DOWN",
-			"label": "Down",
-			"defaults": {
-				"keyboardPrimary": ["ArrowDown"],
-				"keyboardSecondary": [],
-				"gamepadPrimary": ["Button::13"],
-				"gamepadSecondary": []
-			}
-		},
-		{
-			"category": "MENU",
-			"id": "LEFT",
-			"label": "Left",
-			"defaults": {
-				"keyboardPrimary": ["ArrowLeft"],
-				"keyboardSecondary": [],
-				"gamepadPrimary": ["Button::14"],
-				"gamepadSecondary": []
-			}
-		},
-		{
-			"category": "MENU",
-			"id": "RIGHT",
-			"label": "Right",
-			"defaults": {
-				"keyboardPrimary": ["ArrowRight"],
-				"keyboardSecondary": [],
-				"gamepadPrimary": ["Button::15"],
-				"gamepadSecondary": []
-			}
-		},
-		{
-			"category": "MENU",
-			"id": "SELECT",
-			"label": "Select",
-			"defaults": {
-				"keyboardPrimary": ["Enter"],
-				"keyboardSecondary": [],
-				"gamepadPrimary": ["Button::0"],
-				"gamepadSecondary": []
-			}
-		},
-		{
-			"category": "MENU",
-			"id": "BACK",
-			"label": "Back",
-			"defaults": {
-				"keyboardPrimary": ["Escape"],
-				"keyboardSecondary": [],
-				"gamepadPrimary": ["Button::1"],
-				"gamepadSecondary": []
-			}
-		}
-	]
-}
 
 
 
@@ -190,7 +25,7 @@ export class ControlsManager extends EventEmitter {
 	 * Private instance properties
 	\****************************************************************************/
 
- 	#actionCaches = new Map
+	#actionCaches = new Map
 
 	#gamepads = {
 		0: null,
@@ -200,8 +35,6 @@ export class ControlsManager extends EventEmitter {
 	}
 
 	#keyboard = new Keyboard
-
-	#mode = 'MENU'
 
 
 
