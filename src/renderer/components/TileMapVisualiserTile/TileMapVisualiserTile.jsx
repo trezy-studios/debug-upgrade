@@ -44,6 +44,7 @@ export function TileMapVisualiserTile({
 		backgroundPositionY: -texture.frame.y,
 		left: `${position.x * 16}px`,
 		height: texture.frame.height,
+		top: `${position.y * 16}px`,
 		width: texture.frame.width,
 	}), [
 		baseImageURL,
