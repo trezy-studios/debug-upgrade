@@ -7,9 +7,10 @@ import { store } from '../store.js'
 
 
 /**
- * Checks whether a block is visible.
+ * Checks whether a block is visible based on the current save data.
  *
  * @param {string} blockID The ID of the block to be checked.
+ * @returns {boolean} Whether the block should be visible.
  */
 export function isBlockVisible(blockID) {
 	const { saveData } = store.state

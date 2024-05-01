@@ -35,7 +35,7 @@ export function timeSystem() {
 			const secondsString = String(seconds).padStart(2, '0')
 
 			patch.timerString = `-${minutesString}:${secondsString}`
-		} else  {
+		} else {
 			const delta = now - previousState.timerPathfindingStartedAt
 			const deltaInSeconds = delta / 1000
 

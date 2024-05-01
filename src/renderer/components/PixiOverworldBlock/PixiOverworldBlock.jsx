@@ -10,7 +10,6 @@ import {
 } from 'react'
 import { Assets } from 'pixi.js'
 import PropTypes from 'prop-types'
-import { useStore } from 'statery'
 
 
 
@@ -22,7 +21,6 @@ import { isBlockVisible } from '../../store/reducers/isBlockVisible.js'
 import { pushScene } from '../../store/reducers/pushScene.js'
 import { SCENES } from '../../data/SCENES.js'
 import { setCurrentMapID } from '../../store/reducers/setCurrentMapID.js'
-import { store } from '../../store/store.js'
 
 
 
@@ -48,8 +46,6 @@ const CONNECTION_DIRECTIONS = [
  * @param {import('../../../types/OverworldBlock.js').OverworldBlock} props.block Block data.
  */
 export function PixiOverworldBlock({ block }) {
-	const { saveData } = useStore(store)
-
 	const [isFocused, setIsFocused] = useState(false)
 
 	const handleSelect = useCallback(() => {
@@ -93,10 +89,7 @@ export function PixiOverworldBlock({ block }) {
 			.filter(Boolean)
 	}, [block])
 
-	const isAvailable = useMemo(() => isBlockVisible(block.name), [
-		block,
-		saveData,
-	])
+	const isAvailable = useMemo(() => isBlockVisible(block.name), [block])
 
 	if (!isAvailable || !backgroundTexture) {
 		return null

@@ -8,7 +8,7 @@ import { configStore } from './configStore.js'
 /**
  * Retrieves user settings from disk.
  *
- * @param {*} _
+ * @param {*} _ Unused.
  * @param {string} key The key of the config to be retrieved.
  * @returns {*} The value at the requested key in the config store.
  */

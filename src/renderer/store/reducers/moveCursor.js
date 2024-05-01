@@ -33,7 +33,7 @@ export const moveCursor = (x, y) => {
 			cursorPosition: new Vector2(
 				cursorPosition.x + x,
 				cursorPosition.y + y,
-			)
+			),
 		}
 	})
 }

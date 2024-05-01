@@ -52,6 +52,8 @@ export function PixiTileMapTile({
 		currentMap,
 		cursorPosition,
 		isCursor,
+		x,
+		y,
 	])
 
 	const texture = useMemo(() => resourcepacks.get(tile.resourcepackID).tilesSpritesheet.textures[tile.tileID], [
