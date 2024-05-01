@@ -61,8 +61,7 @@ function handleQuitToDesktopClick() {
 
 /** Fired when the restart level button is clicked. */
 function handleRestartLevelClick() {
-	console.error('Restart Level isn\'t implemented yet.')
-	// pushScene(SCENES.SETTINGS)
+	backToScene(SCENES.LOADING_MAP)
 }
 
 /** Fired when the settings button is clicked. */

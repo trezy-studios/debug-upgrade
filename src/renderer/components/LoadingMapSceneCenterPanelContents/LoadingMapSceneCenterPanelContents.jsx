@@ -21,7 +21,7 @@ import styles from './LoadingMapSceneCenterPanelContents.module.scss'
 import { Button } from '../Button/Button.jsx'
 import { executePromiseWithMinimumDuration } from '../../helpers/executePromiseWithMinimumDuration.js'
 import { prepareStateForGameplay } from '../../store/reducers/prepareStateForGameplay.js'
-import { replaceScene } from '../../store/reducers/replaceScene.js'
+import { pushScene } from '../../store/reducers/pushScene.js'
 import { SCENES } from '../../data/SCENES.js'
 import { setCurrentMap } from '../../store/reducers/setCurrentMap.js'
 import { store } from '../../store/store.js'
@@ -50,7 +50,7 @@ const VARIANTS = {
 // Functions
 /** Fired when the continue button is activated. */
 function handleContinueActivate() {
-	replaceScene(SCENES.PLAY)
+	pushScene(SCENES.PLAY)
 }
 
 
