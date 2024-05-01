@@ -58,7 +58,7 @@ export class Vector2 {
 			throw new TypeError('Cannot subtract non-vectors.')
 		}
 
-		let result = new Vector2(0, 0)
+		const result = new Vector2(0, 0)
 
 		if (vectorB.x < vectorA.x) {
 			result.x = -1
