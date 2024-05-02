@@ -1,19 +1,20 @@
 // Module imports
 import {
+	Assets,
+	Filter,
+} from 'pixi.js'
+import {
 	Container,
 	Sprite,
 	useTick,
 } from '@pixi/react'
-
 import tinycolor from 'tinycolor2'
-
-import {
-	Assets, Filter,
- } from 'pixi.js'
-import {
-	useMemo,
-} from 'react'
+import { useMemo } from 'react'
 import { useStore } from 'statery'
+
+
+
+
 
 // Local imports
 import { isBlockVisible } from '../../store/reducers/isBlockVisible.js'
@@ -22,6 +23,10 @@ import { PixiOverworldRouter } from '../PixiOverworldRouter/PixiOverworldRouter.
 import { PixiOverworldSection } from '../PixiOverworldSection/PixiOverworldSection.jsx'
 import shader from '../../shaders/OverworldFog.glsl'
 import { store } from '../../store/store.js'
+
+
+
+
 
 /**
  * Renders the overworld.
