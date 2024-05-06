@@ -1,0 +1,42 @@
+name: Get Release Info
+
+on:
+  workflow_call:
+    inputs:
+      releaseName:
+        required: true
+        type: string
+    outputs:
+      releaseBranch:
+        description: The release branch.
+        value: ${{ jobs.get-release-branch.outputs.version }}
+      versionNumber:
+        description: The release version number.
+        value: ${{ jobs.get-version-number.outputs.published }}
+
+jobs:
+  get-release-branch:
+    runs-on: ubuntu-latest
+    steps:
+      - id: get-release-branch
+        uses: frabert/replace-string-action@v2
+        with:
+          pattern: '^v\d+\.\d+\.\d+-(\w+)$'
+          replace-with: '$1'
+          string: ${{ inputs.releaseName }}
+
+    outputs:
+      releaseBranch: ${{ steps.get-release-branch.outputs.replaced }}
+
+  get-version-number:
+    runs-on: ubuntu-latest
+    steps:
+      - id: get-version-number
+        uses: frabert/replace-string-action@v2
+        with:
+          pattern: '^v(\d+\.\d+\.\d+(?:-\w+)?)$'
+          replace-with: '$1'
+          string: ${{ inputs.releaseName }}
+
+    outputs:
+      versionNumber: ${{ steps.get-version-number.outputs.replaced }}

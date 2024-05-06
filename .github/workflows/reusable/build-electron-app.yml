@@ -6,6 +6,9 @@ on:
       branch:
         required: true
         type: string
+      environment:
+        required: true
+        type: string
       operatingSystem:
         required: true
         type: string
@@ -30,6 +33,7 @@ on:
 
 jobs:
   build-electron-app:
+    environment: ${{ inputs.environment }}
     runs-on: ${{ inputs.operatingSystem }}
 
     steps:
@@ -74,5 +78,5 @@ jobs:
           APPLE_API_ISSUER_ID: ${{ secrets.appleAPIIssuerID }}
           APPLE_API_KEY: ${{ steps.writeAPIKey.outputs.filePath }}
           APPLE_API_KEY_ID: ${{ secrets.appleAPIKeyID }}
+          BUILD_ENV: ${{ inputs.environment }}
           GITHUB_TOKEN: ${{ secrets.token }}
-          NODE_ENV: ${{ inputs.branch }}

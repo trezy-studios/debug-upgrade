@@ -1,16 +1,8 @@
 name: Publish
 
 on:
-  push:
-    branches:
-      - main
-      - beta
-    paths-ignore:
-      - '**.md'
-      - .editorconfig
-      - .gitignore
-      - .yarnrc
-      - LICENSE
+  release:
+    types: [published]
 
 permissions:
   contents: write
@@ -20,79 +12,28 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  get-next-version:
-    name: Get Next Version
-    uses: ./.github/workflows/get-next-version.yml
+  get-release-info:
+    name: Get version number
+    uses: ./.github/workflows/reusable/get-info-from-release.yml
     with:
-      ref: ${{ github.ref_name }}
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
-
-  create-draft-release:
-    name: Create Draft Release
-    uses: ./.github/workflows/create-draft-release.yml
-    needs:
-      - get-next-version
-    if: needs.get-next-version.outputs.published == 'true'
-    with:
-      notes: ${{ needs.get-next-version.outputs.notes }}
-      target: ${{ github.ref_name }}
-      version: ${{ needs.get-next-version.outputs.version }}
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
-
-  build-electron-app:
-    name: Build Electron App
-    uses: ./.github/workflows/build-electron-app.yml
-    needs:
-      - create-draft-release
-      - get-next-version
-    strategy:
-      matrix:
-        os:
-          - macos-14
-          - ubuntu-latest
-          - windows-latest
-    with:
-      branch: ${{ github.ref_name }}
-      operatingSystem: ${{ matrix.os }}
-      version: ${{ needs.get-next-version.outputs.version }}
-    secrets:
-      appleAPIIssuerID: ${{ secrets.APPLE_API_ISSUER_ID }}
-      appleAPIKeyContent: ${{ secrets.APPLE_API_KEY_CONTENT }}
-      appleAPIKeyID: ${{ secrets.APPLE_API_KEY_ID }}
-      appleCertData: ${{ secrets.APPLE_CERT_DATA }}
-      appleCertKeychainPassword: ${{ secrets.APPLE_CERT_KEYCHAIN_PASSWORD }}
-      appleCertPassword: ${{ secrets.APPLE_CERT_PASSWORD }}
-      token: ${{ secrets.GITHUB_TOKEN }}
-
-  publish-github-release:
-    name: Publish Github Release
-    uses: ./.github/workflows/publish-github-release.yml
-    needs:
-      - build-electron-app
-      - get-next-version
-    with:
-      branch: ${{ github.ref_name }}
-      gitEmail: ${{ github.actor }}+${{ github.actor_id }}@trezy.com
-      gitUsername: ${{ github.actor }}
-      repo: ${{ github.repository }}
-      version: ${{ needs.get-next-version.outputs.version }}
-    secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      releaseName: ${{ github.event.release.name }}
 
   publish-to-steam:
     name: Publish to Steam
-    uses: ./.github/workflows/publish-to-steam.yml
+    uses: ./.github/workflows/reusable/publish-to-steam.yml
     needs:
-      - get-next-version
-      - publish-github-release
+      - get-release-info
+    strategy:
+      matrix:
+        environment:
+          - production
     with:
-      branch: ${{ github.ref_name }}
-      environment: production
-      version: ${{ needs.get-next-version.outputs.version }}
-      zipPrefix: Debug
+      environment: ${{ matrix.environment }}
+      repository: ${{ github.repository }}
+      steamReleaseBranch: ${{ needs.get-release-info.outputs.releaseBranch }}
+      versionNumber: ${{ needs.get-release-info.outputs.versionNumber }}
+      zipPrefix: 'Debug'
     secrets:
-      steamBuildUsername: ${{ secrets.STEAM_BUILD_USERNAME }}
       steamBuildConfigVDF: ${{ secrets.STEAM_BUILD_CONFIG_VDF }}
+      steamBuildUsername: ${{ secrets.STEAM_BUILD_USERNAME }}
       token: ${{ secrets.GITHUB_TOKEN }}
