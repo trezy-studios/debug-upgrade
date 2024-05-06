@@ -14,13 +14,13 @@ concurrency:
 jobs:
   get-release-info:
     name: Get version number
-    uses: ./.github/workflows/reusable/get-info-from-release.yml
+    uses: ./.github/workflows/[R] - get-info-from-release.yml
     with:
       releaseName: ${{ github.event.release.name }}
 
   publish-to-steam:
     name: Publish to Steam
-    uses: ./.github/workflows/reusable/publish-to-steam.yml
+    uses: ./.github/workflows/[R] - publish-to-steam.yml
     needs:
       - get-release-info
     strategy:

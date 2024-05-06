@@ -23,7 +23,7 @@ concurrency:
 jobs:
   get-next-version:
     name: Get Next Version
-    uses: ./.github/workflows/reusable/get-next-version.yml
+    uses: ./.github/workflows/[R] - get-next-version.yml
     with:
       ref: ${{ github.ref_name }}
     secrets:
@@ -31,7 +31,7 @@ jobs:
 
   create-draft-release:
     name: Create Draft Release
-    uses: ./.github/workflows/reusable/create-draft-release.yml
+    uses: ./.github/workflows/[R] - create-draft-release.yml
     needs:
       - get-next-version
     if: needs.get-next-version.outputs.published == 'true'
@@ -44,7 +44,7 @@ jobs:
 
   build-electron-app:
     name: Build Electron App
-    uses: ./.github/workflows/reusable/build-electron-app.yml
+    uses: ./.github/workflows/[R] - build-electron-app.yml
     needs:
       - create-draft-release
       - get-next-version
@@ -72,7 +72,7 @@ jobs:
 
   publish-github-release:
     name: Publish Github Release
-    uses: ./.github/workflows/reusable/publish-github-release.yml
+    uses: ./.github/workflows/[R] - publish-github-release.yml
     needs:
       - build-electron-app
       - get-next-version
