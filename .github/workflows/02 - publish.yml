@@ -3,6 +3,12 @@ name: Publish
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'The release version to use.'
+        required: true
+        type: string
 
 permissions:
   contents: write

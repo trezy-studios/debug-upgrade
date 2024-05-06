@@ -9,10 +9,10 @@ on:
     outputs:
       releaseBranch:
         description: The release branch.
-        value: ${{ jobs.get-release-branch.outputs.version }}
+        value: ${{ jobs.get-release-branch.outputs.releaseBranch }}
       versionNumber:
         description: The release version number.
-        value: ${{ jobs.get-version-number.outputs.published }}
+        value: ${{ jobs.get-version-number.outputs.versionNumber }}
 
 jobs:
   get-release-branch:
