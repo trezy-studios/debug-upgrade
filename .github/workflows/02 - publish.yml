@@ -22,7 +22,7 @@ jobs:
     name: Get version number
     uses: ./.github/workflows/[R] - get-info-from-release.yml
     with:
-      releaseName: ${{ github.event.release.name }}
+      releaseName: ${{ inputs.version || github.event.release.name }}
 
   publish-to-steam:
     name: Publish to Steam
