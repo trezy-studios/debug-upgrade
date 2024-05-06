@@ -76,5 +76,5 @@ jobs:
         with:
           compression-level: 0
           name: logs
-          path: BuildOutput
+          path: /github/home/.local/share/Steam/logs
           retention-days: 30
