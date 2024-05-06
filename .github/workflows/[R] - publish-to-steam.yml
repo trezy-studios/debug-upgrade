@@ -30,7 +30,7 @@ jobs:
   publish-to-steam:
     continue-on-error: true
     environment: ${{ inputs.environment }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22
 
     steps:
       - name: Get version number
