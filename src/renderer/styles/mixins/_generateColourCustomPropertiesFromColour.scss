@@ -1,3 +1,5 @@
+@use 'generateColourCustomProperties';
+
 @mixin generateColourCustomPropertiesFromColour($name, $color) {
 	@include generateColourCustomProperties(
 		$name,

@@ -8,12 +8,13 @@ import {
 	Sprite,
 	useTick,
 } from '@pixi/react'
-import {
-	useMemo,
-	useRef,
-} from 'react'
 import tinycolor from 'tinycolor2'
+import { useMemo } from 'react'
 import { useStore } from 'statery'
+
+
+
+
 
 // Local imports
 import { isBlockVisible } from '../../store/reducers/isBlockVisible.js'
@@ -23,6 +24,10 @@ import { PixiOverworldSection } from '../PixiOverworldSection/PixiOverworldSecti
 import shader from '../../shaders/OverworldFog.glsl'
 import { store } from '../../store/store.js'
 
+
+
+
+
 /**
  * Renders the overworld.
  *
@@ -31,13 +36,12 @@ import { store } from '../../store/store.js'
 export function PixiOverworld() {
 	const {
 		cameraOffset,
+		palette,
 		resolution,
 		stageHeight,
 		stageWidth,
 		uiScale,
 	} = useStore(store)
-
-	const ref = useRef()
 
 	const fogmapBlocksToUnhide = useMemo(() => {
 		const visibleBlocks = Object
@@ -72,7 +76,7 @@ export function PixiOverworld() {
 	}, [])
 
 	const uniforms = useMemo(() => {
-		const color = tinycolor('#30346d').toRgb()
+		const color = tinycolor(palette.get('black')).toRgb()
 		const uFogColor = new Uint8Array(4)
 		uFogColor[0] = color.r
 		uFogColor[1] = color.g
@@ -100,6 +104,7 @@ export function PixiOverworld() {
 	}, [
 		fogmapBlocksToUnhide,
 		overworldFogMap,
+		palette,
 		scaledStageHeight,
 		scaledStageWidth,
 		uiScale,
@@ -125,7 +130,6 @@ export function PixiOverworld() {
 			x={cameraOffset.x}
 			y={cameraOffset.y}>
 			<Sprite
-				ref={ref}
 				name={'background'}
 				texture={overworldTexture} />
 

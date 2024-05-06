@@ -98,14 +98,12 @@ body, html {
 
 html {
 	@extend %awkward-1x;
-	background-color: var(--background-color);
-	color: var(--text-color);
+	background-color: var(--palette-black);
+	color: var(--palette-white);
 	// font-size: 10px;
 }
 
 body {
-	background-color: var(--main-background-color);
-	color: var(--text-color);
 	// 	font-family: var(--base-font-family);
 	// 	font-size: var(--base-font-size);
 	// 	font-weight: var(--base-font-weight);

@@ -1,0 +1,33 @@
+@use 'sass:list';
+
+$colors: (
+	"beige": #d2aa99,
+	"black": #140c1c,
+	"blue": #597dce,
+	"brown": #854c30,
+	"dark-grey": #4e4a4e,
+	"green": #346524,
+	"grey": #757161,
+	"indigo": #442434,
+	"light-blue": #6dc2ca,
+	"light-green": #6daa2c,
+	"light-grey": #8595a1,
+	"orange": #d27d2c,
+	"pure-black": #000,
+	"purple": #30346d,
+	"red": #d04648,
+	"white": #deeed6,
+	"yellow": #dad45e,
+);
+$names: ();
+$values: ();
+
+@each $name, $value in $colors {
+	$names: list.append($names, $name);
+	$values: list.append($values, $value);
+}
+
+:export {
+	names: $names;
+	values: $values;
+}
