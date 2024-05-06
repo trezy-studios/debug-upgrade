@@ -17,7 +17,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ci-publish-${{ github.ref }}
+  group: ci-build-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
