@@ -36,11 +36,11 @@ import { store } from '../../store/store.js'
 export function PixiOverworld() {
 	const {
 		cameraOffset,
+		palette,
 		resolution,
 		stageHeight,
 		stageWidth,
 		uiScale,
-		fogBackgroundColor,
 	} = useStore(store)
 
 	const fogmapBlocksToUnhide = useMemo(() => {
@@ -76,7 +76,7 @@ export function PixiOverworld() {
 	}, [])
 
 	const uniforms = useMemo(() => {
-		const color = tinycolor(fogBackgroundColor).toRgb()
+		const color = tinycolor(palette.get('black')).toRgb()
 		const uFogColor = new Uint8Array(4)
 		uFogColor[0] = color.r
 		uFogColor[1] = color.g
@@ -104,10 +104,10 @@ export function PixiOverworld() {
 	}, [
 		fogmapBlocksToUnhide,
 		overworldFogMap,
+		palette,
 		scaledStageHeight,
 		scaledStageWidth,
 		uiScale,
-		fogBackgroundColor,
 	])
 
 	const filters = useMemo(() => {

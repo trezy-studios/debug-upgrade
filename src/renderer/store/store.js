@@ -9,6 +9,7 @@ import { makeStore } from 'statery'
 // Local imports
 import { ControlsManager } from '../game/ControlsManager.js'
 import { getCSSCustomPropertyValue } from '../helpers/getCSSCustomPropertyValue.js'
+import { getPalette } from '../helpers/getPalette.js'
 import { IPCBridge } from '../helpers/IPCBridge.js'
 import { SCENES } from '../data/SCENES.js'
 import { Vector2 } from '../game/Vector2.js'
@@ -106,6 +107,9 @@ export const store = makeStore({
 	/** @type {number} */
 	now: performance.now(),
 
+	/** @type {Map<string, string>} */
+	palette: getPalette(),
+
 	/** @type {null | PixiApplication} */
 	pixiApp: null,
 
@@ -168,9 +172,6 @@ export const store = makeStore({
 
 	/** @type {number} */
 	uiScale: /** @type {number} */ (getCSSCustomPropertyValue('ui-scale')),
-
-	/** @type {string} */
-	fogBackgroundColor: /** @type {string} */ (getCSSCustomPropertyValue('palette-black')),
 
 	/** @type {null | PixiViewport} */
 	viewport: null,
