@@ -1,4 +1,4 @@
-name: Publish
+name: Release Handler
 
 on:
   release:
@@ -17,7 +17,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: ci-publish-${{ github.ref }}
+  group: ci-release-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:

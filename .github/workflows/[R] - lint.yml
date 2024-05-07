@@ -1,31 +1,25 @@
 name: Lint
 
 on:
-  push:
-    branches:
-      - main
-      - beta
-      - alpha
-    paths-ignore:
-      - '**.md'
-      - .editorconfig
-      - .gitignore
-      - .yarnrc
-      - LICENSE
-  pull_request:
-    paths-ignore:
-      - '**.md'
-      - .editorconfig
-      - .gitignore
-      - .yarnrc
-      - LICENSE
-
-permissions:
-  contents: write
-
-concurrency:
-  group: ci-lint-${{ github.ref }}
-  cancel-in-progress: true
+  workflow_call:
+  # push:
+  #   branches:
+  #     - main
+  #     - beta
+  #     - alpha
+  #   paths-ignore:
+  #     - '**.md'
+  #     - .editorconfig
+  #     - .gitignore
+  #     - .yarnrc
+  #     - LICENSE
+  # pull_request:
+  #   paths-ignore:
+  #     - '**.md'
+  #     - .editorconfig
+  #     - .gitignore
+  #     - .yarnrc
+  #     - LICENSE
 
 jobs:
   lint:

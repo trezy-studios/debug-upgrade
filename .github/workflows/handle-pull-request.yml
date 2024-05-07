@@ -1,0 +1,22 @@
+name: Merge Handler
+
+on:
+  pull_request:
+    paths-ignore:
+      - '**.md'
+      - .editorconfig
+      - .gitignore
+      - .yarnrc
+      - LICENSE
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ci-pull-request-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Lint
+    uses: ./.github/workflows/[R] - lint.yml

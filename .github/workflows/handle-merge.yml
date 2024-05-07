@@ -1,4 +1,4 @@
-name: Build
+name: Merge Handler
 
 on:
   push:
@@ -17,13 +17,19 @@ permissions:
   contents: write
 
 concurrency:
-  group: ci-build-${{ github.ref }}
+  group: ci-merge-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  lint:
+    name: Lint
+    uses: ./.github/workflows/[R] - lint.yml
+
   get-next-version:
     name: Get Next Version
     uses: ./.github/workflows/[R] - get-next-version.yml
+    needs:
+      - lint
     with:
       ref: ${{ github.ref_name }}
     secrets:
@@ -75,12 +81,13 @@ jobs:
     uses: ./.github/workflows/[R] - publish-github-release.yml
     needs:
       - build-electron-app
+      - create-draft-release
       - get-next-version
     with:
       branch: ${{ github.ref_name }}
-      gitEmail: ${{ github.actor }}+${{ github.actor_id }}@trezy.com
+      gitEmail: ${{ github.actor }}+${{ github.actor_id }}@trezy.studio
       gitUsername: ${{ github.actor }}
       repo: ${{ github.repository }}
       version: ${{ needs.get-next-version.outputs.version }}
     secrets:
-      token: ${{ secrets.GITHUB_TOKEN }}
+      token: ${{ secrets.EVENT_TRIGGER_TOKEN }}
