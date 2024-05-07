@@ -65,4 +65,4 @@ jobs:
       - name: Publish Build to Itch
         env:
           BUTLER_API_KEY: ${{ secrets.itchioButlerAPIKey }}
-        run: butler push artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.versionNumber }}.zip ${{ secrets.itchioUsername }}/${{ inputs.itchioAppID }}:${{ inputs.platformAlias }}-${{ github.ref_name }} --userversion ${{ inputs.versionNumber }}
+        run: butler push artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.versionNumber }}.zip ${{ inputs.itchioUsername }}/${{ inputs.itchioAppID }}:${{ inputs.platformAlias }}-${{ github.ref_name }} --userversion ${{ inputs.versionNumber }}
