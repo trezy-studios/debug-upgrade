@@ -30,7 +30,7 @@ jobs:
   publish-to-steam:
     continue-on-error: true
     environment: ${{ inputs.environment }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
 
     steps:
       - name: Get version number
@@ -69,7 +69,7 @@ jobs:
         run: 7z x artifacts/${{ inputs.zipPrefix }}-linux-x64-${{ inputs.versionNumber }}.zip -obuilds/linux
 
       - name: Publish Builds to Steam
-        uses: game-ci/steam-deploy@v3
+        uses: trezy-studios/steam-deploy
         with:
           username: ${{ secrets.steamBuildUsername }}
           configVdf: ${{ secrets.steamBuildConfigVDF }}
