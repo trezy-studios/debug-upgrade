@@ -41,6 +41,7 @@
 @import './fonts/dabble/dabble';
 @import './fonts/heartbit/heartbit';
 @import './fonts/thaleah/thaleah';
+@import './fonts/tiny-talk/tiny-talk';
 @import './fonts/tinypixel/tinypixel';
 
 
@@ -57,13 +58,14 @@
 	--scrollbar-foreground-hovered: rgba(var(--palette-pure-white-rgb), 0.5);
 
 	box-sizing: border-box;
-  -webkit-font-smoothing: antialiased;
+	-webkit-font-smoothing: antialiased;
 	image-rendering: pixelated;
 	scrollbar-color: var(--scrollbar-foreground) var(--scrollbar-background);
 	text-overflow: ellipsis;
 	text-rendering: optimizeLegibility;
 
 	@media (prefers-reduced-motion: reduce) {
+
 		&,
 		&:after,
 		&:before {
@@ -91,7 +93,8 @@
 	}
 }
 
-body, html {
+body,
+html {
 	min-height: 100vh;
 	width: 100%;
 }
