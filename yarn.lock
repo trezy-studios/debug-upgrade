@@ -3021,12 +3021,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.12.7":
-  version: 20.12.7
-  resolution: "@types/node@npm:20.12.7"
+"@types/node@npm:^20.12.10":
+  version: 20.12.10
+  resolution: "@types/node@npm:20.12.10"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10c0/dce80d63a3b91892b321af823d624995c61e39c6a223cc0ac481a44d337640cc46931d33efb3beeed75f5c85c3bda1d97cef4c5cd4ec333caf5dee59cff6eca0
+  checksum: 10c0/2cc3b6ea09894ed1a3cf39f6491ec539281580f4ff83216e7d26ce85c83237fe0543c0ca49e25b2515ccdb6c8814b488d17a64a05f536dcaea94f9d32a60c7d7
   languageName: node
   linkType: hard
 
@@ -4677,7 +4677,7 @@ __metadata:
     "@trezy-studios/eslint-config-electron": "npm:^1.0.5"
     "@trezy-studios/eslint-config-react": "npm:^2.0.0"
     "@types/howler": "npm:^2.2.11"
-    "@types/node": "npm:^20.12.7"
+    "@types/node": "npm:^20.12.10"
     "@types/react": "npm:^18.3.1"
     "@types/tinycolor2": "npm:^1.4.6"
     "@types/uuid": "npm:^9.0.8"
@@ -4685,7 +4685,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^7.8.0"
     "@vitejs/plugin-react": "npm:^4.2.1"
     classnames: "npm:^2.5.1"
-    electron: "npm:^29.3.0"
+    electron: "npm:^30.0.2"
     electron-devtools-installer: "npm:^3.2.0"
     electron-squirrel-startup: "npm:^1.0.0"
     eslint: "npm:^8.57.0"
@@ -4703,7 +4703,7 @@ __metadata:
     eslint-plugin-sort-class-members: "npm:^1.20.0"
     eslint-plugin-unused-imports: "npm:^3.2.0"
     filesize: "npm:^10.1.1"
-    framer-motion: "npm:^11.1.3"
+    framer-motion: "npm:^11.1.9"
     howler: "npm:^2.2.4"
     ngraph.graph: "npm:^20.0.1"
     ngraph.path: "npm:^1.5.0"
@@ -4714,17 +4714,17 @@ __metadata:
     prettier: "npm:^3.2.5"
     prop-types: "npm:^15.8.1"
     rafael: "npm:^5.0.2"
-    react: "npm:^18.2.0"
-    react-dom: "npm:^18.2.0"
-    sass: "npm:^1.75.0"
+    react: "npm:^18.3.1"
+    react-dom: "npm:^18.3.1"
+    sass: "npm:^1.77.0"
     semantic-release: "npm:^23.0.8"
     semantic-release-export-data: "git+https://github.com/trezy-studios/semantic-release-export-data.git#add-release-notes"
     statery: "npm:^0.7.1"
     tinycolor2: "npm:^1.6.0"
     typescript: "npm:^5.4.5"
     uuid: "npm:^9.0.1"
-    vite: "npm:^5.2.9"
-    vite-plugin-sass-dts: "npm:^1.3.17"
+    vite: "npm:^5.2.11"
+    vite-plugin-sass-dts: "npm:^1.3.18"
     vite-plugin-string: "npm:^1.2.3"
   languageName: unknown
   linkType: soft
@@ -4975,16 +4975,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"electron@npm:^29.3.0":
-  version: 29.3.0
-  resolution: "electron@npm:29.3.0"
+"electron@npm:^30.0.2":
+  version: 30.0.2
+  resolution: "electron@npm:30.0.2"
   dependencies:
     "@electron/get": "npm:^2.0.0"
     "@types/node": "npm:^20.9.0"
     extract-zip: "npm:^2.0.1"
   bin:
     electron: cli.js
-  checksum: 10c0/8694ec86c20fb301d860aa491a2b67e3b47cfdc77a5afdc458bb89d747cd9d9977bab5127a13ff0aa7eed8ff21941e313d0271a5f33c0ca90ffbc9f8dc94560f
+  checksum: 10c0/5fc8c002c821ce21949dcce2c021ac620be79e067a05b2fb577e0958458a7fdceb18ecce58f767c1ec0b5947293be0c638547264d60aa45292eeaf3dbde3b153
   languageName: node
   linkType: hard
 
@@ -6179,9 +6179,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"framer-motion@npm:^11.1.3":
-  version: 11.1.3
-  resolution: "framer-motion@npm:11.1.3"
+"framer-motion@npm:^11.1.9":
+  version: 11.1.9
+  resolution: "framer-motion@npm:11.1.9"
   dependencies:
     tslib: "npm:^2.4.0"
   peerDependencies:
@@ -6195,7 +6195,7 @@ __metadata:
       optional: true
     react-dom:
       optional: true
-  checksum: 10c0/fe299de3e4659b69b7dfba6857db2a6e28f322023849fdafa61b14ae197c1c44256268479bd3e046f2ceb68915a9d7330f799e376e4eb28ca2e9475ae1dd4b2c
+  checksum: 10c0/c1bbadb5f5c324de0473f3fb2c3d0180fc5239335f49b536dc827dff27c87d749af402d1c1fbe7081fbc15b816e32fadf66e24970476f98b2934464f8df9bdb0
   languageName: node
   linkType: hard
 
@@ -10144,15 +10144,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^18.2.0":
-  version: 18.2.0
-  resolution: "react-dom@npm:18.2.0"
+"react-dom@npm:^18.3.1":
+  version: 18.3.1
+  resolution: "react-dom@npm:18.3.1"
   dependencies:
     loose-envify: "npm:^1.1.0"
-    scheduler: "npm:^0.23.0"
+    scheduler: "npm:^0.23.2"
   peerDependencies:
-    react: ^18.2.0
-  checksum: 10c0/66dfc5f93e13d0674e78ef41f92ed21dfb80f9c4ac4ac25a4b51046d41d4d2186abc915b897f69d3d0ebbffe6184e7c5876f2af26bfa956f179225d921be713a
+    react: ^18.3.1
+  checksum: 10c0/a752496c1941f958f2e8ac56239172296fcddce1365ce45222d04a1947e0cc5547df3e8447f855a81d6d39f008d7c32eab43db3712077f09e3f67c4874973e85
   languageName: node
   linkType: hard
 
@@ -10170,12 +10170,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^18.2.0":
-  version: 18.2.0
-  resolution: "react@npm:18.2.0"
+"react@npm:^18.3.1":
+  version: 18.3.1
+  resolution: "react@npm:18.3.1"
   dependencies:
     loose-envify: "npm:^1.1.0"
-  checksum: 10c0/b562d9b569b0cb315e44b48099f7712283d93df36b19a39a67c254c6686479d3980b7f013dc931f4a5a3ae7645eae6386b4aa5eea933baa54ecd0f9acb0902b8
+  checksum: 10c0/283e8c5efcf37802c9d1ce767f302dd569dd97a70d9bb8c7be79a789b9902451e0d16334b05d73299b20f048cbc3c7d288bbbde10b701fa194e2089c237dbea3
   languageName: node
   linkType: hard
 
@@ -10720,25 +10720,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sass@npm:^1.75.0":
-  version: 1.75.0
-  resolution: "sass@npm:1.75.0"
+"sass@npm:^1.77.0":
+  version: 1.77.0
+  resolution: "sass@npm:1.77.0"
   dependencies:
     chokidar: "npm:>=3.0.0 <4.0.0"
     immutable: "npm:^4.0.0"
     source-map-js: "npm:>=0.6.2 <2.0.0"
   bin:
     sass: sass.js
-  checksum: 10c0/1564ab2c8041c99a330cec93127fe8abcf65ac63eecb471610ed7f3126a2599a58b788a3a98eb8719f7f40b9b04e00c92bc9e11a9c2180ad582b8cba9fb030b0
+  checksum: 10c0/bce0e5f5b535491e4e775045a79f19cbe10d800ef53b5f7698958d2992505d7b124c968169b05a0190842d8e0a24c2aa6d75dfbdd7c213820d9d59e227009c19
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.23.0":
-  version: 0.23.0
-  resolution: "scheduler@npm:0.23.0"
+"scheduler@npm:^0.23.2":
+  version: 0.23.2
+  resolution: "scheduler@npm:0.23.2"
   dependencies:
     loose-envify: "npm:^1.1.0"
-  checksum: 10c0/b777f7ca0115e6d93e126ac490dbd82642d14983b3079f58f35519d992fa46260be7d6e6cede433a92db70306310c6f5f06e144f0e40c484199e09c1f7be53dd
+  checksum: 10c0/26383305e249651d4c58e6705d5f8425f153211aef95f15161c151f7b8de885f24751b377e4a0b3dd42cce09aad3f87a61dab7636859c0d89b7daf1a1e2a5c78
   languageName: node
   linkType: hard
 
@@ -12207,9 +12207,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite-plugin-sass-dts@npm:^1.3.17":
-  version: 1.3.17
-  resolution: "vite-plugin-sass-dts@npm:1.3.17"
+"vite-plugin-sass-dts@npm:^1.3.18":
+  version: 1.3.18
+  resolution: "vite-plugin-sass-dts@npm:1.3.18"
   dependencies:
     postcss-js: "npm:^4.0.1"
   peerDependencies:
@@ -12217,7 +12217,7 @@ __metadata:
     prettier: ^2.7 || ^3
     sass: "*"
     vite: ">=3"
-  checksum: 10c0/3592e3b02bbbddf699a998fb7ff66689ead71dc63f114867b6295e67ac5dcdb7b437bad30c592bc427564e8c1cfcc01e505a27989de01955c45f8a5d92c23bff
+  checksum: 10c0/79c7444c2d676dc29ce6237e9216b4dc32ed936a6ad0058474271141fe67e8fe21ad329c4501b53fe9fa8f998e0685e1e1920986391e4d79a5c10f8efdfc33bc
   languageName: node
   linkType: hard
 
@@ -12232,9 +12232,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.2.9":
-  version: 5.2.9
-  resolution: "vite@npm:5.2.9"
+"vite@npm:^5.2.11":
+  version: 5.2.11
+  resolution: "vite@npm:5.2.11"
   dependencies:
     esbuild: "npm:^0.20.1"
     fsevents: "npm:~2.3.3"
@@ -12268,7 +12268,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: 10c0/2bf8faa7ae84d5fffabc28b2b2462128a839b8a7ce6d4dde1794975c8c896443df49a54ef95ad8f0326457648426fd9317a618479ef28049cb195d91985729ed
+  checksum: 10c0/664b8d68e4f5152ae16bd2041af1bbaf11c43630ac461835bc31ff7d019913b33e465386e09f66dc1037d7aeefbb06939e0173787c063319bc2bd30c3b9ad8e4
   languageName: node
   linkType: hard
 
