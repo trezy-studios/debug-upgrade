@@ -1,0 +1,10 @@
+{
+	"dependencies": {
+		"default": "0.0.0-development"
+	},
+	"id": "lvl03",
+	"name": "Misdirected Request",
+	"description": "Sometimes, there are many ways...",
+	"type": "maps",
+	"version": "0.0.0-development"
+}
