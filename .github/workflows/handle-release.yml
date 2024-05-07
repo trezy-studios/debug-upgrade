@@ -39,10 +39,39 @@ jobs:
     with:
       environment: ${{ matrix.environment }}
       repository: ${{ github.repository }}
+      steamBuildUsername: ${{ vars.STEAM_BUILD_USERNAME }}
       steamReleaseBranch: ${{ needs.get-release-info.outputs.releaseBranch }}
       versionNumber: ${{ needs.get-release-info.outputs.versionNumber }}
       zipPrefix: 'Debug'
     secrets:
       steamBuildConfigVDF: ${{ secrets.STEAM_BUILD_CONFIG_VDF }}
-      steamBuildUsername: ${{ secrets.STEAM_BUILD_USERNAME }}
+      token: ${{ secrets.GITHUB_TOKEN }}
+
+  publish-to-itch:
+    name: Publish to Itch
+    uses: ./.github/workflows/[R] - publish-to-itch.yml
+    needs:
+      - get-release-info
+    strategy:
+      matrix:
+        platform:
+          - alias: linux
+            arch: x64
+            name: linux
+          - alias: osx
+            arch: universal
+            name: darwin
+          - alias: windows
+            arch: x64
+            name: win32
+    with:
+      itchioAppID: ${{ vars.ITCHIO_APP_ID }}
+      itchioUsername: ${{ vars.ITCHIO_USERNAME }}
+      platformAlias: ${{ matrix.platform.alias }}
+      platformArch: ${{ matrix.platform.arch }}
+      platformName: ${{ matrix.platform.name }}
+      versionNumber: ${{ needs.get-release-info.outputs.versionNumber }}
+      zipPrefix: 'Debug'
+    secrets:
+      itchioButlerAPIKey: ${{ secrets.ITCHIO_BUTLER_API_KEY }}
       token: ${{ secrets.GITHUB_TOKEN }}

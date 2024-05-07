@@ -1,0 +1,68 @@
+name: Publish to Steam
+
+on:
+  workflow_call:
+    inputs:
+      itchioAppID:
+        required: true
+        type: string
+      itchioUsername:
+        required: true
+        type: string
+      platformAlias:
+        required: true
+        type: string
+      platformArch:
+        required: true
+        type: string
+      platformName:
+        required: true
+        type: string
+      versionNumber:
+        required: true
+        type: string
+      zipPrefix:
+        required: true
+        type: string
+    secrets:
+      itchioButlerAPIKey:
+        required: true
+      token:
+        required: true
+
+jobs:
+  publish-to-itch:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+
+    steps:
+      - name: Setup Butler
+        run: |
+          curl -L -o butler.zip https://broth.itch.ovh/butler/linux-amd64/LATEST/archive/default
+          7z x -obutler butler.zip
+          chmod +x butler
+        working-directory: ${{ runner.temp }}
+
+      - name: Install the Butler binary
+        uses: AnimMouse/tool-cache@v1
+        with:
+          folder_name: butler
+
+      - name: Download Build
+        uses: robinraju/release-downloader@v1.8
+        with:
+          fileName: '*.zip'
+          out-file-path: artifacts
+          repository: ${{ github.repository }}
+          tag: v${{ inputs.versionNumber }}
+          token: ${{ secrets.token }}
+
+      # Rewrite the Windows zip to use forward slashes instead of backslashes.
+      - name: Convert Windows Archive to Forward Slashes
+        run: 7z rn artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.versionNumber }}.zip $(7z l artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.versionNumber }}.zip | grep '\\' | awk '{ print $6, gensub(/\\/, "/", "g", $6); }' | paste -s)
+        if: ${{ inputs.platformAlias == 'windows' }}
+
+      - name: Publish Build to Itch
+        env:
+          BUTLER_API_KEY: ${{ secrets.itchioButlerAPIKey }}
+        run: butler push artifacts/${{ inputs.zipPrefix }}-${{ inputs.platformName }}-${{ inputs.platformArch }}-${{ inputs.versionNumber }}.zip ${{ secrets.itchioUsername }}/${{ inputs.itchioAppID }}:${{ inputs.platformAlias }}-${{ github.ref_name }} --userversion ${{ inputs.versionNumber }}

@@ -9,6 +9,9 @@ on:
       repository:
         required: true
         type: string
+      steamBuildUsername:
+        required: true
+        type: string
       steamReleaseBranch:
         required: true
         type: string
@@ -19,8 +22,6 @@ on:
         required: true
         type: string
     secrets:
-      steamBuildUsername:
-        required: true
       steamBuildConfigVDF:
         required: true
       token:
@@ -33,14 +34,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Get version number
-        id: get-version-number
-        uses: frabert/replace-string-action@v2
-        with:
-          pattern: '^v(\d+\.\d+\.\d+)$'
-          replace-with: '$1'
-          string: v${{ inputs.versionNumber }}
-
       - name: Download Builds
         uses: robinraju/release-downloader@v1.8
         with:
@@ -71,7 +64,7 @@ jobs:
       - name: Publish Builds to Steam
         uses: game-ci/steam-deploy@v3.0.1
         with:
-          username: ${{ secrets.steamBuildUsername }}
+          username: ${{ inputs.steamBuildUsername }}
           configVdf: ${{ secrets.steamBuildConfigVDF }}
           appId: ${{ vars.STEAM_APP_ID }}
           buildDescription: ${{ inputs.versionNumber }}
