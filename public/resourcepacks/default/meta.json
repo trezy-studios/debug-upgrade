@@ -233,6 +233,186 @@
 			"isBlocking": false,
 			"isTraversable": true,
 			"name": "Conveyor Belt 4 (North)"
+		},
+		"38": {
+			"id": "38",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Wall w/ Green Light (Right)"
+		},
+		"39": {
+			"id": "39",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Wall w/ Green Light (Left)"
+		},
+		"40": {
+			"id": "40",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Wall w/ Yellow Light (Right)"
+		},
+		"41": {
+			"id": "41",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Wall w/ Yellow Light (Left)"
+		},
+		"42": {
+			"id": "42",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Wall w/ Red Light (Right)"
+		},
+		"43": {
+			"id": "43",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Wall w/ Red Light (Left)"
+		},
+		"44": {
+			"id": "44",
+			"isBlocking": false,
+			"isTraversable": false,
+			"name": "Horizontal Door (Open)"
+		},
+		"45": {
+			"id": "45",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Horizontal Door (Opening)"
+		},
+		"46": {
+			"id": "46",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Horizontal Door (Closed)"
+		},
+		"47": {
+			"id": "47",
+			"isBlocking": false,
+			"isTraversable": false,
+			"name": "Vertical Door (Open)"
+		},
+		"48": {
+			"id": "48",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Vertical Door (Opening)"
+		},
+		"49": {
+			"id": "49",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Vertical Door (Closed)"
+		},
+		"50": {
+			"id": "50",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Wall Bottom w/ Door (Open)"
+		},
+		"51": {
+			"id": "51",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Wall Bottom w/ Door (Opening)"
+		},
+		"52": {
+			"id": "52",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Wall Bottom w/ Door (Closed)"
+		},
+		"53": {
+			"id": "53",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (Horizontal)"
+		},
+		"54": {
+			"id": "54",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (Vertical)"
+		},
+		"55": {
+			"id": "55",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Terminated Conduit (East)"
+		},
+		"56": {
+			"id": "56",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Terminated Conduit (West)"
+		},
+		"57": {
+			"id": "57",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Terminated Conduit (North)"
+		},
+		"58": {
+			"id": "58",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Terminated Conduit (South)"
+		},
+		"59": {
+			"id": "59",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (East, South)"
+		},
+		"60": {
+			"id": "60",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (West, South)"
+		},
+		"61": {
+			"id": "61",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (West, North)"
+		},
+		"62": {
+			"id": "62",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (East, North)"
+		},
+		"63": {
+			"id": "63",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (Horizontal, South)"
+		},
+		"64": {
+			"id": "64",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (Horizontal, North)"
+		},
+		"65": {
+			"id": "65",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (East, Vertical)"
+		},
+		"66": {
+			"id": "66",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (West, Vertical)"
+		},
+		"67": {
+			"id": "67",
+			"isBlocking": true,
+			"isTraversable": false,
+			"name": "Conduit (Horizontal, Vertical)"
 		}
 	}
 }
