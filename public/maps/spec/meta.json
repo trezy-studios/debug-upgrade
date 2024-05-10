@@ -1,0 +1,10 @@
+{
+	"dependencies": {
+		"default": "0.0.0-development"
+	},
+	"id": "spec",
+	"name": "Spec Level",
+	"description": "Just testing out an early concept.",
+	"type": "maps",
+	"version": "0.0.0-development"
+}

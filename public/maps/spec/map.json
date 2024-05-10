@@ -1,0 +1,1318 @@
+{
+	"dimensions": {
+		"height": 19,
+		"width": 31
+	},
+	"layers": [
+		{
+			"3|8": {
+				"tileID": "5",
+				"resourcepackID": "default"
+			},
+			"3|9": {
+				"tileID": "5",
+				"resourcepackID": "default"
+			},
+			"3|10": {
+				"tileID": "5",
+				"resourcepackID": "default"
+			},
+			"4|8": {
+				"tileID": "5",
+				"resourcepackID": "default"
+			},
+			"4|9": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"4|10": {
+				"tileID": "5",
+				"resourcepackID": "default"
+			},
+			"5|8": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"5|9": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"5|10": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"6|9": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"7|9": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"12|3": {
+				"tileID": "6",
+				"resourcepackID": "default"
+			},
+			"12|6": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"12|7": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"12|8": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"12|9": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"12|10": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"12|11": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"12|12": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"12|15": {
+				"tileID": "5",
+				"resourcepackID": "default"
+			},
+			"13|2": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"13|3": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"13|4": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"13|6": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"13|7": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"13|8": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"13|9": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"13|10": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"13|11": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"13|12": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"13|14": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"13|15": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"13|16": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|2": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|3": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|4": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|6": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"14|7": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|8": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|9": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|10": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|11": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|12": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"14|14": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|15": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"14|16": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|2": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|3": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|4": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|6": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"15|7": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|8": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|9": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|10": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|11": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|12": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"15|14": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|15": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"15|16": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|2": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|3": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|4": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|6": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"16|7": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|8": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|9": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|10": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|11": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|12": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"16|14": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|15": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"16|16": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|2": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|3": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|4": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|6": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"17|7": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|8": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|9": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|10": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|11": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|12": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"17|14": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|15": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"17|16": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|2": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|3": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|4": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|6": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"18|7": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|8": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|9": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|10": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|11": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|12": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"18|14": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|15": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"18|16": {
+				"tileID": "14",
+				"resourcepackID": "default"
+			},
+			"19|3": {
+				"tileID": "6",
+				"resourcepackID": "default"
+			},
+			"19|6": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"19|7": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"19|8": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"19|9": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"19|10": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"19|11": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"19|12": {
+				"tileID": "9",
+				"resourcepackID": "default"
+			},
+			"19|15": {
+				"tileID": "6",
+				"resourcepackID": "default"
+			},
+			"24|9": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"25|9": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"26|8": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"26|9": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"26|10": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"27|8": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"27|9": {
+				"tileID": "5",
+				"resourcepackID": "default"
+			},
+			"27|10": {
+				"tileID": "0",
+				"resourcepackID": "default"
+			},
+			"28|8": {
+				"tileID": "5",
+				"resourcepackID": "default"
+			},
+			"28|9": {
+				"tileID": "5",
+				"resourcepackID": "default"
+			},
+			"28|10": {
+				"tileID": "5",
+				"resourcepackID": "default"
+			}
+		},
+		{
+			"0|8": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"0|10": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"1|8": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"1|10": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"2|7": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"2|8": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"2|10": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"2|11": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"3|7": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"3|11": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"4|7": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"4|11": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"5|1": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|2": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|3": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|4": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|5": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|6": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|7": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"5|11": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|12": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|13": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|14": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|15": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|16": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"5|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"6|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"6|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"7|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"7|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"8|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"8|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"9|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"9|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"10|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"10|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"11|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"11|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"12|1": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"12|2": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"12|4": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"12|5": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"12|13": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"12|14": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"12|16": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"12|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"13|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"13|5": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"13|13": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"13|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"14|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"14|5": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"14|13": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"14|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"15|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"15|5": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"15|13": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"15|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"16|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"16|5": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"16|13": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"16|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"17|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"17|5": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"17|13": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"17|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"18|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"18|5": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"18|13": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"18|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"19|1": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"19|2": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"19|4": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"19|5": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"19|13": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"19|14": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"19|16": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"19|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"20|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"20|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"21|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"21|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"22|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"22|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"23|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"23|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"24|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"24|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"25|1": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"25|17": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"26|1": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|2": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|3": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|4": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|5": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|6": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|7": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"26|11": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|12": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|13": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|14": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|15": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|16": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|17": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|18": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"26|19": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"27|7": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"27|11": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"28|7": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"28|11": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"28|15": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"28|16": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"28|17": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"28|18": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"29|7": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"29|8": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"29|10": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"29|11": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"29|14": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"29|15": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"30|8": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"30|13": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"30|14": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			},
+			"31|8": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"31|9": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"31|10": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"31|11": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"31|12": {
+				"tileID": "10",
+				"resourcepackID": "default"
+			},
+			"31|13": {
+				"tileID": "11",
+				"resourcepackID": "default"
+			}
+		},
+		{
+			"0|9": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"1|9": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"12|6": {
+				"tileID": "62",
+				"resourcepackID": "default"
+			},
+			"13|6": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"13|7": {
+				"tileID": "59",
+				"resourcepackID": "default"
+			},
+			"13|8": {
+				"tileID": "65",
+				"resourcepackID": "default"
+			},
+			"13|9": {
+				"tileID": "57",
+				"resourcepackID": "default"
+			},
+			"13|11": {
+				"tileID": "55",
+				"resourcepackID": "default"
+			},
+			"14|6": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"14|7": {
+				"tileID": "56",
+				"resourcepackID": "default"
+			},
+			"14|8": {
+				"tileID": "56",
+				"resourcepackID": "default"
+			},
+			"14|11": {
+				"tileID": "56",
+				"resourcepackID": "default"
+			},
+			"15|6": {
+				"tileID": "56",
+				"resourcepackID": "default"
+			},
+			"15|10": {
+				"tileID": "58",
+				"resourcepackID": "default"
+			},
+			"15|11": {
+				"tileID": "62",
+				"resourcepackID": "default"
+			},
+			"16|0": {
+				"tileID": "59",
+				"resourcepackID": "default"
+			},
+			"16|7": {
+				"tileID": "55",
+				"resourcepackID": "default"
+			},
+			"16|8": {
+				"tileID": "55",
+				"resourcepackID": "default"
+			},
+			"16|11": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"17|0": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"17|7": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"17|8": {
+				"tileID": "63",
+				"resourcepackID": "default"
+			},
+			"17|9": {
+				"tileID": "57",
+				"resourcepackID": "default"
+			},
+			"17|11": {
+				"tileID": "63",
+				"resourcepackID": "default"
+			},
+			"17|12": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"18|0": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"18|7": {
+				"tileID": "60",
+				"resourcepackID": "default"
+			},
+			"18|8": {
+				"tileID": "66",
+				"resourcepackID": "default"
+			},
+			"18|9": {
+				"tileID": "57",
+				"resourcepackID": "default"
+			},
+			"18|11": {
+				"tileID": "56",
+				"resourcepackID": "default"
+			},
+			"19|0": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"20|0": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"21|0": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"22|0": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"23|0": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"24|0": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"25|0": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"26|0": {
+				"tileID": "53",
+				"resourcepackID": "default"
+			},
+			"27|0": {
+				"tileID": "60",
+				"resourcepackID": "default"
+			},
+			"27|1": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"27|2": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"27|3": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"27|4": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"27|5": {
+				"tileID": "62",
+				"resourcepackID": "default"
+			},
+			"27|14": {
+				"tileID": "59",
+				"resourcepackID": "default"
+			},
+			"27|15": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"27|16": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"27|17": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"27|18": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"27|19": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"28|5": {
+				"tileID": "60",
+				"resourcepackID": "default"
+			},
+			"28|6": {
+				"tileID": "62",
+				"resourcepackID": "default"
+			},
+			"28|13": {
+				"tileID": "59",
+				"resourcepackID": "default"
+			},
+			"28|14": {
+				"tileID": "61",
+				"resourcepackID": "default"
+			},
+			"29|6": {
+				"tileID": "60",
+				"resourcepackID": "default"
+			},
+			"29|12": {
+				"tileID": "59",
+				"resourcepackID": "default"
+			},
+			"29|13": {
+				"tileID": "61",
+				"resourcepackID": "default"
+			},
+			"30|9": {
+				"tileID": "60",
+				"resourcepackID": "default"
+			},
+			"30|10": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"30|11": {
+				"tileID": "54",
+				"resourcepackID": "default"
+			},
+			"30|12": {
+				"tileID": "61",
+				"resourcepackID": "default"
+			}
+		},
+		{
+			"12|2": {
+				"tileID": "52",
+				"resourcepackID": "default"
+			},
+			"12|3": {
+				"tileID": "49",
+				"resourcepackID": "default"
+			},
+			"12|14": {
+				"tileID": "50",
+				"resourcepackID": "default"
+			},
+			"12|15": {
+				"tileID": "47",
+				"resourcepackID": "default"
+			},
+			"19|2": {
+				"tileID": "52",
+				"resourcepackID": "default"
+			},
+			"19|3": {
+				"tileID": "49",
+				"resourcepackID": "default"
+			},
+			"19|14": {
+				"tileID": "52",
+				"resourcepackID": "default"
+			},
+			"19|15": {
+				"tileID": "49",
+				"resourcepackID": "default"
+			}
+		}
+	],
+	"destinations": [
+		{
+			"x": 28,
+			"y": 9
+		}
+	],
+	"startingPosition": {
+		"x": 3,
+		"y": 9
+	},
+	"queue": [
+		{
+			"dimensions": {
+				"height": 2,
+				"width": 3
+			},
+			"layers": [
+				{
+					"0|1": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"1|1": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"2|0": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					},
+					"2|1": {
+						"tileID": "2",
+						"resourcepackID": "default"
+					}
+				}
+			]
+		}
+	]
+}
