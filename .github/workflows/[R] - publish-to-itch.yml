@@ -1,4 +1,4 @@
-name: Publish to Steam
+name: Publish to Itch
 
 on:
   workflow_call:
