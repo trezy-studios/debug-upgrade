@@ -20,12 +20,6 @@ import { store } from '../store.js'
 
 
 
-let spritesheetIndex = 0
-
-
-
-
-
 /**
  * Hook for loading assets.
  *
@@ -100,12 +94,13 @@ export async function loadAssets(manifestIDs, options = {}) {
 				const imageSrc = asset.src.replace(/\/\w+\.json?$/u, `/${atlasData.meta.image}`)
 				const texture = BaseTexture.from(imageSrc)
 				const spritesheet = new Spritesheet({
-					cachePrefix: `spritesheet-${spritesheetIndex}::`,
+					cachePrefix: `${asset.src}::`,
 					data: atlasData,
 					texture,
 				})
-				spritesheetIndex += 1
+
 				await spritesheet.parse()
+
 				store.set(previousState => {
 					const newSpritesheetCache = new Map(previousState.spritesheetCache)
 					newSpritesheetCache.set(asset.alias, spritesheet)
