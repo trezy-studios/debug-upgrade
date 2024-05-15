@@ -93,8 +93,14 @@ export async function loadAssets(manifestIDs, options = {}) {
 				const atlasData = await fetchAsJSON(asset.src)
 				const imageSrc = asset.src.replace(/\/\w+\.json?$/u, `/${atlasData.meta.image}`)
 				const texture = BaseTexture.from(imageSrc)
-				const spritesheet = new Spritesheet(texture, atlasData)
+				const spritesheet = new Spritesheet({
+					cachePrefix: `${asset.src}::`,
+					data: atlasData,
+					texture,
+				})
+
 				await spritesheet.parse()
+
 				store.set(previousState => {
 					const newSpritesheetCache = new Map(previousState.spritesheetCache)
 					newSpritesheetCache.set(asset.alias, spritesheet)
