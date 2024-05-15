@@ -275,11 +275,26 @@ export class TileMap {
 
 	/**
 	 * Loads the map's data.
+	 *
+	 * @returns {Promise<{
+	 * 	dependencyCount: number,
+	 * 	dependenciesLoaded: number,
+	 * }>} Dependency loading results.
 	 */
 	async loadDependencies() {
-		const dependencies = {}
+		const dependencyKeys = Object.keys(this.#meta.dependencies)
 
-		for (const dependencyID of Object.keys(this.#meta.dependencies)) {
+		const dependencyCount = dependencyKeys.length
+		let dependenciesLoaded = 0
+
+		const dependencies = {}
+		const { resourcepacks } = store.state
+
+		for (const dependencyID of dependencyKeys) {
+			if (resourcepacks.get(dependencyID)) {
+				continue
+			}
+
 			const [
 				meta,
 				tiles,
@@ -297,10 +312,12 @@ export class TileMap {
 				tiles,
 				tilesSpritesheet,
 			}
+
+			dependenciesLoaded += 1
 		}
 
-		store.set(previousState => {
-			const newResourcepacks = new Map(previousState.resourcepacks)
+		store.set(() => {
+			const newResourcepacks = new Map(resourcepacks)
 
 			Object.entries(dependencies).forEach(([dependencyID, dependencyData]) => {
 				newResourcepacks.set(dependencyID, dependencyData)
@@ -311,6 +328,11 @@ export class TileMap {
 		})
 
 		this.#generateGraph()
+
+		return {
+			dependenciesLoaded,
+			dependencyCount,
+		}
 	}
 
 	/**
