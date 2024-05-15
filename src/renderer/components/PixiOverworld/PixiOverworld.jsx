@@ -60,8 +60,7 @@ export function PixiOverworld() {
 	} = useMemo(() => ({
 		scaledStageWidth: stageWidth * resolution,
 		scaledStageHeight: stageHeight * resolution,
-	}),
-	[
+	}), [
 		resolution,
 		stageHeight,
 		stageWidth,

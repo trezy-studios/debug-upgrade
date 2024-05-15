@@ -40,9 +40,9 @@ function mapSectionBlocks(blocks) {
 export function PixiOverworldSection({ data }) {
 	return (
 		<Container
-			height={data.position.height}
+			height={data.size.height}
 			name={data.name}
-			width={data.position.width}
+			width={data.size.width}
 			x={data.position.x}
 			y={data.position.y}>
 			{mapSectionBlocks(data.blocks)}
