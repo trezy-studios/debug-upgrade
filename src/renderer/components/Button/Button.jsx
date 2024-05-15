@@ -30,10 +30,8 @@ import { useNavGraphContext } from '../NavGraph/NavGraphContext.jsx'
  * @param {*} [props.children] Node to be rendered inside of the button.
  * @param {string} [props.className] Additional classes to be applied to the component.
  * @param {boolean} [props.forceAnimationInclusion] Whether to set animation variants forcefully.
+ * @param {boolean} [props.hideFromNavGraph] Whether this button should be hidden from the nav graph.
  * @param {string} [props.id] A unique identifier for this button.
- * @param {string} props.nodeID The ID to be used for this button in the navgraph.
- * @param {string} props.navGroupID The ID of the group to which this node will belong in the navgraph.
- * @param {import('ngraph.graph').NodeId[]} [props.navGroupLinks] An array of IDs to which this node's group will be linked.
  * @param {boolean} [props.isAffirmative] Whether this button will cause an affirmative action.
  * @param {boolean} [props.isDisabled] Whether this button is disabled.
  * @param {boolean} [props.isFullWidth] Whether this button should take up the full width of its parent.
@@ -44,7 +42,10 @@ import { useNavGraphContext } from '../NavGraph/NavGraphContext.jsx'
  * @param {boolean} [props.isSubmit] Whether this button should be smaller than normal.
  * @param {boolean} [props.isText] Whether this button should be rendered as only text.
  * @param {boolean} [props.isUniformlyPadded] Whether this button shoudl have the same padding on all sides.
- * @param {(...args: any[]) => any} props.onActivate A function to be executed when the button is activated via the navgraph.
+ * @param {string} [props.nodeID] The ID to be used for this button in the navgraph.
+ * @param {string} [props.navGroupID] The ID of the group to which this node will belong in the navgraph.
+ * @param {import('ngraph.graph').NodeId[]} [props.navGroupLinks] An array of IDs to which this node's group will be linked.
+ * @param {(...args: any[]) => any} [props.onActivate] A function to be executed when the button is activated via the navgraph.
  * @param {(...args: any[]) => any} [props.onDeactivate] A function to be executed when the button is deactivated via the navgraph.
  * @param {import('react').MouseEventHandler<HTMLButtonElement>} [props.onClick] The function to be executed when this button is clicked.
  * @param {import('react').FocusEventHandler<HTMLButtonElement>} [props.onFocus] A function to be executed when the button is focused within the navgraph.
@@ -58,6 +59,7 @@ export function Button({
 	children = null,
 	className = '',
 	forceAnimationInclusion = false,
+	hideFromNavGraph = false,
 	id = '',
 	isAffirmative = false,
 	isDisabled = false,
@@ -69,10 +71,13 @@ export function Button({
 	isSubmit = false,
 	isText = false,
 	isUniformlyPadded = false,
+	// eslint-disable-next-line react/require-default-props
 	navGroupID,
 	// eslint-disable-next-line react/require-default-props
 	navGroupLinks,
+	// eslint-disable-next-line react/require-default-props
 	nodeID,
+	// eslint-disable-next-line react/require-default-props
 	onActivate,
 	// eslint-disable-next-line react/require-default-props
 	onClick,
@@ -164,6 +169,43 @@ export function Button({
 		nodeID,
 	])
 
+	const renderedButton = useMemo(() => (
+		<motion.button
+			key={id}
+			ref={buttonRef}
+			className={compiledClassName}
+			disabled={isDisabled}
+			onClick={onClick}
+			onFocus={onFocus}
+			onMouseOver={handleHover}
+			style={style}
+			type={isSubmit ? 'submit' : 'button'}
+			variants={variants}
+			{...animationProps}
+			{...ariaProps}
+			{...dataProps}>
+			{children}
+		</motion.button>
+	), [
+		animationProps,
+		ariaProps,
+		children,
+		compiledClassName,
+		dataProps,
+		handleHover,
+		id,
+		isDisabled,
+		isSubmit,
+		onClick,
+		onFocus,
+		style,
+		variants,
+	])
+
+	if (hideFromNavGraph) {
+		return renderedButton
+	}
+
 	return (
 		<NavGraphNode
 			groupID={navGroupID}
@@ -174,22 +216,7 @@ export function Button({
 			onDeactivate={onDeactivate}
 			// onFocus={onFocus}
 			targetRef={buttonRef}>
-			<motion.button
-				key={id}
-				ref={buttonRef}
-				className={compiledClassName}
-				disabled={isDisabled}
-				onClick={onClick}
-				onFocus={onFocus}
-				onMouseOver={handleHover}
-				style={style}
-				type={isSubmit ? 'submit' : 'button'}
-				variants={variants}
-				{...animationProps}
-				{...ariaProps}
-				{...dataProps}>
-				{children}
-			</motion.button>
+			{renderedButton}
 		</NavGraphNode>
 	)
 }
@@ -198,6 +225,26 @@ Button.propTypes = {
 	children: PropTypes.node,
 	className: PropTypes.string,
 	forceAnimationInclusion: PropTypes.bool,
+	// eslint-disable-next-line jsdoc/require-jsdoc
+	hideFromNavGraph: (props, propName, componentName, location) => {
+		PropTypes.checkPropTypes({ hideFromNavGraph: PropTypes.bool }, props, location, componentName)
+
+		const propValue = props[propName]
+
+		if (!propValue) {
+			return PropTypes.checkPropTypes({
+				nodeID: PropTypes.string.isRequired,
+				navGroupID: PropTypes.string.isRequired,
+				navGroupLinks: PropTypes.arrayOf(PropTypes.oneOfType([
+					PropTypes.number,
+					PropTypes.string,
+				])),
+				onActivate: PropTypes.func.isRequired,
+			}, props, location, componentName)
+		}
+
+		return null
+	},
 	id: PropTypes.string,
 	isAffirmative: PropTypes.bool,
 	isDisabled: PropTypes.bool,
@@ -209,13 +256,13 @@ Button.propTypes = {
 	isSubmit: PropTypes.bool,
 	isText: PropTypes.bool,
 	isUniformlyPadded: PropTypes.bool,
-	navGroupID: PropTypes.string.isRequired,
+	navGroupID: PropTypes.string,//.isRequired,
 	navGroupLinks: PropTypes.arrayOf(PropTypes.oneOfType([
 		PropTypes.number,
 		PropTypes.string,
 	])),
-	nodeID: PropTypes.string.isRequired,
-	onActivate: PropTypes.func.isRequired,
+	nodeID: PropTypes.string,
+	onActivate: PropTypes.func,
 	onClick: PropTypes.func,
 	onDeactivate: PropTypes.func,
 	onFocus: PropTypes.func,

@@ -82,6 +82,7 @@ export function DropdownButton({
 
 			<Button
 				className={styles['chevron']}
+				hideFromNavGraph
 				isAffirmative={isAffirmative}
 				isNegative={isNegative}
 				isUniformlyPadded
