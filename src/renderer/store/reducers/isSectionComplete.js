@@ -29,6 +29,6 @@ export function isSectionComplete(state, sectionName, includeBoss = false) {
 			return true
 		}
 
-		return saveData.campaign[blockName]
+		return !!saveData.campaign[blockName]
 	})
 }

@@ -95,6 +95,9 @@ export const store = makeStore({
 	/** @type {number} */
 	lastPlaceUpdate: 0,
 
+	/** @type {null | string} */
+	levelToReveal: null,
+
 	/** @type {number} */
 	mainVolume: 0,
 
