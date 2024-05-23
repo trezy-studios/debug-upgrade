@@ -138,13 +138,29 @@ export function LoadingMapSceneCenterPanelContents() {
 		if (isLoadingMapDependencies) {
 			// eslint-disable-next-line promise/catch-or-return
 			executePromiseWithMinimumDuration(tileMap.loadDependencies(), 1000)
-				.then(() => {
+				.then(result => {
+					const {
+						dependenciesLoaded,
+						dependencyCount,
+					} = result
+
+					let message = 'All dependencies already loaded.'
+
+					if (dependenciesLoaded > 0) {
+						message = `Loaded ${dependenciesLoaded} dependenc${dependenciesLoaded !== 1 ? 'ies' : 'y'}`
+
+						if (dependencyCount > dependenciesLoaded) {
+							message += ` (${dependencyCount - dependenciesLoaded} already loaded)`
+						}
+
+						message += '.'
+					}
+
+					// result
 					addLines([
 						{
 							prompt: 'system/user',
-							body: [
-								`Loaded ${tileMap.dependencies.size} dependenc${tileMap.dependencies.size > 1 ? 'ies' : 'y'}.`,
-							],
+							body: [message],
 						},
 					])
 					return null
