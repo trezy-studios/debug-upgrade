@@ -20,7 +20,7 @@ export function markLevelAsComplete(levelID) {
 	store.set(previousState => {
 		const { saveData } = previousState
 
-		saveData.campaign[levelID] = Date.now()
+		saveData.campaign[levelID] = true
 
 		return { saveData }
 	}, { forceNotify: true })
