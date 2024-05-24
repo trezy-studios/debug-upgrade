@@ -8,8 +8,11 @@ import {
 	Sprite,
 	useTick,
 } from '@pixi/react'
+import {
+ useEffect, useMemo,
+ useRef,
+} from 'react'
 import tinycolor from 'tinycolor2'
-import { useMemo } from 'react'
 import { useStore } from 'statery'
 
 
@@ -17,6 +20,9 @@ import { useStore } from 'statery'
 
 
 // Local imports
+import {
+	blockFogmapIdsToReveal, resetLevelToReveal,
+ } from '../../store/reducers/lastLevelCompleted.js'
 import { isBlockVisible } from '../../store/reducers/isBlockVisible.js'
 import { LEVEL_LAYOUT } from '../../data/LEVEL_LAYOUT.js'
 import { PixiOverworldRouter } from '../PixiOverworldRouter/PixiOverworldRouter.jsx'
@@ -41,7 +47,12 @@ export function PixiOverworld() {
 		stageHeight,
 		stageWidth,
 		uiScale,
+		levelToReveal,
 	} = useStore(store)
+
+	const uTime = useRef(0)
+
+	const ANIMATION_DURATION = 1_000
 
 	const fogmapBlocksToUnhide = useMemo(() => {
 		const visibleBlocks = Object
@@ -50,6 +61,22 @@ export function PixiOverworld() {
 
 		return Array.from(new Set(visibleBlocks.map(blockData => blockData.fogmap || 0)).values())
 	}, [])
+
+	const animatedBlockIds = useMemo(() => {
+		return blockFogmapIdsToReveal()
+	}, [levelToReveal])
+
+	useEffect(() => {
+		let timeout
+		if (animatedBlockIds.length) {
+			timeout = setTimeout(() => resetLevelToReveal(), ANIMATION_DURATION)
+		}
+		return () => {
+			if (timeout) {
+				clearTimeout(timeout)
+			}
+		}
+	}, [animatedBlockIds])
 
 	const overworldTexture = useMemo(() => Assets.get('overworld::background'), [])
 	const overworldFogMap = useMemo(() => Assets.get('overworld::fogmap'), [])
@@ -93,12 +120,14 @@ export function PixiOverworld() {
 
 		return {
 			uFogColor,
-			uTime: 0,
+			uTime: uTime.current,
 			uFogMap: overworldFogMap,
 			uScale: uiScale,
 			uStageHeight: scaledStageHeight,
 			uStageWidth: scaledStageWidth,
 			uFogmapBlocksToUnhide: fogmapBlocksToUnhide,
+			uAnimationDuration: ANIMATION_DURATION,
+			uAnimatedBlockIds: animatedBlockIds,
 		}
 	}, [
 		fogmapBlocksToUnhide,
@@ -107,7 +136,10 @@ export function PixiOverworld() {
 		scaledStageHeight,
 		scaledStageWidth,
 		uiScale,
+		ANIMATION_DURATION,
+		animatedBlockIds,
 	])
+
 
 	const filters = useMemo(() => {
 		const filter = new Filter(null, shader, uniforms)
@@ -116,11 +148,11 @@ export function PixiOverworld() {
 	}, [uniforms])
 
 	// For animation
-	useTick((_, { lastTime }) => {
+	useTick((_, { deltaMS }) => {
 		// prevent overflow in shader
-		const adjustedCurrentTimeTime = lastTime % 1e10
 		const overlayFogFilter = filters[0]
-		overlayFogFilter.uniforms.uTime = adjustedCurrentTimeTime
+		uTime.current += deltaMS
+		overlayFogFilter.uniforms.uTime = uTime.current
 	})
 
 	return (

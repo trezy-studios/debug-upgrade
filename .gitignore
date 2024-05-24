@@ -94,3 +94,6 @@ out/
 
 data/
 !src/**/data/
+
+# Yarn build state
+.yarn/install-state.gz
